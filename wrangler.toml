@@ -1,0 +1,8 @@
+name = "crimson-poetry"  # 你可以替换成你的项目名称
+compatibility_date = "2025-04-08"
+
+[build]
+command = "pnpm run build"
+
+[assets]
+directory = "./dist"  # 设置构建输出的目录
