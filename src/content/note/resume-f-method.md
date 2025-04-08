@@ -1,5 +1,5 @@
 ---
-title: Why Sharing Your Portfolio as a PDF Link is a Game Changer for Designers
+title: Why Sharing Your Portfolio as a PDF Link 
 publishDate: "2025-04-08T22:09:00Z"
 ---
 
