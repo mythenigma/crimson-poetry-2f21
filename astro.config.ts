@@ -6,6 +6,9 @@ import icon from "astro-icon";
 import robotsTxt from "astro-robots-txt";
 import webmanifest from "astro-webmanifest";
 import { defineConfig, envField } from "astro/config";
+import * as shiki from 'shiki';
+
+
 import { siteConfig } from "./src/site.config";
 
 // Remark plugins
