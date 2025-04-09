@@ -151,14 +151,15 @@ import { Icon } from "astro-icon/components";
 				</div>
 			</div>	
 			
-			<mobile-button
-				aria-expanded="false"
-				aria-haspopup="menu"
-				aria-label="Open main menu"
-				class="group relative h-8 w-8 rounded-lg bg-color-100 hover:bg-accent-base/10 text-accent-base md:invisible md:hidden"
-				id="toggle-nav-menu-mobile"
-				type="button"
-			>
+<mobile-button
+  aria-expanded="false"
+  aria-haspopup="menu"
+  aria-label="Open main menu"
+  class="group relative h-10 w-10 rounded-lg bg-color-100 hover:bg-accent-base/10 text-accent-base md:invisible md:hidden"
+  id="toggle-nav-menu-mobile"
+  type="button"
+>
+
 				<Icon
 					id="open-nav-menu-icon"
 					aria-hidden="true"
@@ -181,7 +182,7 @@ import { Icon } from "astro-icon/components";
 <div id="drawer" class="fixed inset-0 z-10 hidden" aria-hidden="true">
 	<div
 		id="drawer-body"
-		class="absolute inset-0 -translate-y-full transform bg-bgColor transition-all duration-300 ease-in-out"
+		class="fixed inset-0 -translate-y-full transform bg-bgColor transition-all duration-300 ease-in-out"
 	>
 		<!-- Background 
 			TODO: This approach is not optimal and requires improvements. 
