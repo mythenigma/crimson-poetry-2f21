@@ -21,8 +21,7 @@ export default {
   plugins: [
     require("@tailwindcss/typography"),
     plugin(({ addComponents }) => {
-      addComponents({
-        ".citrus-link": {
+      addComponents({        ".maipdf-link": {
           "&:hover": {
             "@apply underline underline-offset-2": {},
           },
@@ -109,7 +108,7 @@ export default {
         DEFAULT: {
           css: {
             a: {
-              "@apply citrus-link": "",
+              "@apply maipdf-link": "",
             },
             blockquote: {
               // "@apply !px-4 md:!px-6 !py-2 !border-s-[0.625rem] rounded-lg border-color-100 bg-color-75": "",
@@ -281,8 +280,7 @@ export default {
               },
             },
           },
-        },
-        citrus: {
+        },        maipdf: {
           css: {
             "--tw-prose-body": theme("colors.textColor / 1"),
             "--tw-prose-bold": theme("colors.textColor / 1"),

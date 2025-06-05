@@ -1,144 +1,144 @@
 ---
-title: Flexible Theming System
-description: A flexible theming system based on HSL (Hue, Saturation, Lightness) using CSS variables, allowing for dynamic color adjustments and seamless theme management
+title: MaiPDF Interface Customization
+description: Customize your MaiPDF experience with flexible branding options, custom themes, and personalized interface settings for professional document sharing
 publishDate: 03 Feb 2025
-seriesId: citrus-docs
+seriesId: maipdf-docs
 orderInSeries: 3
-tags: ["theming", "CSS", "citrus"]
+tags: ["customization", "branding", "interface", "maipdf"]
+ogImage: "/maipdf-images/pdf_native_view_on_ui.png"
 ---
 
-This approach to defining colors can be described as a **flexible theming system based on HSL (Hue, Saturation, Lightness) with the use of CSS variables**.
+MaiPDF offers extensive customization options to align the platform with your brand identity and workflow preferences. Create a cohesive, professional appearance that reflects your organization's style.
 
-## Principles of colorization
-1. **Flexibility through HSL**
-   - Instead of fixed colors, the hue (`--hue`), saturation (`--saturation`), and brightness (`--bg-brightness`, `--fg-brightness`) are used. This allows for easy changes to the entire theme's color palette by adjusting just one parameter.
+![MaiPDF Native UI View](/maipdf-images/pdf_native_view_on_ui.png)
 
-2. **Unified Logic for Light and Dark Themes**
-   - Different brightness and saturation parameters are defined in `:root[data-theme="light"]` and `:root[data-theme="dark"]`, but the logic remains consistent.
-   - For example, in the light theme, the background is lighter (`--bg-brightness: 95%`), and in the dark theme, it is darker (`--bg-brightness: 17%`).
+## Brand Customization
 
-3. **Creating Color Gradients**
-   - A gradient scale (`--theme-color-950` → `--theme-color-50`) is used to generate shades of a single color.
-   - This allows for dynamically generated variations of colors for backgrounds, text, and accents without manual input.
+### Logo and Branding
+- **Custom logo upload**: Add your company logo to shared documents
+- **Brand colors**: Customize primary and secondary colors throughout the interface
+- **Favicon configuration**: Set custom browser icons for your branded experience
+- **Watermark templates**: Create branded watermarks for document protection
 
-4. **Defining Key UI Elements**
-   - `--theme-bg` — background color
-   - `--theme-accent-two`, `--theme-accent-base` — accent colors
-   - `--theme-text` — main text color
-   - `--theme-link` — link color
-   - `--theme-quote` — quote color
+### Visual Identity
+- **Color scheme selection**: Choose from predefined themes or create custom palettes
+- **Typography options**: Select fonts that match your brand guidelines
+- **Layout preferences**: Customize dashboard and viewer layouts
+- **Header customization**: Modify navigation and branding elements
 
-```css title="globas.css"
-@layer base {
-	:root,
-	:root[data-theme="light"] {
-		color-scheme: light;
+## Document Viewer Customization
 
-		/*** MAIN COLORS (Base, Background, Accents, Text) ***/
-		/* Base theme hue color */
-		--hue: 200deg; /* Base hue color (Background, secondary accent, text) */
-		--saturation: 10%; /* Saturation of background and text, 0% - no tint */
+### Interface Elements
+1. **Toolbar configuration**: Show/hide specific viewer controls
+2. **Progress indicators**: Customize reading progress displays
+3. **Navigation controls**: Configure page navigation options
+4. **Zoom controls**: Set default zoom levels and restrictions
 
-		/* Background */
-		--bg-brightness: 95%; /* Background brightness, 100% - pure white */
-		--theme-bg: var(--hue) var(--saturation) var(--bg-brightness); /* Background color */
+### Security Indicators
+- **Protection badges**: Display security status prominently
+- **Access notifications**: Customize warning messages and alerts
+- **Watermark positioning**: Control watermark placement and opacity
+- **Copy protection notices**: Configure protection reminder messages
 
-		/* Accents */
-		--theme-accent-two: 351deg 66% 48%; /* Primary accent color */
-		--theme-accent-base: var(--hue) 50% 27%; /* Secondary accent color */
+![Email Verification Screen](/maipdf-images/get_email_verification_before_read.jpg)
 
-		/* Text (foreground calculated below based on --theme-fg) */
-		--fg-brightness: 9%; /* Text brightness, 0% - pure black */
-		--theme-fg: var(--hue) var(--saturation) var(--fg-brightness); /* Base color for text */
-		--theme-text: var(--theme-color-550); /* Text color */
+## User Experience Settings
 
-		/*** SECONDARY COLORS (External links, neutral accent, quotes) ***/
-		--theme-link: var(--hue) 97% 31%; /* External link color */
-		--theme-accent: var(--theme-color-650); /* Neutral accent, calculated below based on --theme-fg */
-		--theme-quote: var(--theme-text); /* Quote color */
-		
-		/*** ADDITIONAL COLORS ***/
-		--theme-lightest: var(--theme-color-350);
-		--theme-lighter: var(--theme-color-400);
-		--theme-light: var(--theme-color-450);
-		
-		/*** SPECIAL THEME COLORS (Distinct settings for each theme) ***/
-		--theme-special-lightest: hsl(var(--hue), var(--saturation), 100%);
-		--theme-special-lighter: hsl(var(--hue), var(--saturation), 98%);
-		--theme-special-light: hsl(var(--theme-bg));
-		--theme-special: var(--theme-color-75);
-	}
+### Access Flow Customization
+- **Welcome screens**: Create custom landing pages for document access
+- **Email verification**: Customize verification request templates
+- **Password prompts**: Design secure authentication interfaces
+- **Mobile optimization**: Configure mobile-specific viewing options
 
-	:root[data-theme="dark"] {
-		color-scheme: dark;
+### Notification Templates
+- **Email notifications**: Customize automated email templates
+- **Access alerts**: Personalize security notification messages
+- **Analytics reports**: Configure dashboard and report layouts
+- **Sharing confirmations**: Customize successful sharing messages
 
-		/*** MAIN COLORS (Base, Background, Accents, Text) ***/
-		/* Base theme hue color */
-		--hue: 200deg; /* Base hue color (Background, secondary accent, text) */
-		--saturation: 53%;
+## Advanced Customization
 
-		/* Background */
-		--bg-brightness: 17%; /* Background brightness, 0% - black */
-		--theme-bg: var(--hue) var(--saturation) var(--bg-brightness); /* Background color */
+### API Integration Styling
+```javascript
+// Custom theme configuration
+const maiPDFConfig = {
+  theme: {
+    primaryColor: '#your-brand-color',
+    backgroundColor: '#ffffff',
+    textColor: '#333333',
+    logoUrl: '/path/to/your/logo.png'
+  },
+  viewer: {
+    showToolbar: true,
+    allowFullscreen: true,
+    enableSearch: false,
+    watermarkOpacity: 0.3
+  }
+};
+```
 
-		/* Accents */
-		--theme-accent-two: 50deg 72% 63%; /* Primary accent color for elements (was 45deg 80% 50%) */
-		--theme-accent-base: var(--hue) 0% 85%; /* Secondary accent color for elements */
+### CSS Override Options
+```css
+/* Custom MaiPDF styling */
+.maipdf-viewer {
+  --primary-color: your-brand-color;
+  --background-color: your-bg-color;
+  --text-color: your-text-color;
+}
 
-		/* Text (foreground calculated below based on --theme-fg) */
-		--fg-brightness: 98%; /* Text brightness, 100% - pure white */
-		--theme-text: var(--theme-color-600); /* Text color */
-
-		/*** SECONDARY COLORS (External links, neutral accent, quotes) ***/
-		--theme-link: var(--hue) 66% 66%; /* External link color */
-		--theme-accent: var(--theme-color-700); /* Neutral accent */
-		--theme-quote: var(--theme-text); /* Quote color */
-
-		/*** ADDITIONAL COLORS ***/
-		--theme-lightest: var(--theme-color-400);
-		--theme-lighter: var(--theme-color-450);
-		--theme-light: var(--theme-color-500);
-
-		/*** SPECIAL THEME COLORS (Distinct settings for each theme) ***/
-		--theme-special-lightest: var(--theme-color-250);
-		--theme-special-lighter: var(--theme-color-200);
-		--theme-special-light: var(--theme-color-150);
-		--theme-special: hsl(var(--hue) 0% 0% / 0.1275);
-	}
-
-	/* Global variables */
-	:root {
-		/* Base color for color gradation calculation */
-		--theme-fg: var(--hue) var(--saturation) var(--fg-brightness);
-
-		/* Gradations of the base color for text and elements */
-		--theme-color-950: hsl(var(--theme-fg) / 0.9495);
-		--theme-color-900: hsl(var(--theme-fg) / 0.9095);
-		--theme-color-850: hsl(var(--theme-fg) / 0.8795);
-		--theme-color-800: hsl(var(--theme-fg) / 0.8495);
-		--theme-color-750: hsl(var(--theme-fg) / 0.7995);
-		--theme-color-700: hsl(var(--theme-fg) / 0.7495);
-		--theme-color-650: hsl(var(--theme-fg) / 0.7145);
-		--theme-color-600: hsl(var(--theme-fg) / 0.6795);
-		--theme-color-550: hsl(var(--theme-fg) / 0.6145);
-		--theme-color-500: hsl(var(--theme-fg) / 0.5495);
-		--theme-color-450: hsl(var(--theme-fg) / 0.4545);
-		--theme-color-400: hsl(var(--theme-fg) / 0.3595);
-		--theme-color-350: hsl(var(--theme-fg) / 0.2635);
-		--theme-color-300: hsl(var(--theme-fg) / 0.1675);
-		--theme-color-250: hsl(var(--theme-fg) / 0.1355);
-		--theme-color-200: hsl(var(--theme-fg) / 0.1025);
-		--theme-color-150: hsl(var(--theme-fg) / 0.0710);
-		--theme-color-100: hsl(var(--theme-fg) / 0.0395);
-		--theme-color-75: hsl(var(--theme-fg) / 0.0295);
-		--theme-color-50: hsl(var(--theme-fg) / 0.0195);
-	}
+.maipdf-watermark {
+  opacity: 0.2;
+  font-size: 12px;
+  color: rgba(0,0,0,0.1);
 }
 ```
 
-## What Does This Provide?
-- **Easy Scalability**: A new theme can be created by adjusting `--hue`, `--saturation`, and base brightness.
-- **Automatic Shade Generation**: The gradient system allows for dynamic color generation.
-- **Flexibility**: The theme can be adapted for different contrast levels, custom schemes, and modes (e.g., `sepia`, `high contrast`).
+## Enterprise Branding Features
 
-This approach is perfect for **dynamic theming**, where the ability to easily adjust the appearance without manually inputting colors is crucial.
+### White-Label Options
+- **Custom domain integration**: Use your own domain for sharing links
+- **Complete brand removal**: Hide MaiPDF branding for enterprise accounts
+- **Custom authentication**: Integrate with your existing login systems
+- **API customization**: Full control over user interface elements
+
+### Multi-Brand Management
+- **Brand profiles**: Create different branding for various departments
+- **User group customization**: Assign specific themes to user groups
+- **Document-level branding**: Apply different branding per document type
+- **Client-specific themes**: Create custom themes for different clients
+
+![Dynamic Watermark Example](/maipdf-images/dynamic_water_mark_example.jpg)
+
+## Mobile Experience Customization
+
+### Responsive Design Options
+- **Touch-friendly controls**: Optimize for mobile interactions
+- **Gesture configuration**: Customize swipe and pinch behaviors
+- **Screen adaptation**: Configure automatic layout adjustments
+- **Offline capabilities**: Customize offline viewing experience
+
+### App-Like Experience
+- **Progressive Web App**: Enable app-like functionality
+- **Push notifications**: Configure mobile alert preferences
+- **Bookmark icons**: Custom icons for saved document shortcuts
+- **Installation prompts**: Customize app installation invitations
+
+## Implementation Best Practices
+
+### Brand Consistency
+1. **Style guide adherence**: Maintain consistent visual identity
+2. **Color accessibility**: Ensure sufficient contrast ratios
+3. **Mobile optimization**: Test customizations across devices
+4. **User testing**: Validate customizations with actual users
+
+### Performance Considerations
+- **Asset optimization**: Compress custom images and logos
+- **Loading prioritization**: Optimize critical visual elements
+- **Caching strategies**: Implement efficient asset caching
+- **Fallback options**: Provide defaults for failed customizations
+
+## Getting Started with Customization
+
+Ready to customize your MaiPDF experience? Start with basic branding options in your account settings, then explore advanced API customization for enterprise needs. Our [Setup Guide](/posts/citrus-docs/setup/) provides step-by-step instructions for implementing your brand identity across the platform.
+
+*Transform MaiPDF into your branded document security solution today.*

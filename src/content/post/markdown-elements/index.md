@@ -1,188 +1,212 @@
 ---
-title: "A post of Markdown elements"
-description: "This post is for testing and listing a number of different markdown elements"
+title: "MaiPDF Documentation Formatting Guide"
+description: "Comprehensive guide to formatting MaiPDF documentation using Markdown elements for professional document creation and platform content"
 publishDate: "22 Feb 2023"
 updatedDate: 22 Jan 2024
 seriesId: "markdown-elements"
 orderInSeries: 1
-tags: ["test", "markdown"]
+tags: ["documentation", "formatting", "markdown", "maipdf"]
+ogImage: "/maipdf-images/pdf_native_view_on_ui.png"
 ---
 
-# This is a H1 Heading
+# MaiPDF Documentation Standards
 
-## This is a H2 Heading
+This guide demonstrates how to format MaiPDF documentation using Markdown elements for consistent, professional documentation across the platform.
 
-### This is a H3 Heading
+## Platform Overview Headers
 
-#### This is a H4 Heading
+### Security Features
+MaiPDF provides comprehensive security features for document protection.
 
-##### This is a H5 Heading
+#### Access Control
+Fine-grained permissions for document access management.
 
-###### This is a H6 Heading
+##### User Authentication
+Email verification and password protection options.
 
-## Horizontal Rules
+###### Advanced Permissions
+Role-based access control for enterprise users.
 
----
+## Text Formatting for Documentation
 
----
+**Bold text** is used for important MaiPDF features and UI elements.
 
----
+*Italic text* emphasizes key concepts in document security.
 
-## Emphasis
+***Bold and italic*** highlights critical security warnings.
 
-**This is bold text**
+~~Strikethrough~~ shows deprecated features or outdated information.
 
-_This is italic text_
+## MaiPDF Feature Lists
 
-~~Strikethrough~~
+### Unordered Lists for Features
+- Secure link generation with encryption
+- QR code creation for mobile access
+- Real-time access tracking and analytics
+- Copy protection and watermarking
+- Time-based access controls
+- Geographic access restrictions
 
-## Quotes
+### Ordered Lists for Procedures
+1. Upload your PDF document to MaiPDF
+2. Configure security settings and access controls
+3. Generate secure sharing links or QR codes
+4. Distribute links to authorized recipients
+5. Monitor access through analytics dashboard
+6. Update permissions as needed
 
-"Double quotes" and 'single quotes'
+### Nested Lists for Complex Features
+- **Security Options**
+  - Password protection
+    - Custom passwords
+    - Auto-generated secure passwords
+  - Access restrictions
+    - Time-based limits
+    - View count limits
+    - Geographic restrictions
+- **Sharing Methods**
+  - Direct links
+  - QR codes
+  - Email distribution
+  - Social media sharing
 
-## Blockquotes
+## Code Examples for API Integration
 
-> Blockquotes can also be nested...
->
-> > ...by using additional greater-than signs right next to each other...
+### Inline Code
+Use the `generateSecureLink()` function to create protected PDF links.
 
-## References
+### JavaScript Code Block
+```javascript
+// MaiPDF API Integration Example
+const maiPDF = require('maipdf-sdk');
 
-An example containing a clickable reference[^1] with a link to the source.
+// Initialize MaiPDF client
+const client = new maiPDF.Client({
+  apiKey: 'your-api-key',
+  region: 'us-east-1'
+});
 
-Second example containing a reference[^2] with a link to the source.
-
-[^1]: Reference first footnote with a return to content link.
-
-[^2]: Second reference with a link.
-
-If you check out this example in `src/content/post/markdown-elements/index.md`, you'll notice that the references and the heading "Footnotes" are added to the bottom of the page via the [remark-rehype](https://github.com/remarkjs/remark-rehype#options) plugin.
-
-## Lists
-
-Unordered
-
-- Create a list by starting a line with `+`, `-`, or `*`
-- Sub-lists are made by indenting 2 spaces:
-  - Marker character change forces new list start:
-    - Ac tristique libero volutpat at
-    - Facilisis in pretium nisl aliquet
-    - Nulla volutpat aliquam velit
-- Very easy!
-
-Ordered
-
-1. Lorem ipsum dolor sit amet
-2. Consectetur adipiscing elit
-3. Integer molestie lorem at massa
-
-4. You can use sequential numbers...
-5. ...or keep all the numbers as `1.`
-
-Start numbering with offset:
-
-57. foo
-1. bar
-
-## Code
-
-Inline `code`
-
-Indented code
-
-    // Some comments
-    line 1 of code
-    line 2 of code
-    line 3 of code
-
-Block code "fences"
-
-```
-Sample text here...
-```
-
-Syntax highlighting
-
-```js
-var foo = function (bar) {
-	return bar++;
-};
-
-console.log(foo(5));
-```
-
-### Rehype Pretty Code
-
-Adding a title
-
-```js title="file.js"
-console.log("Title example");
-```
-
-A bash terminal
-
-```bash
-echo "A base terminal example"
-```
-
-Highlighting code lines
-
-```js title="line-markers.js" {7} {4-5}#add {3}#remove
-function demo() {
-    console.log("this line is normal");
-    console.log("this line is marked as deleted");
-    // This line and the next one are marked as inserted
-    console.log("this is the second inserted line");
-
-    return "this line uses the neutral default marker type";
+// Upload and secure a PDF
+async function securePDF(filePath) {
+  try {
+    const upload = await client.upload(filePath);
+    const secureLink = await client.generateSecureLink(upload.id, {
+      password: 'secure-password',
+      expiresIn: '7d',
+      maxViews: 10,
+      preventCopy: true,
+      watermark: 'CONFIDENTIAL'
+    });
+    
+    console.log('Secure link:', secureLink.url);
+    console.log('QR code:', secureLink.qrCode);
+    
+    return secureLink;
+  } catch (error) {
+    console.error('Error securing PDF:', error);
+  }
 }
 ```
 
-Line Numbers
+### Python Code Block
+```python
+# MaiPDF Python SDK Example
+import maipdf
 
-```python title="line-numbers.py" showLineNumbers
-def greet(name):
-    print("Hello!")
-    print(f"Welcome, {name}!")
-    print("We are happy to see you.")
-    return name
+# Initialize client
+client = maipdf.Client(api_key='your-api-key')
+
+# Upload and configure PDF security
+def secure_document(file_path):
+    # Upload PDF
+    upload = client.upload_file(file_path)
+    
+    # Configure security settings
+    security_config = {
+        'password': 'secure-password',
+        'expires_at': '2024-12-31T23:59:59Z',
+        'max_views': 5,
+        'prevent_copy': True,
+        'prevent_print': True,
+        'watermark': {
+            'text': 'CONFIDENTIAL',
+            'opacity': 0.3,
+            'position': 'center'
+        }
+    }
+    
+    # Generate secure link
+    secure_link = client.create_secure_link(upload.id, security_config)
+    
+    return {
+        'url': secure_link.url,
+        'qr_code': secure_link.qr_code_url,
+        'expires_at': secure_link.expires_at
+    }
 ```
 
-[Rehype Pretty Code](https://rehype-pretty.pages.dev/) is a powerful tool with extensive features and support for [customization](https://rehype-pretty.pages.dev/).
+## Links and References
 
-## Tables
+### Internal Documentation Links
+- [MaiPDF Security Features](/posts/webmentions/)
+- [Access Control Guide](/posts/unique-tags/)
+- [QR Code Generation](/posts/social-image/)
+- [Analytics Dashboard](/posts/maipdf-docs/tracking-analytics/)
 
-| Option | Description                                                               |
-| ------ | ------------------------------------------------------------------------- |
-| data   | path to data files to supply the data that will be passed into templates. |
-| engine | engine to be used for processing templates. Handlebars is the default.    |
-| ext    | extension to be used for dest files.                                      |
+### External Resources
+- [MaiPDF Official Website](https://maipdf.com)
+- [API Documentation](https://docs.maipdf.com)
+- [Security Best Practices](https://security.maipdf.com)
 
-### Table Alignment
+## Images and Media
 
-| Item         | Price | # In stock |
-| ------------ | :---: | ---------: |
-| Juicy Apples | 1.99  |        739 |
-| Bananas      | 1.89  |          6 |
+### Feature Screenshots
+![MaiPDF Security Settings](/maipdf-images/security_setting.png)
+*MaiPDF security configuration interface*
 
-### Keyboard elements
+![PDF Protection Icons](/maipdf-images/pdf_icon_of_no_printing_no_downloading.png)
+*Visual indicators for copy and print protection*
 
-| Action                | Shortcut                                   |
-| --------------------- | ------------------------------------------ |
-| Vertical split        | <kbd>Alt+Shift++</kbd>                     |
-| Horizontal split      | <kbd>Alt+Shift+-</kbd>                     |
-| Auto split            | <kbd>Alt+Shift+d</kbd>                     |
-| Switch between splits | <kbd>Alt</kbd> + arrow keys                |
-| Resizing a split      | <kbd>Alt+Shift</kbd> + arrow keys          |
-| Close a split         | <kbd>Ctrl+Shift+W</kbd>                    |
-| Maximize a pane       | <kbd>Ctrl+Shift+P</kbd> + Toggle pane zoom |
+### Logo Usage
+![MaiPDF Logo](/maipdf-images/favicon.svg)
 
-## Images
+## Tables for Feature Comparison
 
-Image in the same folder: `src/content/post/markdown-elements/logo.png`
+| Feature | Basic Plan | Pro Plan | Enterprise |
+|---------|------------|----------|------------|
+| Secure Links | ✅ | ✅ | ✅ |
+| QR Codes | ✅ | ✅ | ✅ |
+| Password Protection | ✅ | ✅ | ✅ |
+| Access Analytics | ❌ | ✅ | ✅ |
+| Custom Watermarks | ❌ | ✅ | ✅ |
+| API Access | ❌ | ❌ | ✅ |
+| White-label | ❌ | ❌ | ✅ |
 
-![Astro theme citrus logo](./logo.png)
+## Blockquotes for Important Information
 
-## Links
+> **Security Notice**: Always use strong passwords and enable two-factor authentication for your MaiPDF account to ensure maximum document protection.
 
-[Content from markdown-it](https://markdown-it.github.io/)
+> **Best Practice**: Regularly review and update access permissions for shared documents to maintain security compliance.
+
+## Horizontal Rules for Section Separation
+
+---
+
+## Special Elements
+
+### Alerts and Warnings
+⚠️ **Warning**: Setting overly restrictive access controls may prevent legitimate users from accessing your documents.
+
+✅ **Success**: Your document has been successfully secured and is ready for sharing.
+
+ℹ️ **Info**: MaiPDF supports PDF files up to 100MB in size for optimal performance.
+
+### Keyboard Shortcuts
+Use <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>S</kbd> to quickly access security settings.
+
+### Abbreviations
+The *API* (Application Programming Interface) allows integration with MaiPDF services.
+
+---
+
+This formatting guide ensures consistent, professional documentation across all MaiPDF content. Follow these standards when creating new documentation or updating existing content.
