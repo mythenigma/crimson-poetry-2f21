@@ -1,5 +1,5 @@
 ---
-title: "MaiPDF Future Roadmap: Upcoming Features and Platform Enhancements"
+title: "MaiPDF Future Roadmap: Upcoming Features & Enhancements"
 description: "Preview of upcoming MaiPDF features, platform improvements, and exciting developments in secure PDF sharing technology"
 publishDate: "10 March 2025"
 tags: ["roadmap", "future", "development", "features", "innovation"]
