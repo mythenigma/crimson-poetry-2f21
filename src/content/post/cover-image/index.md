@@ -3,9 +3,6 @@ title: "MaiPDF Visual Branding Guide"
 description: "Learn how to implement visual branding and cover images in MaiPDF documentation and marketing materials for consistent brand representation"
 publishDate: "04 July 2023"
 updatedDate: "21 January 2025"
-coverImage:
-  src: ""
-  alt: "MaiPDF platform landing page interface"
 tags: ["branding", "visuals", "maipdf", "marketing"]
 ogImage: ""
 ---
