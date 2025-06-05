@@ -1,5 +1,5 @@
 ---
-title: "QR Codes for PDF Sharing: Modern Document Distribution Made Simple"
+title: "QR Codes for PDF Sharing: Modern Document Distribution"
 description: "Discover how QR codes revolutionize PDF sharing with MaiPDF - from generation to scanning, perfect for mobile access and contactless distribution"
 publishDate: "16 Mar 2025"
 tags: ["qr-codes", "mobile", "sharing", "contactless"]
