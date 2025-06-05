@@ -2,8 +2,8 @@
 title: "How to Generate Secure PDF Links and QR Codes"
 publishDate: "15 December 2024"
 description: "Learn how to convert your PDF files into secure, shareable links and QR codes with MaiPDF"
-seriesId: maipdf-docs
-orderInSeries: 2
+series: maipdf-docs
+seriesOrder: 2
 featured: true
 tags: ["maipdf", "tutorial", "links", "qr-codes"]
 ogImage: ""

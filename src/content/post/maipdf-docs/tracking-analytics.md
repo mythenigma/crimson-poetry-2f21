@@ -7,7 +7,7 @@ tags:
   - Analytics
   - Security
   - Tracking
-series: "MaiPDF Documentation"
+series: maipdf-docs
 seriesOrder: 5
 ---
 

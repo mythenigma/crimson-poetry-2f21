@@ -2,8 +2,8 @@
 title: "Copy Protection and Print Restrictions"
 publishDate: "10 December 2024"
 description: "Prevent unauthorized copying, printing, and downloading of your PDF documents with MaiPDF's protection features"
-seriesId: maipdf-docs
-orderInSeries: 4
+series: maipdf-docs
+seriesOrder: 4
 featured: false
 tags: ["maipdf", "protection", "security", "copy-prevention"]
 ogImage: ""

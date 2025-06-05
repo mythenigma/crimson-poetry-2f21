@@ -2,8 +2,8 @@
 title: "Setting Access Limits and Reading Duration Controls"
 publishDate: "12 December 2024"
 description: "Configure maximum open counts and reading time limits to control how your PDF documents are accessed"
-seriesId: maipdf-docs
-orderInSeries: 3
+series: maipdf-docs
+seriesOrder: 3
 featured: false
 tags: ["maipdf", "access-control", "security", "limits"]
 ogImage: ""

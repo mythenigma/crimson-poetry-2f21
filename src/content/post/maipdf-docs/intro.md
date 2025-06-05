@@ -2,8 +2,8 @@
 title: "Introducing MaiPDF: Secure PDF Sharing Platform"
 publishDate: "20 December 2024"
 description: "MaiPDF is a powerful platform for secure PDF sharing with access controls, tracking, and dynamic permissions"
-seriesId: maipdf-docs
-orderInSeries: 1
+series: maipdf-docs
+seriesOrder: 1
 featured: true
 tags: ["maipdf", "pdf", "security", "sharing"]
 ogImage: ""
