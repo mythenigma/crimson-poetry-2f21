@@ -1,5 +1,5 @@
 ---
-title: "MaiPDF Access Control Levels: Complete Security Configuration Guide"
+title: "MaiPDF Access Control: Complete Security Configuration"
 publishDate: "30 January 2025"
 description: "Comprehensive guide to understanding and configuring different access control levels and security settings in MaiPDF"
 tags: ["security", "access-control", "settings", "protection", "configuration"]

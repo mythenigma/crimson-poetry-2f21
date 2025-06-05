@@ -1,5 +1,5 @@
 ---
-title: "Secure PDF Analytics: Understanding Your Document Performance"
+title: "PDF Analytics: Understanding Document Performance"
 description: "Comprehensive guide to MaiPDF's analytics dashboard, tracking document engagement, and optimizing your PDF sharing strategy"
 publishDate: "08 Mar 2025"
 tags: ["analytics", "tracking", "insights", "performance"]

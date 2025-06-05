@@ -1,5 +1,5 @@
 ---
-title: "Mobile PDF Security: Protecting Documents on Smartphones and Tablets"
+title: "Mobile PDF Security: Protecting Documents on Mobile Devices"
 description: "Essential guide to secure PDF viewing and sharing on mobile devices with advanced protection features and best practices"
 publishDate: "18 Mar 2025"
 tags: ["mobile", "security", "smartphones", "tablets"]

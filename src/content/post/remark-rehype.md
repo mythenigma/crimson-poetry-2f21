@@ -1,5 +1,5 @@
 ---
-title: "MaiPDF Enterprise Solutions: Advanced Document Security for Organizations"
+title: "MaiPDF Enterprise: Advanced Document Security Solutions"
 description: "Comprehensive guide to MaiPDF's enterprise features including SSO integration, centralized administration, compliance tools, and advanced security controls"
 publishDate: "15 Feb 2025"
 tags: ["enterprise", "security", "administration", "compliance"]

@@ -1,5 +1,5 @@
 ---
-title: "MaiPDF vs Competitors: Why MaiPDF Leads in Document Security"
+title: "MaiPDF vs Competitors: Why MaiPDF Leads in Security"
 description: "Comprehensive comparison of MaiPDF against leading document security solutions including features, pricing, and security capabilities"
 publishDate: "05 Mar 2025"
 tags: ["comparison", "competitors", "features", "security"]
