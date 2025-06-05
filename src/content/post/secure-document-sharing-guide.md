@@ -1,5 +1,5 @@
 ---
-title: "How to Share Confidential Documents Securely: A Complete Guide"
+title: "How to Share Confidential Documents Securely"
 description: "Learn best practices for sharing sensitive documents safely using MaiPDF's advanced security features and access controls"
 publishDate: "12 Mar 2025"
 tags: ["security", "confidential", "guide", "best-practices"]
