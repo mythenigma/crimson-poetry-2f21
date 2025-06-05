@@ -1,5 +1,5 @@
 ---
-title: "Email Verification and Access Control: Secure PDF Sharing Best Practices"
+title: "Email Verification: Secure PDF Sharing Best Practices"
 description: "Complete guide to setting up email verification, access controls, and security settings in MaiPDF for maximum document protection"
 publishDate: "14 Mar 2025"
 tags: ["email-verification", "access-control", "security", "best-practices"]
