@@ -37,7 +37,122 @@ export default defineConfig({
       applyBaseStyles: false,
       nesting: true,
     }),
-    sitemap(),
+    sitemap({
+      filter: (page) => !page.includes('/404') && !page.includes('/og-image/'),
+      customPages: [
+        'https://pdfhost.online/',
+        'https://pdfhost.online/about/',
+        'https://pdfhost.online/posts/',
+        'https://pdfhost.online/notes/',
+        // PDF功能核心页面
+        'https://pdfhost.online/posts/pdf-to-qr-simple-guide/',
+        'https://pdfhost.online/posts/pdf-qr-beginners-guide/',
+        'https://pdfhost.online/posts/pdf-qr-vs-email-attachments/',
+        'https://pdfhost.online/posts/pdf-qr-messaging-apps/',
+        'https://pdfhost.online/posts/pdf-qr-security-guide/',
+        'https://pdfhost.online/posts/pdf-qr-tracking-analytics/',
+        // PDF链接分享相关
+        'https://pdfhost.online/posts/pdf-to-link-generator/',
+        'https://pdfhost.online/posts/pdf-link-sharing-simple/',
+        'https://pdfhost.online/posts/pdf-link-vs-cloud-storage/',
+        // PDF DRM和安全相关
+        'https://pdfhost.online/posts/free-pdf-drm-online/',
+        'https://pdfhost.online/posts/pdf-drm-beginners-guide/',
+        'https://pdfhost.online/posts/pdf-drm-vs-traditional-sharing/',
+        'https://pdfhost.online/posts/stop-pdf-forwarding-tips/',
+        'https://pdfhost.online/posts/pdf-anti-forwarding-secrets/',
+        // 社交媒体和移动端分享
+        'https://pdfhost.online/posts/pdf-social-media-sharing/',
+        'https://pdfhost.online/posts/pdf-mobile-sharing-links/',
+        'https://pdfhost.online/posts/pdf-cross-platform-sharing/',
+        // PDF托管服务相关
+        'https://pdfhost.online/posts/free-pdf-hosting-guide/',
+        'https://pdfhost.online/posts/pdf-hosting-vs-file-sharing/',
+        'https://pdfhost.online/posts/host-pdf-online-free-guide/',
+        'https://pdfhost.online/posts/host-pdf-online-free-vs-paid/',
+        // Google Drive替代方案
+        'https://pdfhost.online/posts/maipdf-google-drive-alternative/',
+      ],
+      serialize(item) {
+        // 首页最高优先级
+        if (item.url === 'https://pdfhost.online/') {
+          item.priority = 1.0;
+          item.changefreq = 'daily';
+        } 
+        // PDF核心功能文章 - 高优先级
+        else if (item.url.includes('/pdf-to-qr-simple-guide/') || 
+                 item.url.includes('/pdf-qr-beginners-guide/') ||
+                 item.url.includes('/pdf-to-link-generator/') ||
+                 item.url.includes('/free-pdf-drm-online/') ||
+                 item.url.includes('/free-pdf-hosting-guide/')) {
+          item.priority = 0.9;
+          item.changefreq = 'weekly';
+        }
+        // PDF功能对比类文章 - 次高优先级
+        else if (item.url.includes('/pdf-qr-vs-email-attachments/') ||
+                 item.url.includes('/pdf-drm-vs-traditional-sharing/') ||
+                 item.url.includes('/pdf-hosting-vs-file-sharing/') ||
+                 item.url.includes('/pdf-link-vs-cloud-storage/') ||
+                 item.url.includes('/maipdf-google-drive-alternative/')) {
+          item.priority = 0.8;
+          item.changefreq = 'weekly';
+        }
+        // PDF安全和防转发文章
+        else if (item.url.includes('/stop-pdf-forwarding-tips/') ||
+                 item.url.includes('/pdf-anti-forwarding-secrets/') ||
+                 item.url.includes('/pdf-drm-beginners-guide/') ||
+                 item.url.includes('/pdf-qr-security-guide/')) {
+          item.priority = 0.8;
+          item.changefreq = 'monthly';
+        }
+        // 社交媒体和跨平台分享文章
+        else if (item.url.includes('/pdf-social-media-sharing/') ||
+                 item.url.includes('/pdf-mobile-sharing-links/') ||
+                 item.url.includes('/pdf-cross-platform-sharing/')) {
+          item.priority = 0.7;
+          item.changefreq = 'monthly';
+        }
+        // PDF托管和在线服务文章
+        else if (item.url.includes('/host-pdf-online-free-guide/') ||
+                 item.url.includes('/host-pdf-online-free-vs-paid/') ||
+                 item.url.includes('/pdf-hosting-vs-file-sharing/')) {
+          item.priority = 0.7;
+          item.changefreq = 'monthly';
+        }
+        // 其他PDF功能文章
+        else if (item.url.includes('/pdf-qr-messaging-apps/') ||
+                 item.url.includes('/pdf-qr-tracking-analytics/') ||
+                 item.url.includes('/pdf-link-sharing-simple/')) {
+          item.priority = 0.6;
+          item.changefreq = 'monthly';
+        }
+        // 一般博客文章
+        else if (item.url.includes('/posts/')) {
+          item.priority = 0.5;
+          item.changefreq = 'monthly';
+        } 
+        // Notes页面
+        else if (item.url.includes('/notes/')) {
+          item.priority = 0.4;
+          item.changefreq = 'monthly';
+        } 
+        // 标签页面
+        else if (item.url.includes('/tags/')) {
+          item.priority = 0.3;
+          item.changefreq = 'weekly';
+        } 
+        // 其他页面
+        else {
+          item.priority = 0.5;
+          item.changefreq = 'monthly';
+        }
+        
+        // 设置最后修改时间为当前时间
+        item.lastmod = new Date().toISOString();
+        
+        return item;
+      },
+    }),
     mdx(),
     robotsTxt(),
     webmanifest({
@@ -118,7 +233,7 @@ export default defineConfig({
   // https://docs.astro.build/en/guides/prefetch/
   prefetch: true,
   // ! Please remember to replace the following site property with your own domain
-  site: "https://maipdf.com/",
+  site: "https://pdfhost.online/",
   vite: {
     build: {
       sourcemap: true, // Source maps generation
