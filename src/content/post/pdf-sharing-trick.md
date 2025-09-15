@@ -10,7 +10,7 @@ ogImage: "/2025MayMaiPDF/result_link_qr_cloudshare.png"
 
 So, I used to send PDF to my friends by email or WhatsApp, and honestly… kinda annoying, esp when the file is big. Then I found this small trick – turn the PDF into a link, just share the link, done.
 
-![MaiPDF Home Landing](/2025MayMaiPDF/Home_Landing.png)
+![A screenshot of the MaiPDF home landing page.](/2025MayMaiPDF/Home_Landing.png)
 
 ## Why Bother Doing This?
 
@@ -24,7 +24,7 @@ The old way was such a pain. Upload file, wait, send, then do it again for the n
 
 Just search some online PDF-to-link tool. I tried one with a blue-white interface, called MaiPDF (I stick to it, lazy to change lol).
 
-![Upload Section in MaiPDF](/2025MayMaiPDF/upload_in_cloudshare.png)
+![A screenshot of the upload section in MaiPDF's cloud share feature.](/2025MayMaiPDF/upload_in_cloudshare.png)
 
 Here's the process:
 
@@ -32,13 +32,13 @@ Here's the process:
 2. **Get your link and QR code** - it gives you both automatically  
 3. **Copy, send to whoever** - that's it
 
-![Result Link and QR Code](/2025MayMaiPDF/result_link_qr_cloudshare.png)
+![A screenshot showing the resulting link and QR code in MaiPDF's cloud share.](/2025MayMaiPDF/result_link_qr_cloudshare.png)
 
 The QR code is pretty cool too. Just show your phone screen, people scan it, boom - they got the PDF.
 
 ## Settings That Actually Matter
 
-![Settings in MaiPDF](/2025MayMaiPDF/settings_in_cloudshare.png)
+![A screenshot of the settings available in MaiPDF's cloud share feature.](/2025MayMaiPDF/settings_in_cloudshare.png)
 
 The tool has some useful settings:
 

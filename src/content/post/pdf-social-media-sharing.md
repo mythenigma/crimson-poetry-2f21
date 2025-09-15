@@ -10,7 +10,7 @@ ogImage: "/2025MayMaiPDF/share_pdf_wordwide.png"
 
 Trying to share a PDF on Instagram? Can't post that document directly on Twitter? Facebook compressing your beautiful PDF into unreadable mush? Here's the secret social media pros use: convert your PDF to a link and share that instead. Works everywhere, looks professional, and opens perfectly on any device.
 
-![Share PDF Worldwide](/2025MayMaiPDF/share_pdf_wordwide.png)
+![An image illustrating how to share a PDF worldwide via social media.](/2025MayMaiPDF/share_pdf_wordwide.png)
 
 ## The Social Media PDF Problem Everyone Faces
 
@@ -42,7 +42,7 @@ Clean links look way better than "Download my PDF" with a generic file icon.
 **Better Engagement**
 People are more likely to click a link than download a file from social media.
 
-![Upload PDF Process](/2025MayMaiPDF/upload_section.png)
+![A screenshot of the upload section in MaiPDF, a tool for creating shareable PDF links.](/2025MayMaiPDF/upload_section.png)
 
 ## Platform-Specific PDF Sharing Strategies
 

@@ -10,7 +10,7 @@ ogImage: "/2025MayMaiPDF/checkwatermark.png"
 
 Remember when we just emailed PDFs and hoped for the best? Those days are over. Smart people are switching to PDF DRM protection because they're tired of losing control of their documents. Let me show you exactly why protected sharing beats traditional methods every single time.
 
-![Check Watermark Feature](/2025MayMaiPDF/checkwatermark.png)
+![An image showing a feature to check for watermarks on a PDF, illustrating a DRM feature.](/2025MayMaiPDF/checkwatermark.png)
 
 ## The Traditional File Sharing Reality Check
 

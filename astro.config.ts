@@ -72,12 +72,23 @@ export default defineConfig({
         'https://pdfhost.online/posts/host-pdf-online-free-vs-paid/',
         // Google Drive替代方案
         'https://pdfhost.online/posts/maipdf-google-drive-alternative/',
+        // Newly added articles
+        'https://pdfhost.online/posts/share-pdfs-as-links/',
+        'https://pdfhost.online/posts/set-pdf-open-limits/',
+        'https://pdfhost.online/posts/make-pdf-links-expire/',
+        'https://pdfhost.online/posts/what-is-free-pdf-drm/',
+        'https://pdfhost.online/posts/smart-resume-sharing/',
+        'https://pdfhost.online/posts/stop-using-google-drive-for-pdfs/',
+        'https://pdfhost.online/posts/share-pdf-on-instagram/',
+        'https://pdfhost.online/posts/stop-emailing-proposals/',
+        'https://pdfhost.online/posts/how-to-send-resume/',
+        'https://pdfhost.online/posts/protect-your-ebook/',
       ],
       serialize(item) {
         // 首页最高优先级
         if (item.url === 'https://pdfhost.online/') {
           item.priority = 1.0;
-          item.changefreq = 'daily';
+          item.changefreq = "daily";
         } 
         // PDF核心功能文章 - 高优先级
         else if (item.url.includes('/pdf-to-qr-simple-guide/') || 
@@ -86,65 +97,78 @@ export default defineConfig({
                  item.url.includes('/free-pdf-drm-online/') ||
                  item.url.includes('/free-pdf-hosting-guide/')) {
           item.priority = 0.9;
-          item.changefreq = 'weekly';
+          item.changefreq = "weekly";
         }
         // PDF功能对比类文章 - 次高优先级
         else if (item.url.includes('/pdf-qr-vs-email-attachments/') ||
                  item.url.includes('/pdf-drm-vs-traditional-sharing/') ||
                  item.url.includes('/pdf-hosting-vs-file-sharing/') ||
                  item.url.includes('/pdf-link-vs-cloud-storage/') ||
-                 item.url.includes('/maipdf-google-drive-alternative/')) {
+                 item.url.includes('/maipdf-google-drive-alternative/') ||
+                 item.url.includes('/stop-using-google-drive-for-pdfs/')) {
           item.priority = 0.8;
-          item.changefreq = 'weekly';
+          item.changefreq = "weekly";
+        }
+        // 新增的用例文章 - 高优先级
+        else if (item.url.includes('/share-pdf-on-instagram/') ||
+                 item.url.includes('/stop-emailing-proposals/') ||
+                 item.url.includes('/how-to-send-resume/') ||
+                 item.url.includes('/protect-your-ebook/') ||
+                 item.url.includes('/smart-resume-sharing/')) {
+          item.priority = 0.8;
+          item.changefreq = "monthly";
         }
         // PDF安全和防转发文章
         else if (item.url.includes('/stop-pdf-forwarding-tips/') ||
                  item.url.includes('/pdf-anti-forwarding-secrets/') ||
                  item.url.includes('/pdf-drm-beginners-guide/') ||
                  item.url.includes('/pdf-qr-security-guide/')) {
-          item.priority = 0.8;
-          item.changefreq = 'monthly';
+          item.priority = 0.7;
+          item.changefreq = "monthly";
         }
         // 社交媒体和跨平台分享文章
         else if (item.url.includes('/pdf-social-media-sharing/') ||
                  item.url.includes('/pdf-mobile-sharing-links/') ||
                  item.url.includes('/pdf-cross-platform-sharing/')) {
           item.priority = 0.7;
-          item.changefreq = 'monthly';
+          item.changefreq = "monthly";
         }
         // PDF托管和在线服务文章
         else if (item.url.includes('/host-pdf-online-free-guide/') ||
-                 item.url.includes('/host-pdf-online-free-vs-paid/') ||
-                 item.url.includes('/pdf-hosting-vs-file-sharing/')) {
+                 item.url.includes('/host-pdf-online-free-vs-paid/')) {
           item.priority = 0.7;
-          item.changefreq = 'monthly';
+          item.changefreq = "monthly";
         }
         // 其他PDF功能文章
         else if (item.url.includes('/pdf-qr-messaging-apps/') ||
                  item.url.includes('/pdf-qr-tracking-analytics/') ||
-                 item.url.includes('/pdf-link-sharing-simple/')) {
+                 item.url.includes('/pdf-link-sharing-simple/') ||
+                 item.url.includes('/share-pdfs-as-links/') ||
+                 item.url.includes('/set-pdf-open-limits/') ||
+                 item.url.includes('/make-pdf-links-expire/') ||
+                 item.url.includes('/what-is-free-pdf-drm/')) {
           item.priority = 0.6;
-          item.changefreq = 'monthly';
+          item.changefreq = "monthly";
         }
         // 一般博客文章
         else if (item.url.includes('/posts/')) {
           item.priority = 0.5;
-          item.changefreq = 'monthly';
+          item.changefreq = "monthly";
         } 
         // Notes页面
         else if (item.url.includes('/notes/')) {
           item.priority = 0.4;
-          item.changefreq = 'monthly';
+          item.changefreq = "monthly";
         } 
         // 标签页面
         else if (item.url.includes('/tags/')) {
           item.priority = 0.3;
-          item.changefreq = 'weekly';
+          item.changefreq = "weekly";
         } 
         // 其他页面
         else {
           item.priority = 0.5;
-          item.changefreq = 'monthly';
+          item.changefreq = "monthly";
         }
         
         // 设置最后修改时间为当前时间

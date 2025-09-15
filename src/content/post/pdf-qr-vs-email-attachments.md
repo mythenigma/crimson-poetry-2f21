@@ -10,7 +10,7 @@ ogImage: "/2025MayMaiPDF/send_pdf_link_on_instant_mesenger.png"
 
 I used to be that person who spent 10 minutes trying to compress a PDF just to email it. Or uploading to three different cloud services because the first two didn't work. Then I discovered PDF QR codes and honestly? It changed my life.
 
-![Send PDF via Messenger](/2025MayMaiPDF/send_pdf_link_on_instant_mesenger.png)
+![An image showing a PDF link being sent via an instant messenger app.](/2025MayMaiPDF/send_pdf_link_on_instant_mesenger.png)
 
 ## The Email Attachment Nightmare We All Know
 

@@ -10,7 +10,7 @@ ogImage: "/2025MayMaiPDF/security_setting.png"
 
 Let's be real about Google Drive sharing: you upload a PDF, share the link, and then spend the next hour troubleshooting why half the people can't access it. Meanwhile, you have zero control over who shares it further or how many times it gets opened. Enter MaiPDF - the Google Drive alternative that actually makes sense.
 
-![Security Settings in MaiPDF](/2025MayMaiPDF/security_setting.png)
+![A screenshot of the security settings in MaiPDF, highlighting DRM-like controls.](/2025MayMaiPDF/security_setting.png)
 
 ## The Google Drive Sharing Problem We All Know
 
@@ -38,7 +38,7 @@ Sound familiar? Yeah, we've all been there.
 
 With MaiPDF, you get simple sharing PLUS something Google Drive can never offer - actual control over how people access your PDF.
 
-![Upload to MaiPDF](/2025MayMaiPDF/upload_section.png)
+![A screenshot of the upload section in MaiPDF, showing how easy it is to upload a PDF.](/2025MayMaiPDF/upload_section.png)
 
 ### Simple Sharing (No Permission Hassles)
 - Upload PDF, get clean link

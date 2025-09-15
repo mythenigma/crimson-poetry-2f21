@@ -10,7 +10,7 @@ ogImage: "/2025MayMaiPDF/security_setting.png"
 
 Everyone wants to host PDFs online for free, but is free always the best choice? I've tested dozens of PDF hosting services - free and paid - and here's the honest truth about when free works perfectly and when you should consider upgrading.
 
-![PDF Hosting Options](/2025MayMaiPDF/security_setting.png)
+![A screenshot showing various PDF hosting options and settings.](/2025MayMaiPDF/security_setting.png)
 
 ## The Free PDF Hosting Reality Check
 

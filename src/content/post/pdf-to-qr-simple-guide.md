@@ -10,7 +10,7 @@ ogImage: "/2025MayMaiPDF/result_of_pdf_link_and_qr_code.png"
 
 Remember when sharing a PDF meant attaching it to an email and hoping it wasn't "too big"? Or uploading to Google Drive and sending confusing links? There's a much simpler way now - turn your PDF into a QR code.
 
-![PDF to QR Code Result](/2025MayMaiPDF/result_of_pdf_link_and_qr_code.png)
+![A screenshot showing the result of converting a PDF to a QR code.](/2025MayMaiPDF/result_of_pdf_link_and_qr_code.png)
 
 ## What's a PDF QR Code Anyway?
 
@@ -41,7 +41,7 @@ No apps to download, no complicated steps, no "can you resend that?" messages.
 - One QR code, unlimited people can use it
 - No passwords or links to remember
 
-![MaiPDF Landing Page](/2025MayMaiPDF/Home_Landing.png)
+![A screenshot of the MaiPDF landing page, a tool for converting PDFs to QR codes.](/2025MayMaiPDF/Home_Landing.png)
 
 ## How to Turn Your PDF into a QR Code
 

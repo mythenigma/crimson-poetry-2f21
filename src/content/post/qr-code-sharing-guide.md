@@ -9,7 +9,7 @@ tags: ["qr-codes", "mobile", "sharing", "innovation"]
 
 QR codes have transformed how we share and access information. When combined with secure PDF technology, they create powerful opportunities for instant, controlled document distribution that works seamlessly across all devices.
 
-![QR Code Generation Results](/maipdf-images/result_of_pdf_link_and_qr_code.png)
+![A screenshot showing the generated QR code and link for a PDF.](/maipdf-images/result_of_pdf_link_and_qr_code.png)
 
 ### Why QR Codes Are Perfect for PDF Sharing
 

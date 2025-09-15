@@ -9,7 +9,7 @@ tags: ["qr-codes", "mobile", "sharing", "contactless"]
 
 QR codes have transformed how we share digital content, and MaiPDF leverages this technology to make secure PDF distribution effortless. Generate instant QR codes for any protected document and enable seamless mobile access while maintaining full security controls.
 
-![QR Code and PDF Link Generation](/maipdf-images/result_of_pdf_link_and_qr_code.png)
+![A screenshot showing the generated QR code and PDF link.](/maipdf-images/result_of_pdf_link_and_qr_code.png)
 
 ### Why QR Codes for PDF Sharing?
 

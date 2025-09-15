@@ -9,7 +9,7 @@ tags: ["security", "confidential", "guide", "best-practices"]
 
 In today's digital world, sharing confidential documents safely is more critical than ever. Whether you're handling legal contracts, financial reports, medical records, or proprietary business information, proper security measures can mean the difference between successful collaboration and devastating data breaches.
 
-![Security Settings Dashboard](/maipdf-images/security_setting.png)
+![A screenshot of the security settings dashboard in MaiPDF.](/maipdf-images/security_setting.png)
 
 ### Understanding Document Sensitivity Levels
 

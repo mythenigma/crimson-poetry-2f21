@@ -10,7 +10,7 @@ ogImage: "/2025MayMaiPDF/security_setting.png"
 
 You know what's crazy? People think PDF DRM (Digital Rights Management) is some complicated enterprise thing that costs thousands of dollars. But here's the truth: you can protect your PDFs with professional-grade DRM features for free, right from your browser.
 
-![PDF Security Settings](/2025MayMaiPDF/security_setting.png)
+![A screenshot showing the security settings dialog in a PDF application, with options for setting passwords and permissions.](/2025MayMaiPDF/security_setting.png)
 
 ## What is PDF DRM Anyway? (Simple Explanation)
 
@@ -36,7 +36,7 @@ Personal documents, travel plans, financial info - some things shouldn't be free
 **Educational Materials**
 Teachers, tutors, trainers - protect your lesson plans and materials from unlimited redistribution.
 
-![Upload PDF Process](/2025MayMaiPDF/upload_section.png)
+![A screenshot of the upload section in MaiPDF, where users can drag and drop their PDF files.](/2025MayMaiPDF/upload_section.png)
 
 ## How Free Online PDF DRM Actually Works
 

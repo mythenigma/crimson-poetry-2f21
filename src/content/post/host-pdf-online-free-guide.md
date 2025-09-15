@@ -10,7 +10,7 @@ ogImage: "/2025MayMaiPDF/upload_section.png"
 
 Want to host your PDFs online without paying a dime? Tired of email size limits and confusing cloud storage? You're in the right place. I'll show you exactly how to host PDFs online for free, which platforms actually work, and how to avoid the common traps that waste your time.
 
-![Host PDF Online for Free](/2025MayMaiPDF/upload_section.png)
+![A screenshot of the upload section in MaiPDF, illustrating how to host a PDF online for free.](/2025MayMaiPDF/upload_section.png)
 
 ## What Does "Host PDF Online" Actually Mean?
 

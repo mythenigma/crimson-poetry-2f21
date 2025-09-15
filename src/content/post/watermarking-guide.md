@@ -9,7 +9,7 @@ tags: ["watermarks", "security", "branding", "protection"]
 
 Watermarking is one of the most effective ways to protect your documents and maintain brand identity. MaiPDF offers advanced watermarking capabilities that go beyond simple text overlays, providing dynamic, customizable protection for your sensitive documents.
 
-![Dynamic Watermark Example](/maipdf-images/dynamic_water_mark_example.jpg)
+![An example of a dynamic watermark on a PDF document.](/maipdf-images/dynamic_water_mark_example.jpg)
 
 ### Types of Watermarks Available
 

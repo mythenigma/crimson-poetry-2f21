@@ -10,7 +10,7 @@ ogImage: "/2025MayMaiPDF/pdf_native_view_on_ui.png"
 
 Here's the thing about mobile users - they HATE downloading files. Seriously. You send someone a PDF attachment, and there's a 70% chance they'll never open it. But send them a link? They'll tap it instantly and read your content right in their browser. Let me show you why mobile PDF sharing is all about links now.
 
-![PDF Native View on Mobile](/2025MayMaiPDF/pdf_native_view_on_ui.png)
+![A screenshot showing a PDF being viewed natively on a mobile device's UI.](/2025MayMaiPDF/pdf_native_view_on_ui.png)
 
 ## The Mobile PDF Reality Check
 

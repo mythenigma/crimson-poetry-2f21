@@ -9,7 +9,7 @@ tags: ["analytics", "tracking", "insights", "performance"]
 
 Understanding how your shared documents perform is crucial for effective communication and security management. MaiPDF's comprehensive analytics dashboard provides deep insights into document usage patterns, helping you optimize your sharing strategy and maintain security.
 
-![Analytics Dashboard Overview](/maipdf-images/readnotify.png)
+![A screenshot of the MaiPDF analytics dashboard showing various metrics like total views, unique visitors, and view duration.](/maipdf-images/readnotify.png)
 
 ### Key Metrics and Insights
 

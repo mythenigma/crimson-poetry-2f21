@@ -10,7 +10,7 @@ ogImage: "/2025MayMaiPDF/readnotify.png"
 
 Ever send an important PDF and wonder if anyone actually opened it? Yeah, me too. Turns out QR codes can solve this - you get real-time tracking of who viewed what, when they did it, and how long they spent reading.
 
-![Read Notify Tracking](/2025MayMaiPDF/readnotify.png)
+![A screenshot showing a read notification, illustrating PDF tracking.](/2025MayMaiPDF/readnotify.png)
 
 ## The "Did They Even Open It?" Problem
 
@@ -24,7 +24,7 @@ Sending PDFs the old way is like throwing documents into a black hole:
 
 When someone scans your QR code to view a PDF, you get detailed analytics. It's like having x-ray vision into document engagement.
 
-![PDF Access Records Dashboard](/2025MayMaiPDF/PDF_ACCESS_RECORDS.png)
+![A screenshot of the PDF access records dashboard in MaiPDF.](/2025MayMaiPDF/PDF_ACCESS_RECORDS.png)
 
 ### What You Actually See
 

@@ -10,7 +10,7 @@ ogImage: "/2025MayMaiPDF/pdf_change_setting_after_sent.png"
 
 Ever had that sinking feeling when you realized your "confidential" PDF is now floating around the internet? Or discovered a competitor using your business proposal as their template? Time to learn the anti-forwarding secrets that actually work to keep your documents private.
 
-![PDF Settings After Sent](/2025MayMaiPDF/pdf_change_setting_after_sent.png)
+![A screenshot showing that PDF settings can be changed even after the document has been sent.](/2025MayMaiPDF/pdf_change_setting_after_sent.png)
 
 ## The Harsh Reality of PDF Forwarding
 
@@ -38,7 +38,7 @@ Instead of attaching the PDF, upload it to a protection service and share a cont
 - **You can track every access attempt**
 - **You can revoke access anytime**
 
-![MaiPDF Landing Interface](/2025MayMaiPDF/Home_Landing.png)
+![A screenshot of the MaiPDF landing page interface.](/2025MayMaiPDF/Home_Landing.png)
 
 ## Real Anti-Forwarding Techniques That Work
 

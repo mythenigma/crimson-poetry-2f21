@@ -10,7 +10,7 @@ ogImage: "/2025MayMaiPDF/maipdf_online_pdf_sharing_header.png"
 
 You know what's frustrating? Uploading a PDF to Google Drive, sharing the link, and then spending the next hour explaining to people why they can't access it. Or having someone say "I clicked your Dropbox link but it wants me to sign up for an account." There's gotta be a better way, right?
 
-![MaiPDF Online PDF Sharing](/2025MayMaiPDF/maipdf_online_pdf_sharing_header.png)
+![An image illustrating online PDF sharing with MaiPDF.](/2025MayMaiPDF/maipdf_online_pdf_sharing_header.png)
 
 ## The Cloud Storage Reality Check
 

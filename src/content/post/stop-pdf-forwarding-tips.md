@@ -10,7 +10,7 @@ ogImage: "/2025MayMaiPDF/security_setting.png"
 
 You spend hours creating the perfect PDF - maybe it's your portfolio, a business proposal, or exclusive content. Then you find out someone forwarded it to half the internet without asking. Sound familiar? Here's how to actually prevent PDF forwarding and keep control of your documents.
 
-![PDF Security Settings](/2025MayMaiPDF/security_setting.png)
+![A screenshot showing the security settings dialog in a PDF application, with options for setting passwords and permissions.](/2025MayMaiPDF/security_setting.png)
 
 ## Why People Forward PDFs (And Why You Want to Stop It)
 

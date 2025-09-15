@@ -10,7 +10,7 @@ ogImage: "/2025MayMaiPDF/maipdf_online_pdf_sharing_header.png"
 
 Everyone's doing PDF sharing wrong. They upload to Google Drive, share Dropbox links, or attach files to emails and wonder why people don't engage. Here's the truth: file sharing services weren't built for PDF viewing. Dedicated PDF hosting was. Let me show you why the switch matters.
 
-![PDF Hosting vs File Sharing](/2025MayMaiPDF/maipdf_online_pdf_sharing_header.png)
+![An image illustrating the difference between PDF hosting and traditional file sharing.](/2025MayMaiPDF/maipdf_online_pdf_sharing_header.png)
 
 ## The File Sharing Trap Everyone Falls Into
 

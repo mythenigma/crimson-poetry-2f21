@@ -10,7 +10,7 @@ ogImage: "/2025MayMaiPDF/send_pdf_link_on_instant_mesenger.png"
 
 Remember the last time you tried to email a PDF and spent 20 minutes compressing it, only to have it still look terrible? Or when you had to explain to someone how to access your Google Drive link for the third time? Yeah, there's a way easier solution.
 
-![Send PDF Link on Messenger](/2025MayMaiPDF/send_pdf_link_on_instant_mesenger.png)
+![An image showing a PDF link being shared on an instant messenger app.](/2025MayMaiPDF/send_pdf_link_on_instant_mesenger.png)
 
 ## The Problem Everyone Has (But Nobody Talks About)
 

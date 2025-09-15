@@ -10,7 +10,7 @@ ogImage: "/2025MayMaiPDF/Home_Landing.png"
 
 Tired of PDF files that are "too big" for email? Fed up with Dropbox links that confuse people? Looking for free PDF hosting that actually works? Here's the thing - most people are using the wrong tools for PDF hosting. Let me show you what actually works in 2025.
 
-![Free PDF Hosting](/2025MayMaiPDF/Home_Landing.png)
+![A screenshot of the MaiPDF homepage, illustrating the concept of free PDF hosting.](/2025MayMaiPDF/Home_Landing.png)
 
 ## What Is PDF Hosting Anyway?
 
@@ -38,7 +38,7 @@ Simple concept, but it solves SO many problems.
 - Perfect viewing on all devices
 - Optional downloads, not mandatory
 
-![Upload PDF for Hosting](/2025MayMaiPDF/upload_section.png)
+![A screenshot of the upload section in MaiPDF, where users can drag and drop their PDF files for hosting.](/2025MayMaiPDF/upload_section.png)
 
 ## Free PDF Hosting Options Compared
 

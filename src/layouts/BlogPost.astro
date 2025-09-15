@@ -5,6 +5,7 @@ import TOC from "@/components/blog/TOC.astro";
 import WebMentions from "@/components/blog/webmentions/index.astro";
 import BaseLayout from "./Base.astro";
 import SeriesPanel from "@/components/SeriesPanel.astro";
+import { siteConfig } from "@/site.config";
 import { Icon } from "astro-icon/components";
 
 interface Props {
@@ -18,6 +19,32 @@ const socialImage = ogImage ?? `/og-image/${post.id}.png`;
 const articleDate = updatedDate?.toISOString() ?? publishDate.toISOString();
 const { headings } = await render(post);
 ---
+
+<script type="application/ld+json" set:html={JSON.stringify({
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": Astro.url.href,
+	},
+	"headline": title,
+	"image": new URL(socialImage, Astro.site).href,
+	"datePublished": publishDate.toISOString(),
+	"dateModified": articleDate,
+	"author": {
+		"@type": "Person",
+		"name": siteConfig.author,
+	},
+	"publisher": {
+		"@type": "Organization",
+		"name": siteConfig.title,
+		"logo": {
+			"@type": "ImageObject",
+			"url": new URL("/icon.svg", Astro.site).href,
+		}
+	},
+	"description": description,
+})} />
 
 <BaseLayout meta={{ articleDate, description, ogImage: socialImage, title }}>
 	<div class="fixed left-0 top-0 z-10 flex h-16 md:h-20 w-full bg-bgColor overflow-hidden">

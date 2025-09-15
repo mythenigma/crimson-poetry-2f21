@@ -10,7 +10,7 @@ ogImage: "/2025MayMaiPDF/security_setting.png"
 
 Used to think QR codes were just for restaurant menus, lol. Then I realized you can use them to share PDFs securely - and actually control who sees what. Game changer for anyone dealing with sensitive docs.
 
-![MaiPDF Security Settings](/2025MayMaiPDF/security_setting.png)
+![A screenshot of the security settings in MaiPDF.](/2025MayMaiPDF/security_setting.png)
 
 ## Why Regular PDF Sharing is Risky
 
@@ -26,7 +26,7 @@ I learned this the hard way when a client proposal got shared with competitors. 
 
 Instead of sending the actual file, you generate a secure QR code that links to your PDF. Here's why it's brilliant:
 
-![PDF Security Levels](/2025MayMaiPDF/security level in pdf setting.png)
+![A screenshot showing different security levels in MaiPDF's PDF settings.](/2025MayMaiPDF/security level in pdf setting.png)
 
 ### Smart Access Controls
 - **Set view limits** - maybe only 5 people can open it
@@ -40,7 +40,7 @@ Instead of sending the actual file, you generate a secure QR code that links to 
 - **Watermarks** with viewer's email/timestamp
 - **Screenshot prevention** (works surprisingly well)
 
-![PDF Protection Icons](/2025MayMaiPDF/pdf_icon_of_no_printing_no_downloading.png)
+![Icons indicating that printing and downloading are disabled for a PDF.](/2025MayMaiPDF/pdf_icon_of_no_printing_no_downloading.png)
 
 ## Setting This Up (Actually Simple)
 

@@ -10,7 +10,7 @@ ogImage: "/2025MayMaiPDF/send_pdf_link_on_instant_mesenger.png"
 
 Tired of getting "file too large" when trying to send PDFs on WhatsApp? Or dealing with compressed, unreadable documents? Here's how I solved this once and for all with QR codes.
 
-![Send PDF Links on Instant Messenger](/2025MayMaiPDF/send_pdf_link_on_instant_mesenger.png)
+![An image showing a PDF link being shared on an instant messenger app.](/2025MayMaiPDF/send_pdf_link_on_instant_mesenger.png)
 
 ## The Messaging App Struggle is Real
 
@@ -26,7 +26,7 @@ And don't get me started on how these apps butcher PDF quality when they compres
 
 Instead of sending the actual PDF file, send a QR code image. People scan it, get instant access to your document. Brilliant and simple.
 
-![MaiPDF Online PDF Sharing Header](/2025MayMaiPDF/maipdf_online_pdf_sharing_header.png)
+![An image illustrating online PDF sharing with MaiPDF.](/2025MayMaiPDF/maipdf_online_pdf_sharing_header.png)
 
 ### Why This Works So Well
 
@@ -47,7 +47,7 @@ Using MaiPDF as my go-to tool:
 3. **Save QR image** - right-click, save to photos
 4. **Send the QR image** in your chat
 
-![Result of PDF Link and QR Code](/2025MayMaiPDF/result_of_pdf_link_and_qr_code.png)
+![A screenshot showing the resulting PDF link and QR code after uploading a document.](/2025MayMaiPDF/result_of_pdf_link_and_qr_code.png)
 
 That's it. The QR code image is like 50KB max, sends instantly on any messaging app.
 

@@ -9,7 +9,7 @@ tags: ["mobile", "security", "smartphones", "tablets"]
 
 As mobile devices become the primary way we access and share documents, ensuring robust security on smartphones and tablets is more critical than ever. Mobile PDF security requires specialized approaches that account for unique mobile challenges and opportunities.
 
-![Mobile PDF Interface](/maipdf-images/pdf_native_view_on_ui.png)
+![A screenshot of a PDF being viewed natively on a mobile device's UI.](/maipdf-images/pdf_native_view_on_ui.png)
 
 ### Understanding Mobile Security Challenges
 
@@ -43,7 +43,7 @@ As mobile devices become the primary way we access and share documents, ensuring
 - App-based sharing restrictions
 - Background app hiding capabilities
 
-![PDF Security Icons](/maipdf-images/pdf_icon_of_no_printing_no_downloading.png)
+![Icons indicating that printing and downloading are disabled for a PDF.](/maipdf-images/pdf_icon_of_no_printing_no_downloading.png)
 
 ### Platform-Specific Security Considerations
 

@@ -10,7 +10,7 @@ ogImage: "/2025MayMaiPDF/pdf_icon_of_no_printing_no_downloading.png"
 
 Ever sent a PDF and then found out it's being passed around to people you never intended? Or worried that your carefully created document is getting downloaded and shared freely? PDF DRM (Digital Rights Management) sounds scary, but it's actually super simple and can solve these problems instantly.
 
-![PDF Copy Protection Icons](/2025MayMaiPDF/pdf_icon_of_no_printing_no_downloading.png)
+![Icons indicating that printing and downloading are disabled for a PDF, illustrating copy protection.](/2025MayMaiPDF/pdf_icon_of_no_printing_no_downloading.png)
 
 ## What PDF DRM Really Means (No Tech Jargon)
 
@@ -37,7 +37,7 @@ Spent hours making study notes? Control who gets access so you're not doing ever
 **You're Anyone with Creative Work**
 Art portfolio, recipe collection, travel guide - protect your effort from unlimited copying.
 
-![MaiPDF Landing Page](/2025MayMaiPDF/Home_Landing.png)
+![A screenshot of the MaiPDF landing page, a tool for simple PDF DRM.](/2025MayMaiPDF/Home_Landing.png)
 
 ## How PDF DRM Actually Works (Simple Version)
 

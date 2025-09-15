@@ -10,7 +10,7 @@ ogImage: "/2025MayMaiPDF/maipdf_online_pdf_sharing_header.png"
 
 Okay, so you've probably seen those weird square barcodes everywhere - on restaurant tables, advertisements, business cards. Those are QR codes, and here's the cool part: you can turn any PDF document into one of those codes.
 
-![MaiPDF Online PDF Sharing](/2025MayMaiPDF/maipdf_online_pdf_sharing_header.png)
+![An image illustrating online PDF sharing with MaiPDF.](/2025MayMaiPDF/maipdf_online_pdf_sharing_header.png)
 
 ## What Does This Actually Mean?
 
@@ -41,7 +41,7 @@ Every smartphone made in the last few years can scan QR codes automatically. No 
 **Android users:** Same thing - camera app does it automatically
 **Really old phone?** Download any free QR scanner app
 
-![Upload Process](/2025MayMaiPDF/upload_in_cloudshare.png)
+![A screenshot of the upload process in MaiPDF's cloud share feature.](/2025MayMaiPDF/upload_in_cloudshare.png)
 
 ## Step-by-Step: Your First PDF QR Code
 

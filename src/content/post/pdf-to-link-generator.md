@@ -10,7 +10,7 @@ ogImage: "/2025MayMaiPDF/result_link_qr_cloudshare.png"
 
 You know what's annoying? Trying to send a PDF and getting "file too large" errors. Or having to upload to Google Drive and share weird long links that half the people can't open. Here's a better way: turn your PDF into a simple, clean link.
 
-![PDF Link Generator Result](/2025MayMaiPDF/result_link_qr_cloudshare.png)
+![A screenshot showing the resulting link and QR code from a PDF to link generator.](/2025MayMaiPDF/result_link_qr_cloudshare.png)
 
 ## What's a PDF Link Generator?
 
@@ -40,7 +40,7 @@ No downloads required, no special apps, no permissions needed. Just click and vi
 - Original quality every time
 - Tiny link, big document
 
-![MaiPDF Landing Page](/2025MayMaiPDF/Home_Landing.png)
+![A screenshot of the MaiPDF landing page, a PDF to link generator.](/2025MayMaiPDF/Home_Landing.png)
 
 ## How to Turn Your PDF into a Link
 

@@ -10,7 +10,7 @@ ogImage: "/2025MayMaiPDF/maipdf_online_pdf_sharing_header.png"
 
 You know what's frustrating? Creating a PDF, sending it to 10 people, and then getting 5 different "I can't open this" messages. iPhone users, Android users, Windows laptops, Macs, tablets - everyone has different systems, different apps, different problems. Here's the solution: one PDF link that works perfectly on every single device.
 
-![Cross-Platform PDF Sharing](/2025MayMaiPDF/maipdf_online_pdf_sharing_header.png)
+![An image illustrating the concept of cross-platform PDF sharing with MaiPDF.](/2025MayMaiPDF/maipdf_online_pdf_sharing_header.png)
 
 ## The Cross-Platform Nightmare We All Know
 

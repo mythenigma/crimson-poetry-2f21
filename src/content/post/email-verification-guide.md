@@ -9,7 +9,7 @@ tags: ["email-verification", "access-control", "security", "best-practices"]
 
 Controlling who can access your documents is fundamental to document security. MaiPDF's email verification and access control features provide multiple layers of protection, ensuring only authorized individuals can view your sensitive PDFs.
 
-![Email Verification Before Reading](/maipdf-images/get_email_verification_before_read.jpg)
+![A screenshot showing a prompt for email verification before a user can read a PDF document.](/maipdf-images/get_email_verification_before_read.jpg)
 
 ### Email Verification Features
 
@@ -29,7 +29,7 @@ Controlling who can access your documents is fundamental to document security. M
 
 ### Setting Up Email Verification
 
-![Email Addresses in Security Settings](/maipdf-images/put_email_addresses_in_security_setting.png)
+![A screenshot showing where to input email addresses in the security settings of MaiPDF.](/maipdf-images/put_email_addresses_in_security_setting.png)
 
 **Basic Email Verification Setup**
 1. Upload your PDF to MaiPDF
