@@ -1,5 +1,5 @@
 ---
-title: "How to Prevent PDF Editing: Complete Offline Protection Guide 2025"
+title: "Prevent PDF Editing: Complete Offline Guide 2025"
 description: "Comprehensive guide on protecting PDF files from editing using offline software like Adobe Acrobat, Foxit PDF Editor, and other desktop solutions with password protection, permission controls, and digital signatures."
 publishDate: "02 December 2025"
 tags: ["pdf", "edit-protection", "offline-software", "security", "password-protection", "digital-signatures"]

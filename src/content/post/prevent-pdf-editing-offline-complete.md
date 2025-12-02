@@ -1,5 +1,5 @@
 ---
-title: "防止PDF被编辑的5种离线方法：从基础到专业级保护"
+title: "防止PDF被编辑：5种离线保护方法"
 description: "完整指南：使用Adobe Acrobat、福昕PDF、WPS等离线软件保护PDF文档不被编辑，包括密码保护、权限设置、数字签名等高级技巧。"
 publishDate: "02 December 2025"
 tags: ["pdf", "编辑保护", "离线软件", "文档安全", "Adobe Acrobat", "数字签名"]
