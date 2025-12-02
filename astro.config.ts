@@ -84,7 +84,11 @@ export default defineConfig({
         'https://pdfhost.online/posts/pdf-edit-protection-offline-chinese/',
         'https://pdfhost.online/posts/pdf-edit-protection-online-chinese/',
         'https://pdfhost.online/posts/prevent-pdf-editing-offline-guide/',
-        'https://pdfhost.online/posts/online-pdf-edit-protection-guide/',\n        'https://pdfhost.online/posts/prevent-pdf-editing-offline-complete/',\n        'https://pdfhost.online/posts/prevent-pdf-editing-online-complete/',\n        'https://pdfhost.online/posts/prevent-pdf-editing-offline-english/',\n        'https://pdfhost.online/posts/prevent-pdf-editing-online-english/',
+        'https://pdfhost.online/posts/online-pdf-edit-protection-guide/',
+        'https://pdfhost.online/posts/prevent-pdf-editing-offline-complete/',
+        'https://pdfhost.online/posts/prevent-pdf-editing-online-complete/',
+        'https://pdfhost.online/posts/prevent-pdf-editing-offline-english/',
+        'https://pdfhost.online/posts/prevent-pdf-editing-online-english/',
         
         // 重要的功能页面和着陆页
         'https://pdfhost.online/sitemap/',
@@ -133,15 +137,40 @@ export default defineConfig({
         // 首页最高优先级
         if (item.url === 'https://pdfhost.online/') {
           item.priority = 1.0;
+          // @ts-expect-error - valid sitemap changefreq value
           item.changefreq = "daily";
-        } 
+        }
+        // 新增的超级页面和核心功能页面 - 最高优先级
+        else if (item.url.includes('/pdf-security/') ||
+                 item.url.includes('/pdf-sharing/') ||
+                 item.url.includes('/pdf-qr-code/') ||
+                 item.url.includes('/pdf-comparison/') ||
+                 item.url.includes('/pdf-problems/') ||
+                 item.url.includes('/pdf-tutorials/') ||
+                 item.url.includes('/features/') ||
+                 item.url.includes('/tools/') ||
+                 item.url.includes('/faq/') ||
+                 item.url.includes('/resources/') ||
+                 item.url.includes('/use-cases/') ||
+                 item.url.includes('/best-practices/') ||
+                 item.url.includes('/about/') ||
+                 item.url.includes('/sitemap/')) {
+          item.priority = 1.0;
+          // @ts-expect-error - valid sitemap changefreq value
+          item.changefreq = "daily";
+        }
         // PDF核心功能文章 - 高优先级
         else if (item.url.includes('/pdf-to-qr-simple-guide/') || 
                  item.url.includes('/pdf-qr-beginners-guide/') ||
                  item.url.includes('/pdf-to-link-generator/') ||
                  item.url.includes('/free-pdf-drm-online/') ||
-                 item.url.includes('/free-pdf-hosting-guide/')) {
+                 item.url.includes('/free-pdf-hosting-guide/') ||
+                 item.url.includes('/prevent-pdf-editing-offline-complete/') ||
+                 item.url.includes('/prevent-pdf-editing-online-complete/') ||
+                 item.url.includes('/prevent-pdf-editing-offline-english/') ||
+                 item.url.includes('/prevent-pdf-editing-online-english/')) {
           item.priority = 0.9;
+          // @ts-expect-error - valid sitemap changefreq value
           item.changefreq = "weekly";
         }
         // PDF功能对比类文章 - 次高优先级
@@ -152,6 +181,7 @@ export default defineConfig({
                  item.url.includes('/maipdf-google-drive-alternative/') ||
                  item.url.includes('/stop-using-google-drive-for-pdfs/')) {
           item.priority = 0.8;
+          // @ts-expect-error - valid sitemap changefreq value
           item.changefreq = "weekly";
         }
         // 新增的用例文章 - 高优先级
@@ -161,6 +191,7 @@ export default defineConfig({
                  item.url.includes('/protect-your-ebook/') ||
                  item.url.includes('/smart-resume-sharing/')) {
           item.priority = 0.8;
+          // @ts-expect-error - valid sitemap changefreq value
           item.changefreq = "monthly";
         }
         // PDF安全和防转发文章
@@ -169,6 +200,7 @@ export default defineConfig({
                  item.url.includes('/pdf-drm-beginners-guide/') ||
                  item.url.includes('/pdf-qr-security-guide/')) {
           item.priority = 0.7;
+          // @ts-expect-error - valid sitemap changefreq value
           item.changefreq = "monthly";
         }
         // 社交媒体和跨平台分享文章
@@ -176,12 +208,14 @@ export default defineConfig({
                  item.url.includes('/pdf-mobile-sharing-links/') ||
                  item.url.includes('/pdf-cross-platform-sharing/')) {
           item.priority = 0.7;
+          // @ts-expect-error - valid sitemap changefreq value
           item.changefreq = "monthly";
         }
         // PDF托管和在线服务文章
         else if (item.url.includes('/host-pdf-online-free-guide/') ||
                  item.url.includes('/host-pdf-online-free-vs-paid/')) {
           item.priority = 0.7;
+          // @ts-expect-error - valid sitemap changefreq value
           item.changefreq = "monthly";
         }
         // 其他PDF功能文章
@@ -193,26 +227,31 @@ export default defineConfig({
                  item.url.includes('/make-pdf-links-expire/') ||
                  item.url.includes('/what-is-free-pdf-drm/')) {
           item.priority = 0.6;
+          // @ts-expect-error - valid sitemap changefreq value
           item.changefreq = "monthly";
         }
         // 一般博客文章
         else if (item.url.includes('/posts/')) {
           item.priority = 0.5;
+          // @ts-expect-error - valid sitemap changefreq value
           item.changefreq = "monthly";
         } 
         // Notes页面
         else if (item.url.includes('/notes/')) {
           item.priority = 0.4;
+          // @ts-expect-error - valid sitemap changefreq value
           item.changefreq = "monthly";
         } 
         // 标签页面
         else if (item.url.includes('/tags/')) {
           item.priority = 0.3;
+          // @ts-expect-error - valid sitemap changefreq value
           item.changefreq = "weekly";
         } 
         // 其他页面
         else {
           item.priority = 0.5;
+          // @ts-expect-error - valid sitemap changefreq value
           item.changefreq = "monthly";
         }
         
