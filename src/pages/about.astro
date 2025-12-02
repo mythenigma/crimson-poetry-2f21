@@ -1,36 +1,176 @@
 ---
 import PageLayout from "@/layouts/Base.astro";
-
-const meta = {
-	description: "Learn about MaiPDF - the secure PDF sharing platform that protects your documents",
-	title: "About MaiPDF",
-};
 ---
 
-<PageLayout meta={meta}>
-	<h1 class="title mb-6">About MaiPDF</h1>
-	<div class="prose prose-maipdf max-w-none">
-		<p>
-			MaiPDF is a revolutionary PDF security platform designed to give you complete control over your document sharing. We understand that sensitive documents need more than just basic password protection - they need comprehensive security that adapts to your specific needs.
-		</p>
-		<p>Our platform offers advanced security features that set us apart:</p>
-		<ul class="list-inside list-disc" role="list">
-			<li>Generate secure sharing links and QR codes for easy access</li>
-			<li>Set precise access limits - control how many times your PDF can be viewed</li>
-			<li>Implement access control with expiration dates for time-sensitive documents</li>
-			<li>Prevent unauthorized copying and printing of your content</li>
-			<li>Track access with detailed analytics and monitoring</li>
-		</ul>
-		<p>
-			Whether you're sharing confidential business reports, legal documents, or personal files, MaiPDF ensures your content remains secure while providing the flexibility you need for effective collaboration.
-		</p>
-		<p>
-			Join thousands of professionals who trust MaiPDF to protect their most important documents. <a
-				aria-label="get started with MaiPDF"
-				class="maipdf-link inline-block"
-				href="/"
-				rel="noreferrer">Get started today</a> and experience the future of secure document sharing.
-		</p>
-	</div>
+<PageLayout meta={{ 
+  title: "About MaiPDF - Secure PDF Sharing Platform",
+  description: "Learn about MaiPDF, the leading platform for secure PDF sharing with access controls, tracking, and protection features. Convert PDFs to protected links and QR codes."
+}}>
+  <div class="max-w-4xl mx-auto">
+    <h1 class="text-4xl font-bold mb-8 text-accent-two">About MaiPDF</h1>
+    
+    <div class="prose prose-lg max-w-none">
+      <section class="mb-12">
+        <h2 class="text-2xl font-semibold mb-4 text-accent-one">Secure PDF Sharing Revolution</h2>
+        <p class="text-lg leading-relaxed mb-6">
+          MaiPDF is the world's leading platform for secure PDF document sharing. We transform traditional PDF files into protected, trackable, and controllable digital experiences that give you complete control over your content.
+        </p>
+        
+        <div class="grid md:grid-cols-2 gap-8 mb-8">
+          <div class="bg-bgColor/60 p-6 rounded-lg border border-accent-one/20">
+            <h3 class="font-semibold text-lg mb-3 text-accent-one">🔒 Advanced Security</h3>
+            <p class="text-textColor/80">
+              Protect your PDFs with password controls, access limits, expiration dates, and dynamic watermarks. Prevent unauthorized sharing and maintain document integrity.
+            </p>
+          </div>
+          
+          <div class="bg-bgColor/60 p-6 rounded-lg border border-accent-one/20">
+            <h3 class="font-semibold text-lg mb-3 text-accent-one">📊 Real-time Analytics</h3>
+            <p class="text-textColor/80">
+              Track who accesses your documents, when they view them, and how long they spend reading. Get detailed insights into document engagement and usage patterns.
+            </p>
+          </div>
+          
+          <div class="bg-bgColor/60 p-6 rounded-lg border border-accent-one/20">
+            <h3 class="font-semibold text-lg mb-3 text-accent-one">🔗 Easy Sharing</h3>
+            <p class="text-textColor/80">
+              Convert PDFs into shareable links or QR codes instantly. No more email attachments or cloud storage limitations. Share securely across any platform or device.
+            </p>
+          </div>
+          
+          <div class="bg-bgColor/60 p-6 rounded-lg border border-accent-one/20">
+            <h3 class="font-semibold text-lg mb-3 text-accent-one">⚡ Lightning Fast</h3>
+            <p class="text-textColor/80">
+              Global CDN ensures your documents load instantly anywhere in the world. Optimized for mobile devices and all major browsers.
+            </p>
+          </div>
+        </div>
+      </section>
 
+      <section class="mb-12">
+        <h2 class="text-2xl font-semibold mb-4 text-accent-one">Why Choose MaiPDF?</h2>
+        
+        <div class="space-y-6">
+          <div class="border-l-4 border-accent-one pl-6">
+            <h3 class="font-semibold mb-2">Enterprise-Grade Security</h3>
+            <p class="text-textColor/80">
+              Our platform uses 256-bit SSL encryption, secure cloud storage, and advanced access controls to protect your sensitive documents. Trusted by businesses worldwide.
+            </p>
+          </div>
+          
+          <div class="border-l-4 border-accent-one pl-6">
+            <h3 class="font-semibold mb-2">Complete Control</h3>
+            <p class="text-textColor/80">
+              Set viewing limits, expiration dates, password protection, and geographic restrictions. Revoke access instantly if needed. Your documents, your rules.
+            </p>
+          </div>
+          
+          <div class="border-l-4 border-accent-one pl-6">
+            <h3 class="font-semibold mb-2">Professional Presentation</h3>
+            <p class="text-textColor/80">
+              Clean, distraction-free viewing experience that works perfectly on any device. Custom branding options available for enterprise users.
+            </p>
+          </div>
+          
+          <div class="border-l-4 border-accent-one pl-6">
+            <h3 class="font-semibold mb-2">Detailed Analytics</h3>
+            <p class="text-textColor/80">
+              Comprehensive viewing statistics, engagement metrics, and access logs. Understand how your content is being consumed and by whom.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="mb-12">
+        <h2 class="text-2xl font-semibold mb-4 text-accent-one">Perfect For</h2>
+        
+        <div class="grid md:grid-cols-3 gap-6">
+          <div class="text-center p-6 bg-bgColor/40 rounded-lg">
+            <div class="text-3xl mb-3">💼</div>
+            <h3 class="font-semibold mb-2">Business Professionals</h3>
+            <p class="text-sm text-textColor/70">Contracts, proposals, financial reports, and confidential documents</p>
+          </div>
+          
+          <div class="text-center p-6 bg-bgColor/40 rounded-lg">
+            <div class="text-3xl mb-3">🎓</div>
+            <h3 class="font-semibold mb-2">Educators & Students</h3>
+            <p class="text-sm text-textColor/70">Research papers, assignments, course materials, and academic resources</p>
+          </div>
+          
+          <div class="text-center p-6 bg-bgColor/40 rounded-lg">
+            <div class="text-3xl mb-3">⚖️</div>
+            <h3 class="font-semibold mb-2">Legal Professionals</h3>
+            <p class="text-sm text-textColor/70">Legal documents, case files, client communications, and sensitive materials</p>
+          </div>
+          
+          <div class="text-center p-6 bg-bgColor/40 rounded-lg">
+            <div class="text-3xl mb-3">🏥</div>
+            <h3 class="font-semibold mb-2">Healthcare</h3>
+            <p class="text-sm text-textColor/70">Patient records, medical reports, research data, and HIPAA-compliant sharing</p>
+          </div>
+          
+          <div class="text-center p-6 bg-bgColor/40 rounded-lg">
+            <div class="text-3xl mb-3">📚</div>
+            <h3 class="font-semibold mb-2">Content Creators</h3>
+            <p class="text-sm text-textColor/70">E-books, guides, tutorials, and premium content distribution</p>
+          </div>
+          
+          <div class="text-center p-6 bg-bgColor/40 rounded-lg">
+            <div class="text-3xl mb-3">🏢</div>
+            <h3 class="font-semibold mb-2">Enterprises</h3>
+            <p class="text-sm text-textColor/70">Internal documents, training materials, policy updates, and team collaboration</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="mb-12">
+        <h2 class="text-2xl font-semibold mb-4 text-accent-one">Our Mission</h2>
+        <p class="text-lg leading-relaxed mb-4">
+          We believe that sharing documents should be secure, simple, and smart. Traditional methods like email attachments and cloud storage links are outdated, insecure, and lack proper control mechanisms.
+        </p>
+        <p class="text-lg leading-relaxed mb-4">
+          MaiPDF bridges this gap by providing a modern, secure, and intelligent platform for document sharing that gives creators complete control over their content while providing recipients with an excellent viewing experience.
+        </p>
+      </section>
+
+      <section class="mb-12 bg-gradient-to-r from-accent-one/10 to-accent-two/10 p-8 rounded-lg">
+        <h2 class="text-2xl font-semibold mb-4 text-accent-one">Get Started Today</h2>
+        <p class="text-lg mb-6">
+          Join thousands of professionals who trust MaiPDF for their secure document sharing needs. Start with our free plan and upgrade as you grow.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4">
+          <a href="https://maipdf.com" class="inline-flex items-center justify-center px-6 py-3 rounded-lg font-semibold text-white bg-gradient-to-r from-accent-one to-accent-two hover:brightness-110 transition-all">
+            Try MaiPDF Free
+          </a>
+          <a href="/posts/" class="inline-flex items-center justify-center px-6 py-3 rounded-lg font-semibold border border-accent-one text-accent-one hover:bg-accent-one/10 transition-all">
+            Learn More
+          </a>
+        </div>
+      </section>
+
+      <section>
+        <h2 class="text-2xl font-semibold mb-4 text-accent-one">Contact & Support</h2>
+        <p class="text-lg leading-relaxed mb-4">
+          Have questions about MaiPDF or need help with your documents? Our support team is here to help you succeed.
+        </p>
+        <div class="grid md:grid-cols-2 gap-6">
+          <div>
+            <h3 class="font-semibold mb-2">Documentation</h3>
+            <p class="text-textColor/80 mb-2">
+              Comprehensive guides and tutorials to help you get the most out of MaiPDF.
+            </p>
+            <a href="/posts/" class="text-accent-one hover:underline">Browse Guides →</a>
+          </div>
+          
+          <div>
+            <h3 class="font-semibold mb-2">Quick Start</h3>
+            <p class="text-textColor/80 mb-2">
+              New to MaiPDF? Check out our quick start guides to get up and running in minutes.
+            </p>
+            <a href="/notes/" class="text-accent-one hover:underline">Quick Guides →</a>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
 </PageLayout>

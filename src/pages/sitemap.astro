@@ -1,0 +1,134 @@
+---
+import { type CollectionEntry, getCollection } from "astro:content";
+import { getAllPosts } from "@/data/post";
+import PageLayout from "@/layouts/Base.astro";
+import { collectionDateSort } from "@/utils/date";
+
+// Get all posts and notes
+const allPosts = await getAllPosts();
+const allNotes = await getCollection("note");
+const allSeries = await getCollection("series");
+
+// Sort by date
+const sortedPosts = allPosts.sort(collectionDateSort);
+const sortedNotes = allNotes.sort(collectionDateSort);
+
+// Group posts by tags
+const tagGroups: Record<string, CollectionEntry<"post">[]> = {};
+sortedPosts.forEach(post => {
+  post.data.tags?.forEach(tag => {
+    if (!tagGroups[tag]) {
+      tagGroups[tag] = [];
+    }
+    tagGroups[tag].push(post);
+  });
+});
+
+const sortedTags = Object.keys(tagGroups).sort();
+---
+
+<PageLayout meta={{ 
+  title: "Sitemap - MaiPDF PDF Security Platform",
+  description: "Complete sitemap of MaiPDF platform including all PDF security guides, tutorials, and features for secure document sharing."
+}}>
+  <div class="max-w-4xl mx-auto">
+    <h1 class="text-3xl font-bold mb-8 text-accent-two">Site Map</h1>
+    
+    <div class="grid md:grid-cols-2 gap-8">
+      <!-- Main Pages -->
+      <section>
+        <h2 class="text-xl font-semibold mb-4 text-accent-one">Main Pages</h2>
+        <ul class="space-y-2">
+          <li><a href="/" class="text-textColor hover:text-accent-one transition-colors">Home</a></li>
+          <li><a href="/about/" class="text-textColor hover:text-accent-one transition-colors">About</a></li>
+          <li><a href="/posts/" class="text-textColor hover:text-accent-one transition-colors">Features & Guides</a></li>
+          <li><a href="/notes/" class="text-textColor hover:text-accent-one transition-colors">Quick Guides</a></li>
+          <li><a href="/tags/" class="text-textColor hover:text-accent-one transition-colors">All Tags</a></li>
+        </ul>
+      </section>
+
+      <!-- Popular Tags -->
+      <section>
+        <h2 class="text-xl font-semibold mb-4 text-accent-one">Popular Topics</h2>
+        <ul class="space-y-2">
+          {sortedTags.slice(0, 10).map(tag => (
+            <li>
+              <a href={`/tags/${tag}/`} class="text-textColor hover:text-accent-one transition-colors">
+                {tag.charAt(0).toUpperCase() + tag.slice(1)} ({tagGroups[tag].length})
+              </a>
+            </li>
+          ))}
+        </ul>
+      </section>
+    </div>
+
+    <!-- Recent Posts -->
+    <section class="mt-12">
+      <h2 class="text-2xl font-semibold mb-6 text-accent-one">Latest Features & Guides</h2>
+      <div class="grid md:grid-cols-2 gap-6">
+        {sortedPosts.slice(0, 20).map(post => (
+          <article class="border border-accent-one/20 rounded-lg p-4 hover:border-accent-one/40 transition-colors">
+            <h3 class="font-semibold mb-2">
+              <a href={`/posts/${post.id}/`} class="text-textColor hover:text-accent-one transition-colors">
+                {post.data.title}
+              </a>
+            </h3>
+            <p class="text-sm text-textColor/70 mb-2">{post.data.description}</p>
+            <div class="flex flex-wrap gap-2">
+              {post.data.tags?.slice(0, 3).map(tag => (
+                <span class="text-xs px-2 py-1 bg-accent-one/10 text-accent-one rounded">
+                  {tag}
+                </span>
+              ))}
+            </div>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <!-- Quick Guides -->
+    {allNotes.length > 0 && (
+      <section class="mt-12">
+        <h2 class="text-2xl font-semibold mb-6 text-accent-one">Quick Start Guides</h2>
+        <div class="grid md:grid-cols-2 gap-4">
+          {sortedNotes.map(note => (
+            <article class="border border-accent-one/20 rounded-lg p-4 hover:border-accent-one/40 transition-colors">
+              <h3 class="font-semibold mb-2">
+                <a href={`/notes/${note.id}/`} class="text-textColor hover:text-accent-one transition-colors">
+                  {note.data.title}
+                </a>
+              </h3>
+              {note.data.description && (
+                <p class="text-sm text-textColor/70">{note.data.description}</p>
+              )}
+            </article>
+          ))}
+        </div>
+      </section>
+    )}
+
+    <!-- All Tags -->
+    <section class="mt-12">
+      <h2 class="text-2xl font-semibold mb-6 text-accent-one">All Topics</h2>
+      <div class="flex flex-wrap gap-2">
+        {sortedTags.map(tag => (
+          <a 
+            href={`/tags/${tag}/`} 
+            class="px-3 py-1 bg-accent-one/10 text-accent-one rounded-full hover:bg-accent-one/20 transition-colors text-sm"
+          >
+            {tag} ({tagGroups[tag].length})
+          </a>
+        ))}
+      </div>
+    </section>
+
+    <!-- Footer Info -->
+    <footer class="mt-16 pt-8 border-t border-accent-one/20 text-center text-sm text-textColor/60">
+      <p>This sitemap helps users and search engines navigate MaiPDF's comprehensive PDF security resources.</p>
+      <p class="mt-2">
+        <a href="/rss.xml" class="text-accent-one hover:underline">RSS Feed</a> | 
+        <a href="/sitemap-index.xml" class="text-accent-one hover:underline ml-2">XML Sitemap</a>
+      </p>
+    </footer>
+  </div>
+</PageLayout>

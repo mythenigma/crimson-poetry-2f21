@@ -29,15 +29,19 @@ export const menuLinks: { path: string; title: string }[] = [
 		title: "Home",
 	},
 	{
-		path: "/about/",
-		title: "About",
-	},
-	{
-		path: "/posts/",
+		path: "/features/",
 		title: "Features",
 	},
 	{
-		path: "/notes/",
+		path: "/posts/",
 		title: "Guides",
+	},
+	{
+		path: "/notes/",
+		title: "Quick Start",
+	},
+	{
+		path: "/about/",
+		title: "About",
 	},
 ];

@@ -5,6 +5,7 @@ import TOC from "@/components/blog/TOC.astro";
 import WebMentions from "@/components/blog/webmentions/index.astro";
 import BaseLayout from "./Base.astro";
 import SeriesPanel from "@/components/SeriesPanel.astro";
+import Breadcrumbs from "@/components/Breadcrumbs.astro";
 import { siteConfig } from "@/site.config";
 import { Icon } from "astro-icon/components";
 
@@ -46,7 +47,7 @@ const { headings } = await render(post);
 	"description": description,
 })} />
 
-<BaseLayout meta={{ articleDate, description, ogImage: socialImage, title }}>
+<BaseLayout meta={{ articleDate, description, ogImage: socialImage, title, post, structuredDataType: "article" }}>
 	<div class="fixed left-0 top-0 z-10 flex h-16 md:h-20 w-full bg-bgColor overflow-hidden">
 		<!-- Background 
 			TODO: This approach is not optimal and requires improvements. 
@@ -96,6 +97,7 @@ const { headings } = await render(post);
 	<!-- SeriesPanel is inserted into the named slot "sidebar" -->
 	{seriesId && (<SeriesPanel slot="sidebar" seriesId={seriesId} />)}
 
+	<Breadcrumbs />
 	<Masthead content={post} />
 	
 	<div class="mt-6 flex sm:grid-cols-[auto_1fr] md:items-start gap-x-8">

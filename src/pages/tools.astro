@@ -1,0 +1,443 @@
+---
+import PageLayout from "@/layouts/Base.astro";
+import { getAllPosts } from "@/data/post";
+
+// 获取工具相关的文章
+const allPosts = await getAllPosts();
+
+const toolCategories = {
+  "PDF to Link Converter": {
+    description: "Convert PDF files into secure, shareable links with access controls and tracking.",
+    icon: "🔗",
+    mainFeatures: [
+      "Instant PDF to link conversion",
+      "Password protection options",
+      "View count limitations",
+      "Expiration date settings",
+      "Mobile-optimized viewing"
+    ],
+    guides: allPosts.filter(post => 
+      post.data.tags?.some(tag => ['links', 'sharing', 'pdf-to-link'].includes(tag))
+    ).slice(0, 3),
+    ctaText: "Convert PDF to Link",
+    ctaUrl: "https://maipdf.com"
+  },
+  "PDF QR Code Generator": {
+    description: "Generate QR codes for your PDF documents to enable instant mobile access and sharing.",
+    icon: "📱",
+    mainFeatures: [
+      "Instant QR code generation",
+      "Customizable QR designs",
+      "Batch QR code creation",
+      "High-resolution downloads",
+      "Analytics tracking"
+    ],
+    guides: allPosts.filter(post => 
+      post.data.tags?.some(tag => ['qr-code', 'mobile', 'sharing'].includes(tag))
+    ).slice(0, 3),
+    ctaText: "Generate QR Code",
+    ctaUrl: "https://maipdf.com"
+  },
+  "PDF Security & DRM": {
+    description: "Protect your PDF documents with advanced security features and digital rights management.",
+    icon: "🛡️",
+    mainFeatures: [
+      "Copy & print prevention",
+      "Dynamic watermarking",
+      "Access control lists",
+      "Geographic restrictions",
+      "Real-time revocation"
+    ],
+    guides: allPosts.filter(post => 
+      post.data.tags?.some(tag => ['security', 'drm', 'protection'].includes(tag))
+    ).slice(0, 3),
+    ctaText: "Secure Your PDFs",
+    ctaUrl: "https://maipdf.com"
+  },
+  "PDF Analytics & Tracking": {
+    description: "Monitor how your PDF documents are being accessed and used with detailed analytics.",
+    icon: "📊",
+    mainFeatures: [
+      "Real-time access monitoring",
+      "Detailed usage statistics",
+      "Geographic access data",
+      "Time-based analytics",
+      "Export reports"
+    ],
+    guides: allPosts.filter(post => 
+      post.data.tags?.some(tag => ['analytics', 'tracking', 'monitoring'].includes(tag))
+    ).slice(0, 3),
+    ctaText: "Track PDF Usage",
+    ctaUrl: "https://maipdf.com"
+  }
+};
+
+const quickTools = [
+  {
+    name: "PDF Link Generator",
+    description: "Convert any PDF into a secure, shareable link",
+    icon: "🔗",
+    url: "https://maipdf.com",
+    popular: true
+  },
+  {
+    name: "QR Code Creator",
+    description: "Generate QR codes for instant PDF access",
+    icon: "📱",
+    url: "https://maipdf.com"
+  },
+  {
+    name: "Security Settings",
+    description: "Configure PDF protection and access controls",
+    icon: "🔒",
+    url: "https://maipdf.com"
+  },
+  {
+    name: "Analytics Dashboard",
+    description: "Monitor PDF access and usage statistics",
+    icon: "📈",
+    url: "https://maipdf.com"
+  },
+  {
+    name: "Batch Processor",
+    description: "Process multiple PDFs simultaneously",
+    icon: "⚡",
+    url: "https://maipdf.com"
+  },
+  {
+    name: "API Access",
+    description: "Integrate PDF tools into your applications",
+    icon: "🔌",
+    url: "https://maipdf.com"
+  }
+];
+---
+
+<PageLayout meta={{ 
+  title: "PDF Tools - Secure Sharing, QR Codes, Analytics & Protection | MaiPDF",
+  description: "Free PDF tools for secure sharing: convert PDFs to links, generate QR codes, add security protection, track analytics, and control access. Professional PDF management platform."
+}}>
+  <div class="max-w-6xl mx-auto">
+    <!-- Hero Section -->
+    <header class="text-center mb-16">
+      <h1 class="text-5xl font-bold mb-6 bg-gradient-to-r from-accent-two via-accent-one to-accent-two bg-clip-text text-transparent">
+        Professional PDF Tools
+      </h1>
+      <p class="text-xl text-textColor/80 max-w-3xl mx-auto mb-8">
+        Complete suite of PDF security and sharing tools. Convert PDFs to secure links, generate QR codes, 
+        implement protection features, and track document analytics - all in one platform.
+      </p>
+      
+      <!-- Quick Access Tools -->
+      <div class="bg-gradient-to-r from-accent-one/10 to-accent-two/10 p-6 rounded-xl mb-12">
+        <h2 class="text-lg font-semibold mb-4 text-accent-one">🚀 Quick Access Tools</h2>
+        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+          {quickTools.map(tool => (
+            <a href={tool.url} class="group relative p-4 bg-bgColor/60 rounded-lg border border-accent-one/20 hover:border-accent-one/40 transition-all hover:shadow-lg text-center">
+              {tool.popular && (
+                <span class="absolute -top-2 -right-2 bg-accent-two text-white text-xs px-2 py-1 rounded-full">
+                  Popular
+                </span>
+              )}
+              <div class="text-2xl mb-2">{tool.icon}</div>
+              <h3 class="font-medium text-sm text-textColor group-hover:text-accent-one transition-colors mb-1">
+                {tool.name}
+              </h3>
+              <p class="text-xs text-textColor/60 line-clamp-2">
+                {tool.description}
+              </p>
+            </a>
+          ))}
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Tool Categories -->
+    <section class="space-y-20">
+      {Object.entries(toolCategories).map(([toolName, tool], index) => (
+        <div class={`${index % 2 === 1 ? 'lg:flex-row-reverse' : ''} lg:flex lg:items-center lg:gap-16`}>
+          <!-- Tool Description -->
+          <div class="lg:flex-1 mb-8 lg:mb-0">
+            <div class="flex items-center gap-4 mb-6">
+              <div class="text-4xl">{tool.icon}</div>
+              <div>
+                <h2 class="text-3xl font-bold text-accent-one">{toolName}</h2>
+                <p class="text-lg text-textColor/80 mt-2">{tool.description}</p>
+              </div>
+            </div>
+
+            <!-- Features List -->
+            <div class="mb-8">
+              <h3 class="text-xl font-semibold mb-4 text-accent-one">Key Features</h3>
+              <ul class="grid md:grid-cols-2 gap-3">
+                {tool.mainFeatures.map(feature => (
+                  <li class="flex items-start gap-3">
+                    <span class="text-accent-one mt-1 text-sm">✓</span>
+                    <span class="text-textColor/90">{feature}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="flex flex-col sm:flex-row gap-4">
+              <a href={tool.ctaUrl} class="inline-flex items-center justify-center px-6 py-3 rounded-lg font-semibold text-white bg-gradient-to-r from-accent-one to-accent-two hover:brightness-110 transition-all">
+                {tool.ctaText}
+              </a>
+              <a href="/posts/" class="inline-flex items-center justify-center px-6 py-3 rounded-lg font-semibold border border-accent-one text-accent-one hover:bg-accent-one/10 transition-all">
+                View Tutorials
+              </a>
+            </div>
+          </div>
+
+          <!-- Related Guides -->
+          <div class="lg:flex-1">
+            <div class="bg-bgColor/60 p-8 rounded-xl border border-accent-one/20">
+              <h3 class="text-xl font-semibold mb-6 text-accent-one">📚 How-to Guides</h3>
+              
+              {tool.guides.length > 0 ? (
+                <div class="space-y-6">
+                  {tool.guides.map(post => (
+                    <article class="group border-b border-accent-one/10 pb-4 last:border-b-0 last:pb-0">
+                      <a href={`/posts/${post.id}/`} class="block">
+                        <h4 class="font-semibold text-textColor group-hover:text-accent-one transition-colors mb-2 line-clamp-2">
+                          {post.data.title}
+                        </h4>
+                        <p class="text-sm text-textColor/70 line-clamp-2 mb-3">
+                          {post.data.description}
+                        </p>
+                        <div class="flex flex-wrap gap-2">
+                          {post.data.tags?.slice(0, 3).map(tag => (
+                            <span class="text-xs px-2 py-1 bg-accent-one/10 text-accent-one rounded">
+                              {tag}
+                            </span>
+                          ))}
+                        </div>
+                      </a>
+                    </article>
+                  ))}
+                  
+                  <a href="/posts/" class="inline-block text-sm text-accent-one hover:underline font-medium">
+                    View all guides →
+                  </a>
+                </div>
+              ) : (
+                <div class="text-center py-8">
+                  <p class="text-textColor/60 mb-4">More guides coming soon!</p>
+                  <a href="/posts/" class="text-accent-one hover:underline">Browse existing guides →</a>
+                </div>
+              )}
+            </div>
+          </div>
+        </div>
+      ))}
+    </section>
+
+    <!-- Use Cases Section -->
+    <section class="mt-20 mb-16">
+      <h2 class="text-3xl font-bold text-center mb-12 text-accent-one">Perfect for Every Use Case</h2>
+      
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div class="text-center p-6 bg-bgColor/60 rounded-xl border border-accent-one/20">
+          <div class="text-3xl mb-4">💼</div>
+          <h3 class="text-xl font-semibold mb-3 text-accent-one">Business Documents</h3>
+          <p class="text-textColor/80 mb-4">
+            Secure contracts, proposals, and confidential reports with professional protection features.
+          </p>
+          <ul class="text-sm text-textColor/70 space-y-1">
+            <li>• Contract protection</li>
+            <li>• Proposal tracking</li>
+            <li>• Financial reports</li>
+          </ul>
+        </div>
+
+        <div class="text-center p-6 bg-bgColor/60 rounded-xl border border-accent-one/20">
+          <div class="text-3xl mb-4">🎓</div>
+          <h3 class="text-xl font-semibold mb-3 text-accent-one">Education & Research</h3>
+          <p class="text-textColor/80 mb-4">
+            Share academic papers, course materials, and research documents with controlled access.
+          </p>
+          <ul class="text-sm text-textColor/70 space-y-1">
+            <li>• Research papers</li>
+            <li>• Course materials</li>
+            <li>• Student assignments</li>
+          </ul>
+        </div>
+
+        <div class="text-center p-6 bg-bgColor/60 rounded-xl border border-accent-one/20">
+          <div class="text-3xl mb-4">⚖️</div>
+          <h3 class="text-xl font-semibold mb-3 text-accent-one">Legal & Compliance</h3>
+          <p class="text-textColor/80 mb-4">
+            Ensure legal documents maintain integrity with audit trails and access controls.
+          </p>
+          <ul class="text-sm text-textColor/70 space-y-1">
+            <li>• Legal contracts</li>
+            <li>• Compliance reports</li>
+            <li>• Case documents</li>
+          </ul>
+        </div>
+
+        <div class="text-center p-6 bg-bgColor/60 rounded-xl border border-accent-one/20">
+          <div class="text-3xl mb-4">🏥</div>
+          <h3 class="text-xl font-semibold mb-3 text-accent-one">Healthcare</h3>
+          <p class="text-textColor/80 mb-4">
+            HIPAA-compliant sharing of medical records and patient information with secure access.
+          </p>
+          <ul class="text-sm text-textColor/70 space-y-1">
+            <li>• Patient records</li>
+            <li>• Medical reports</li>
+            <li>• Research data</li>
+          </ul>
+        </div>
+
+        <div class="text-center p-6 bg-bgColor/60 rounded-xl border border-accent-one/20">
+          <div class="text-3xl mb-4">📚</div>
+          <h3 class="text-xl font-semibold mb-3 text-accent-one">Content Creation</h3>
+          <p class="text-textColor/80 mb-4">
+            Distribute e-books, guides, and premium content with copy protection and analytics.
+          </p>
+          <ul class="text-sm text-textColor/70 space-y-1">
+            <li>• E-books & guides</li>
+            <li>• Premium content</li>
+            <li>• Training materials</li>
+          </ul>
+        </div>
+
+        <div class="text-center p-6 bg-bgColor/60 rounded-xl border border-accent-one/20">
+          <div class="text-3xl mb-4">🏢</div>
+          <h3 class="text-xl font-semibold mb-3 text-accent-one">Enterprise</h3>
+          <p class="text-textColor/80 mb-4">
+            Large-scale document management with team collaboration and enterprise integrations.
+          </p>
+          <ul class="text-sm text-textColor/70 space-y-1">
+            <li>• Team collaboration</li>
+            <li>• API integrations</li>
+            <li>• Bulk processing</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Pricing & Plans -->
+    <section class="mb-16">
+      <h2 class="text-3xl font-bold text-center mb-12 text-accent-one">Choose Your Plan</h2>
+      
+      <div class="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+        <!-- Free Plan -->
+        <div class="bg-bgColor/60 p-8 rounded-xl border border-accent-one/20 text-center">
+          <h3 class="text-2xl font-bold mb-2 text-accent-one">Free</h3>
+          <p class="text-3xl font-bold mb-4">$0<span class="text-base font-normal text-textColor/60">/month</span></p>
+          <ul class="text-left space-y-3 mb-8">
+            <li class="flex items-start gap-3">
+              <span class="text-accent-one mt-1">✓</span>
+              <span>5 PDFs per month</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="text-accent-one mt-1">✓</span>
+              <span>Basic security features</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="text-accent-one mt-1">✓</span>
+              <span>QR code generation</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="text-accent-one mt-1">✓</span>
+              <span>Basic analytics</span>
+            </li>
+          </ul>
+          <a href="https://maipdf.com" class="block w-full py-3 px-6 rounded-lg font-semibold border border-accent-one text-accent-one hover:bg-accent-one/10 transition-all">
+            Get Started Free
+          </a>
+        </div>
+
+        <!-- Pro Plan -->
+        <div class="bg-gradient-to-br from-accent-one/10 to-accent-two/10 p-8 rounded-xl border-2 border-accent-one text-center relative">
+          <div class="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-accent-one text-white px-4 py-1 rounded-full text-sm font-medium">
+            Most Popular
+          </div>
+          <h3 class="text-2xl font-bold mb-2 text-accent-one">Professional</h3>
+          <p class="text-3xl font-bold mb-4">$29<span class="text-base font-normal text-textColor/60">/month</span></p>
+          <ul class="text-left space-y-3 mb-8">
+            <li class="flex items-start gap-3">
+              <span class="text-accent-one mt-1">✓</span>
+              <span>Unlimited PDFs</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="text-accent-one mt-1">✓</span>
+              <span>Advanced security & DRM</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="text-accent-one mt-1">✓</span>
+              <span>Custom branding</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="text-accent-one mt-1">✓</span>
+              <span>Detailed analytics</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="text-accent-one mt-1">✓</span>
+              <span>Priority support</span>
+            </li>
+          </ul>
+          <a href="https://maipdf.com" class="block w-full py-3 px-6 rounded-lg font-semibold text-white bg-gradient-to-r from-accent-one to-accent-two hover:brightness-110 transition-all">
+            Start Pro Trial
+          </a>
+        </div>
+
+        <!-- Enterprise Plan -->
+        <div class="bg-bgColor/60 p-8 rounded-xl border border-accent-one/20 text-center">
+          <h3 class="text-2xl font-bold mb-2 text-accent-one">Enterprise</h3>
+          <p class="text-3xl font-bold mb-4">Custom<span class="text-base font-normal text-textColor/60"> pricing</span></p>
+          <ul class="text-left space-y-3 mb-8">
+            <li class="flex items-start gap-3">
+              <span class="text-accent-one mt-1">✓</span>
+              <span>Everything in Pro</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="text-accent-one mt-1">✓</span>
+              <span>API access & integrations</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="text-accent-one mt-1">✓</span>
+              <span>Custom deployment</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="text-accent-one mt-1">✓</span>
+              <span>Dedicated support</span>
+            </li>
+          </ul>
+          <a href="https://maipdf.com" class="block w-full py-3 px-6 rounded-lg font-semibold border border-accent-one text-accent-one hover:bg-accent-one/10 transition-all">
+            Contact Sales
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section class="text-center bg-gradient-to-r from-accent-one/10 to-accent-two/10 p-12 rounded-xl">
+      <h2 class="text-3xl font-bold mb-6 text-accent-one">Ready to Transform Your PDF Workflow?</h2>
+      <p class="text-xl text-textColor/80 max-w-2xl mx-auto mb-8">
+        Join thousands of professionals who trust MaiPDF for secure document sharing. 
+        Start with our free tools and upgrade as your needs grow.
+      </p>
+      
+      <div class="flex flex-col sm:flex-row justify-center gap-6">
+        <a href="https://maipdf.com" class="inline-flex items-center justify-center px-8 py-4 rounded-lg font-semibold text-white bg-gradient-to-r from-accent-one to-accent-two hover:brightness-110 transition-all text-lg">
+          Try All Tools Free
+        </a>
+        <a href="/posts/" class="inline-flex items-center justify-center px-8 py-4 rounded-lg font-semibold border-2 border-accent-one text-accent-one hover:bg-accent-one/10 transition-all text-lg">
+          Browse Tutorials
+        </a>
+      </div>
+    </section>
+  </div>
+</PageLayout>
+
+<style>
+  .line-clamp-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+</style>

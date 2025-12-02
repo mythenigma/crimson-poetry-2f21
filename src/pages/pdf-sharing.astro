@@ -1,0 +1,446 @@
+---
+import { getAllPosts } from "@/data/post";
+import PageLayout from "@/layouts/Base.astro";
+
+const allPosts = await getAllPosts();
+
+// 获取分享相关文章
+const sharingPosts = allPosts.filter(post => 
+  post.data.tags?.some(tag => ['sharing', 'links', 'qr-code', 'mobile', 'social-media'].includes(tag))
+);
+
+const sharingMethods = {
+  "PDF to Link": {
+    icon: "🔗",
+    title: "Convert PDF to Secure Links",
+    description: "Transform any PDF into a shareable link with access controls and tracking",
+    benefits: [
+      "Instant sharing without file size limits",
+      "Works on any device or platform", 
+      "Real-time access control",
+      "Detailed analytics and tracking",
+      "Professional presentation"
+    ],
+    useCases: ["Business proposals", "Client presentations", "Document distribution", "Remote collaboration"],
+    posts: sharingPosts.filter(post => 
+      post.data.tags?.some(tag => ['links', 'pdf-to-link'].includes(tag))
+    ).slice(0, 3)
+  },
+  "QR Code Sharing": {
+    icon: "📱",
+    title: "PDF QR Code Generation",
+    description: "Generate QR codes for instant mobile access and contactless sharing",
+    benefits: [
+      "Instant mobile access",
+      "Contactless sharing solution",
+      "Perfect for presentations",
+      "Easy offline distribution",
+      "Professional appearance"
+    ],
+    useCases: ["Conference materials", "Restaurant menus", "Event programs", "Marketing materials"],
+    posts: sharingPosts.filter(post => 
+      post.data.tags?.some(tag => ['qr-code', 'mobile'].includes(tag))
+    ).slice(0, 3)
+  },
+  "Social Media": {
+    icon: "📱",
+    title: "Social Media PDF Sharing",
+    description: "Share PDFs across social platforms with optimized viewing experience",
+    benefits: [
+      "Social media optimized",
+      "Mobile-first design",
+      "Viral sharing potential",
+      "Engagement tracking",
+      "Brand consistency"
+    ],
+    useCases: ["Content marketing", "Social campaigns", "Educational content", "Brand materials"],
+    posts: sharingPosts.filter(post => 
+      post.data.tags?.some(tag => ['social-media', 'mobile'].includes(tag))
+    ).slice(0, 3)
+  }
+};
+
+// 分享平台对比
+const sharingComparison = [
+  {
+    method: "Email Attachments",
+    fileSize: "25MB limit",
+    accessibility: "Download required",
+    tracking: "None",
+    security: "None",
+    mobile: "Poor",
+    rating: 2
+  },
+  {
+    method: "Cloud Storage",
+    fileSize: "Good",
+    accessibility: "Account required",
+    tracking: "Basic",
+    security: "Basic",
+    mobile: "Good",
+    rating: 3
+  },
+  {
+    method: "MaiPDF Links",
+    fileSize: "Unlimited",
+    accessibility: "Instant access",
+    tracking: "Advanced",
+    security: "Enterprise",
+    mobile: "Excellent",
+    rating: 5
+  }
+];
+---
+
+<PageLayout meta={{ 
+  title: "PDF Sharing Solutions - Links, QR Codes & Social Media | MaiPDF",
+  description: "Modern PDF sharing methods: convert PDFs to links, generate QR codes, share on social media. Secure, trackable, and mobile-optimized document sharing solutions."
+}}>
+  <div class="max-w-7xl mx-auto">
+    <!-- Hero Section -->
+    <header class="text-center mb-20">
+      <h1 class="text-6xl font-bold mb-8 bg-gradient-to-r from-blue-500 via-accent-one to-green-500 bg-clip-text text-transparent">
+        Modern PDF Sharing
+      </h1>
+      <p class="text-2xl text-textColor/80 max-w-4xl mx-auto mb-8">
+        Stop struggling with email attachments and file size limits. Share PDFs instantly with secure links, 
+        QR codes, and social media integration. Track every view and maintain complete control.
+      </p>
+      
+      <!-- Sharing Stats -->
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto mb-12">
+        <div class="bg-blue-500/10 p-4 rounded-lg border border-blue-500/20">
+          <div class="text-2xl font-bold text-blue-500">10x</div>
+          <div class="text-sm text-textColor/70">Faster than email</div>
+        </div>
+        <div class="bg-green-500/10 p-4 rounded-lg border border-green-500/20">
+          <div class="text-2xl font-bold text-green-500">∞</div>
+          <div class="text-sm text-textColor/70">No file size limits</div>
+        </div>
+        <div class="bg-purple-500/10 p-4 rounded-lg border border-purple-500/20">
+          <div class="text-2xl font-bold text-purple-500">100%</div>
+          <div class="text-sm text-textColor/70">Mobile compatible</div>
+        </div>
+        <div class="bg-accent-one/10 p-4 rounded-lg border border-accent-one/20">
+          <div class="text-2xl font-bold text-accent-one">24/7</div>
+          <div class="text-sm text-textColor/70">Access tracking</div>
+        </div>
+      </div>
+
+      <!-- Quick Demo -->
+      <div class="bg-gradient-to-r from-blue-500/10 to-green-500/10 p-8 rounded-xl mb-12">
+        <h2 class="text-2xl font-bold mb-4 text-accent-one">See It In Action</h2>
+        <p class="text-lg mb-6">Transform your PDF sharing in 3 simple steps:</p>
+        <div class="grid md:grid-cols-3 gap-6">
+          <div class="text-center">
+            <div class="w-16 h-16 bg-blue-500/20 rounded-full flex items-center justify-center mx-auto mb-3 text-2xl">📄</div>
+            <h3 class="font-semibold mb-2">1. Upload PDF</h3>
+            <p class="text-sm text-textColor/70">Drag & drop your document</p>
+          </div>
+          <div class="text-center">
+            <div class="w-16 h-16 bg-accent-one/20 rounded-full flex items-center justify-center mx-auto mb-3 text-2xl">⚙️</div>
+            <h3 class="font-semibold mb-2">2. Set Options</h3>
+            <p class="text-sm text-textColor/70">Configure security & access</p>
+          </div>
+          <div class="text-center">
+            <div class="w-16 h-16 bg-green-500/20 rounded-full flex items-center justify-center mx-auto mb-3 text-2xl">🚀</div>
+            <h3 class="font-semibold mb-2">3. Share Instantly</h3>
+            <p class="text-sm text-textColor/70">Get link & QR code</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- CTA Buttons -->
+      <div class="flex flex-col sm:flex-row justify-center gap-4">
+        <a href="https://maipdf.com" class="inline-flex items-center justify-center px-8 py-4 rounded-lg font-semibold text-white bg-gradient-to-r from-blue-500 to-green-500 hover:brightness-110 transition-all text-lg shadow-lg">
+          🚀 Start Sharing PDFs
+        </a>
+        <a href="/posts/pdf-to-link-generator/" class="inline-flex items-center justify-center px-8 py-4 rounded-lg font-semibold border-2 border-accent-one text-accent-one hover:bg-accent-one/10 transition-all text-lg">
+          📖 How-to Guide
+        </a>
+      </div>
+    </header>
+
+    <!-- Sharing Methods -->
+    <section class="mb-20">
+      <h2 class="text-4xl font-bold text-center mb-12 text-accent-one">Choose Your Sharing Method</h2>
+      
+      <div class="space-y-16">
+        {Object.entries(sharingMethods).map(([methodKey, method], index) => (
+          <div class={`${index % 2 === 1 ? 'lg:flex-row-reverse' : ''} lg:flex lg:items-center lg:gap-16`}>
+            <!-- Method Description -->
+            <div class="lg:flex-1 mb-8 lg:mb-0">
+              <div class="flex items-center gap-4 mb-6">
+                <div class="text-5xl">{method.icon}</div>
+                <div>
+                  <h3 class="text-3xl font-bold text-accent-one">{method.title}</h3>
+                  <p class="text-lg text-textColor/80 mt-2">{method.description}</p>
+                </div>
+              </div>
+
+              <!-- Benefits -->
+              <div class="mb-6">
+                <h4 class="text-xl font-semibold mb-4 text-accent-one">Key Benefits</h4>
+                <ul class="grid md:grid-cols-2 gap-3">
+                  {method.benefits.map(benefit => (
+                    <li class="flex items-start gap-3">
+                      <span class="text-green-500 mt-1">✓</span>
+                      <span class="text-textColor/90">{benefit}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              <!-- Use Cases -->
+              <div class="mb-8">
+                <h4 class="text-xl font-semibold mb-4 text-accent-one">Perfect For</h4>
+                <div class="flex flex-wrap gap-2">
+                  {method.useCases.map(useCase => (
+                    <span class="px-3 py-1 bg-accent-one/10 text-accent-one rounded-full text-sm">
+                      {useCase}
+                    </span>
+                  ))}
+                </div>
+              </div>
+
+              <!-- Action Buttons -->
+              <div class="flex flex-col sm:flex-row gap-4">
+                <a href="https://maipdf.com" class="inline-flex items-center justify-center px-6 py-3 rounded-lg font-semibold text-white bg-gradient-to-r from-accent-one to-accent-two hover:brightness-110 transition-all">
+                  Try This Method
+                </a>
+                <a href="/posts/" class="inline-flex items-center justify-center px-6 py-3 rounded-lg font-semibold border border-accent-one text-accent-one hover:bg-accent-one/10 transition-all">
+                  View Tutorials
+                </a>
+              </div>
+            </div>
+
+            <!-- Related Guides -->
+            <div class="lg:flex-1">
+              <div class="bg-bgColor/60 p-8 rounded-xl border border-accent-one/20">
+                <h4 class="text-xl font-semibold mb-6 text-accent-one">📚 Step-by-Step Guides</h4>
+                
+                <div class="space-y-6">
+                  {method.posts.map(post => (
+                    <article class="group border-b border-accent-one/10 pb-4 last:border-b-0 last:pb-0">
+                      <a href={`/posts/${post.id}/`} class="block">
+                        <h5 class="font-semibold text-textColor group-hover:text-accent-one transition-colors mb-2">
+                          {post.data.title}
+                        </h5>
+                        <p class="text-sm text-textColor/70 mb-3 line-clamp-2">
+                          {post.data.description}
+                        </p>
+                        <div class="flex flex-wrap gap-2">
+                          {post.data.tags?.slice(0, 3).map(tag => (
+                            <span class="text-xs px-2 py-1 bg-accent-one/10 text-accent-one rounded">
+                              {tag}
+                            </span>
+                          ))}
+                        </div>
+                      </a>
+                    </article>
+                  ))}
+                  
+                  <a href="/posts/" class="inline-block text-sm text-accent-one hover:underline font-medium">
+                    View all sharing guides →
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- Comparison Table -->
+    <section class="mb-20">
+      <h2 class="text-4xl font-bold text-center mb-12 text-accent-one">Sharing Methods Comparison</h2>
+      
+      <div class="overflow-x-auto">
+        <table class="w-full bg-bgColor/60 rounded-xl border border-accent-one/20">
+          <thead>
+            <tr class="border-b border-accent-one/20">
+              <th class="p-4 text-left text-accent-one font-semibold">Method</th>
+              <th class="p-4 text-center text-accent-one font-semibold">File Size</th>
+              <th class="p-4 text-center text-accent-one font-semibold">Accessibility</th>
+              <th class="p-4 text-center text-accent-one font-semibold">Tracking</th>
+              <th class="p-4 text-center text-accent-one font-semibold">Security</th>
+              <th class="p-4 text-center text-accent-one font-semibold">Mobile</th>
+              <th class="p-4 text-center text-accent-one font-semibold">Rating</th>
+            </tr>
+          </thead>
+          <tbody>
+            {sharingComparison.map((method, index) => (
+              <tr class={`border-b border-accent-one/10 ${index === 2 ? 'bg-accent-one/5' : ''}`}>
+                <td class={`p-4 font-medium ${index === 2 ? 'text-accent-one' : ''}`}>{method.method}</td>
+                <td class="p-4 text-center">{method.fileSize}</td>
+                <td class="p-4 text-center">{method.accessibility}</td>
+                <td class="p-4 text-center">{method.tracking}</td>
+                <td class="p-4 text-center">{method.security}</td>
+                <td class="p-4 text-center">{method.mobile}</td>
+                <td class="p-4 text-center">
+                  <div class="flex justify-center">
+                    {Array.from({length: 5}, (_, i) => (
+                      <span class={`text-lg ${i < method.rating ? 'text-yellow-500' : 'text-gray-300'}`}>
+                        ⭐
+                      </span>
+                    ))}
+                  </div>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Use Case Examples -->
+    <section class="mb-20">
+      <h2 class="text-4xl font-bold text-center mb-12 text-accent-one">Real-World Sharing Scenarios</h2>
+      
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div class="bg-blue-500/10 p-8 rounded-xl border border-blue-500/20">
+          <div class="text-4xl mb-4">💼</div>
+          <h3 class="text-xl font-bold mb-4 text-blue-600">Business Presentations</h3>
+          <p class="text-textColor/80 mb-4">
+            Share proposals and presentations with clients instantly. Track engagement and maintain professional appearance.
+          </p>
+          <ul class="text-sm space-y-2 mb-6">
+            <li class="flex items-center gap-2">
+              <span class="text-green-500">✓</span>
+              <span>No email size limits</span>
+            </li>
+            <li class="flex items-center gap-2">
+              <span class="text-green-500">✓</span>
+              <span>Professional branding</span>
+            </li>
+            <li class="flex items-center gap-2">
+              <span class="text-green-500">✓</span>
+              <span>View analytics</span>
+            </li>
+          </ul>
+          <a href="/posts/pdf-to-link-generator/" class="text-blue-600 hover:underline font-medium">
+            Learn how →
+          </a>
+        </div>
+
+        <div class="bg-green-500/10 p-8 rounded-xl border border-green-500/20">
+          <div class="text-4xl mb-4">📱</div>
+          <h3 class="text-xl font-bold mb-4 text-green-600">Mobile Events</h3>
+          <p class="text-textColor/80 mb-4">
+            Generate QR codes for event programs, menus, or materials. Perfect for contactless sharing at conferences.
+          </p>
+          <ul class="text-sm space-y-2 mb-6">
+            <li class="flex items-center gap-2">
+              <span class="text-green-500">✓</span>
+              <span>Instant mobile access</span>
+            </li>
+            <li class="flex items-center gap-2">
+              <span class="text-green-500">✓</span>
+              <span>Contactless sharing</span>
+            </li>
+            <li class="flex items-center gap-2">
+              <span class="text-green-500">✓</span>
+              <span>Real-time updates</span>
+            </li>
+          </ul>
+          <a href="/posts/pdf-qr-simple-guide/" class="text-green-600 hover:underline font-medium">
+            Learn how →
+          </a>
+        </div>
+
+        <div class="bg-purple-500/10 p-8 rounded-xl border border-purple-500/20">
+          <div class="text-4xl mb-4">📚</div>
+          <h3 class="text-xl font-bold mb-4 text-purple-600">Educational Content</h3>
+          <p class="text-textColor/80 mb-4">
+            Distribute course materials, research papers, and educational resources with controlled access and tracking.
+          </p>
+          <ul class="text-sm space-y-2 mb-6">
+            <li class="flex items-center gap-2">
+              <span class="text-green-500">✓</span>
+              <span>Student access control</span>
+            </li>
+            <li class="flex items-center gap-2">
+              <span class="text-green-500">✓</span>
+              <span>Engagement tracking</span>
+            </li>
+            <li class="flex items-center gap-2">
+              <span class="text-green-500">✓</span>
+              <span>Easy distribution</span>
+            </li>
+          </ul>
+          <a href="/posts/pdf-social-media-sharing/" class="text-purple-600 hover:underline font-medium">
+            Learn how →
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Featured Sharing Guides -->
+    <section class="mb-20">
+      <h2 class="text-4xl font-bold text-center mb-12 text-accent-one">Master PDF Sharing</h2>
+      
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {sharingPosts.slice(0, 6).map(post => (
+          <article class="bg-bgColor/60 p-6 rounded-xl border border-accent-one/20 hover:border-accent-one/40 transition-all hover:shadow-lg group">
+            <div class="flex items-start gap-3 mb-4">
+              <span class="text-2xl">🔗</span>
+              <h3 class="font-bold text-lg group-hover:text-accent-one transition-colors">
+                <a href={`/posts/${post.id}/`}>{post.data.title}</a>
+              </h3>
+            </div>
+            
+            <p class="text-textColor/80 mb-4 line-clamp-3">
+              {post.data.description}
+            </p>
+            
+            <div class="flex flex-wrap gap-2 mb-4">
+              {post.data.tags?.slice(0, 4).map(tag => (
+                <span class="text-xs px-2 py-1 bg-accent-one/10 text-accent-one rounded">
+                  {tag}
+                </span>
+              ))}
+            </div>
+            
+            <a href={`/posts/${post.id}/`} class="text-accent-one hover:text-accent-two transition-colors font-medium">
+              Read Sharing Guide →
+            </a>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section class="text-center bg-gradient-to-r from-blue-500/10 via-accent-one/10 to-green-500/10 p-12 rounded-xl">
+      <h2 class="text-4xl font-bold mb-6 text-accent-one">Transform Your PDF Sharing Today</h2>
+      <p class="text-xl text-textColor/80 max-w-3xl mx-auto mb-8">
+        Stop struggling with outdated sharing methods. Join thousands of professionals who use MaiPDF 
+        for secure, trackable, and professional PDF sharing that works everywhere.
+      </p>
+      
+      <div class="flex flex-col sm:flex-row justify-center gap-6">
+        <a href="https://maipdf.com" class="inline-flex items-center justify-center px-10 py-5 rounded-lg font-bold text-white bg-gradient-to-r from-blue-500 to-green-500 hover:brightness-110 transition-all text-xl shadow-lg">
+          🚀 Start Sharing Better
+        </a>
+        <a href="/posts/" class="inline-flex items-center justify-center px-10 py-5 rounded-lg font-bold border-2 border-accent-one text-accent-one hover:bg-accent-one/10 transition-all text-xl">
+          📚 Browse All Guides
+        </a>
+      </div>
+    </section>
+  </div>
+</PageLayout>
+
+<style>
+  .line-clamp-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  
+  .line-clamp-3 {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+</style>

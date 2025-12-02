@@ -1,0 +1,105 @@
+# Robots.txt for pdfhost.online - PDF Security & Sharing Platform
+# Last updated: 2025-12-01
+# Allow all search engines to crawl the site aggressively
+
+# Default rules for all crawlers
+User-agent: *
+Allow: /
+Crawl-delay: 0
+
+# Google Search Engine - Highest Priority
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 0
+# Explicitly allow all important pages
+Allow: /posts/
+Allow: /notes/
+Allow: /about/
+Allow: /features/
+Allow: /tools/
+Allow: /tags/
+Allow: /sitemap/
+Allow: /pdf-security/
+Allow: /pdf-sharing/
+Allow: /pdf-qr-code/
+
+# Bing Search Engine
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 1
+
+# Yahoo Search Engine
+User-agent: Slurp
+Allow: /
+Crawl-delay: 1
+
+# DuckDuckGo
+User-agent: DuckDuckBot
+Allow: /
+Crawl-delay: 1
+
+# Yandex
+User-agent: YandexBot
+Allow: /
+Crawl-delay: 1
+
+# Baidu (for Chinese market)
+User-agent: Baiduspider
+Allow: /
+Crawl-delay: 2
+
+# Block access to admin, private, and system areas
+Disallow: /admin/
+Disallow: /private/
+Disallow: /api/
+Disallow: /_astro/
+Disallow: /node_modules/
+Disallow: /.git/
+Disallow: /*.json$
+Disallow: /*?utm_*
+Disallow: /*?ref=*
+Disallow: /*?source=*
+
+# Explicitly allow all static resources
+Allow: /*.css
+Allow: /*.js
+Allow: /*.png
+Allow: /*.jpg
+Allow: /*.jpeg
+Allow: /*.gif
+Allow: /*.webp
+Allow: /*.svg
+Allow: /*.ico
+Allow: /*.woff
+Allow: /*.woff2
+Allow: /*.ttf
+Allow: /*.pdf
+
+# Allow all important content directories
+Allow: /posts/*
+Allow: /notes/*
+Allow: /tags/*
+Allow: /about/*
+Allow: /features/*
+Allow: /tools/*
+Allow: /pdf-security/*
+Allow: /pdf-sharing/*
+Allow: /pdf-qr-code/*
+Allow: /sitemap/*
+
+# Multiple sitemap locations for better discovery
+Sitemap: https://pdfhost.online/sitemap-index.xml
+Sitemap: https://pdfhost.online/sitemap-0.xml
+Sitemap: https://pdfhost.online/rss.xml
+
+# Host directive for faster crawling
+Host: pdfhost.online
+
+# Additional crawl hints for search engines
+# This site contains:
+# - PDF security guides and tutorials
+# - Document sharing solutions
+# - QR code generation tools
+# - Access control and protection methods
+# - Mobile-optimized PDF viewing
+# - Professional document management resources

@@ -1,58 +1,194 @@
 ---
-import Badge from "@/components/Badge.astro";
-import { getAllPosts, getUniqueTagsWithCount } from "@/data/post";
+import { type CollectionEntry, getCollection } from "astro:content";
+import { getAllPosts } from "@/data/post";
 import PageLayout from "@/layouts/Base.astro";
 
+// Get all posts and extract tags
 const allPosts = await getAllPosts();
-const allTags = getUniqueTagsWithCount(allPosts);
 
-const meta = {
-	description: "A list of all the topics I've written about in my posts",
-	title: "All Tags",
+// Create tag statistics
+const tagStats: Record<string, { count: number; posts: CollectionEntry<"post">[] }> = {};
+
+allPosts.forEach(post => {
+  post.data.tags?.forEach(tag => {
+    if (!tagStats[tag]) {
+      tagStats[tag] = { count: 0, posts: [] };
+    }
+    tagStats[tag].count++;
+    tagStats[tag].posts.push(post);
+  });
+});
+
+// Sort tags by count (most popular first)
+const sortedTags = Object.entries(tagStats)
+  .sort(([, a], [, b]) => b.count - a.count);
+
+// Group tags by category for better organization
+const categoryGroups = {
+  "PDF Core Features": ["pdf", "sharing", "links", "qr-code"],
+  "Security & Protection": ["security", "protection", "drm", "password-protection", "access-control", "edit-protection"],
+  "Platforms & Methods": ["online", "offline", "mobile", "hosting"],
+  "Use Cases": ["business", "education", "legal", "healthcare", "personal"],
+  "Comparisons": ["vs", "alternative", "comparison"],
 };
 ---
 
-<PageLayout meta={meta}>
-	<h1 class="title mb-6">Tags</h1>
-	<!--
-	<ul class="space-y-4">
-		{
-			allTags.map(([tag, val]) => (
-				<li class="flex items-center gap-x-2">
-					<a
-						class="citrus-link inline-block"
-						data-astro-prefetch
-						href={`/tags/${tag}/`}
-						title={`View posts with the tag: ${tag}`}
-					>
-						&#35;{tag}
-					</a>
-					<a aria-label={`View all posts with the tag: ${tag}`} href={`/tags/${tag}`}>
-						<Badge variant="accent-two" title={tag}>
-							{tag}
-						</Badge>
-					</a>
-					<span class="inline-block">
-						- {val} Post{val > 1 && "s"}
-					</span>
-				</li>
-			))
-		}
-	</ul>
-	-->
-	<div class="flex flex-wrap items-center gap-2">
-		{
-			allTags.map(([tag, val]) => (
-			<div class="flex items-center gap-x-2">
-				<a aria-label={`View all posts with the tag: ${tag}`} href={`/tags/${tag}`}>
-				<Badge variant="muted" title={tag}>
-					<span class="text-xs font-normal">
-						&nbsp;{val} post{val > 1 && "s"}
-					</span>
-				</Badge>
-				</a>
-			</div>
-			))
-		}
-	</div>
+<PageLayout meta={{ 
+  title: "All Topics - PDF Security and Sharing Guides",
+  description: "Explore all topics covered in our comprehensive PDF security and sharing guides. Find articles by category including protection, sharing methods, platforms, and use cases."
+}}>
+  <div class="max-w-6xl mx-auto">
+    <header class="mb-12 text-center">
+      <h1 class="text-4xl font-bold mb-4 text-accent-two">All Topics</h1>
+      <p class="text-xl text-textColor/80 max-w-3xl mx-auto">
+        Explore our comprehensive collection of PDF security and sharing topics. 
+        Find guides, tutorials, and best practices organized by category.
+      </p>
+    </header>
+
+    <!-- Popular Tags -->
+    <section class="mb-16">
+      <h2 class="text-2xl font-semibold mb-6 text-accent-one">Most Popular Topics</h2>
+      <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+        {sortedTags.slice(0, 12).map(([tag, stats]) => (
+          <a 
+            href={`/tags/${tag}/`}
+            class="group p-4 bg-bgColor/60 rounded-lg border border-accent-one/20 hover:border-accent-one/40 transition-all hover:shadow-lg"
+          >
+            <div class="flex items-center justify-between mb-2">
+              <h3 class="font-semibold text-accent-one group-hover:text-accent-two transition-colors">
+                {tag.charAt(0).toUpperCase() + tag.slice(1).replace(/-/g, ' ')}
+              </h3>
+              <span class="text-sm bg-accent-one/20 text-accent-one px-2 py-1 rounded-full">
+                {stats.count}
+              </span>
+            </div>
+            <p class="text-sm text-textColor/70">
+              {stats.count} article{stats.count !== 1 ? 's' : ''} about {tag.replace(/-/g, ' ')}
+            </p>
+          </a>
+        ))}
+      </div>
+    </section>
+
+    <!-- Categorized Tags -->
+    <section class="mb-16">
+      <h2 class="text-2xl font-semibold mb-6 text-accent-one">Topics by Category</h2>
+      
+      <div class="grid lg:grid-cols-2 gap-8">
+        {Object.entries(categoryGroups).map(([category, categoryTags]) => {
+          const availableTags = categoryTags.filter(tag => tagStats[tag]);
+          if (availableTags.length === 0) return null;
+          
+          return (
+            <div class="bg-bgColor/40 p-6 rounded-lg border border-accent-one/20">
+              <h3 class="text-xl font-semibold mb-4 text-accent-one">{category}</h3>
+              <div class="space-y-3">
+                {availableTags.map(tag => (
+                  <a 
+                    href={`/tags/${tag}/`}
+                    class="flex items-center justify-between p-3 bg-bgColor/60 rounded-lg hover:bg-accent-one/10 transition-colors group"
+                  >
+                    <div>
+                      <span class="font-medium text-textColor group-hover:text-accent-one transition-colors">
+                        {tag.charAt(0).toUpperCase() + tag.slice(1).replace(/-/g, ' ')}
+                      </span>
+                      <p class="text-sm text-textColor/60 mt-1">
+                        {tagStats[tag].posts.slice(0, 2).map(post => post.data.title).join(', ')}
+                        {tagStats[tag].count > 2 && ` and ${tagStats[tag].count - 2} more...`}
+                      </p>
+                    </div>
+                    <span class="text-sm bg-accent-one/20 text-accent-one px-2 py-1 rounded-full">
+                      {tagStats[tag].count}
+                    </span>
+                  </a>
+                ))}
+              </div>
+            </div>
+          );
+        })}
+      </div>
+    </section>
+
+    <!-- All Tags Alphabetically -->
+    <section class="mb-16">
+      <h2 class="text-2xl font-semibold mb-6 text-accent-one">All Topics A-Z</h2>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        {sortedTags.sort(([a], [b]) => a.localeCompare(b)).map(([tag, stats]) => (
+          <a 
+            href={`/tags/${tag}/`}
+            class="flex items-center justify-between p-4 bg-bgColor/60 rounded-lg border border-accent-one/20 hover:border-accent-one/40 transition-all group"
+          >
+            <div class="flex-1">
+              <h3 class="font-medium text-textColor group-hover:text-accent-one transition-colors">
+                {tag.charAt(0).toUpperCase() + tag.slice(1).replace(/-/g, ' ')}
+              </h3>
+              <p class="text-sm text-textColor/60">
+                {stats.count} article{stats.count !== 1 ? 's' : ''}
+              </p>
+            </div>
+            <div class="text-accent-one/60 group-hover:text-accent-one transition-colors">
+              →
+            </div>
+          </a>
+        ))}
+      </div>
+    </section>
+
+    <!-- Featured Articles -->
+    <section class="mb-16">
+      <h2 class="text-2xl font-semibold mb-6 text-accent-one">Featured Articles</h2>
+      
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {allPosts.slice(0, 6).map(post => (
+          <article class="bg-bgColor/60 p-6 rounded-lg border border-accent-one/20 hover:border-accent-one/40 transition-all">
+            <h3 class="font-semibold mb-3">
+              <a href={`/posts/${post.id}/`} class="text-textColor hover:text-accent-one transition-colors">
+                {post.data.title}
+              </a>
+            </h3>
+            <p class="text-sm text-textColor/70 mb-4 line-clamp-3">
+              {post.data.description}
+            </p>
+            <div class="flex flex-wrap gap-2">
+              {post.data.tags?.slice(0, 3).map(tag => (
+                <a 
+                  href={`/tags/${tag}/`}
+                  class="text-xs px-2 py-1 bg-accent-one/10 text-accent-one rounded hover:bg-accent-one/20 transition-colors"
+                >
+                  {tag}
+                </a>
+              ))}
+            </div>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="text-center bg-gradient-to-r from-accent-one/10 to-accent-two/10 p-8 rounded-lg">
+      <h2 class="text-2xl font-semibold mb-4 text-accent-one">Ready to Secure Your PDFs?</h2>
+      <p class="text-lg mb-6 text-textColor/80">
+        Put these guides into practice with MaiPDF's secure document sharing platform.
+      </p>
+      <div class="flex flex-col sm:flex-row justify-center gap-4">
+        <a href="https://maipdf.com" class="inline-flex items-center justify-center px-6 py-3 rounded-lg font-semibold text-white bg-gradient-to-r from-accent-one to-accent-two hover:brightness-110 transition-all">
+          Try MaiPDF Free
+        </a>
+        <a href="/posts/" class="inline-flex items-center justify-center px-6 py-3 rounded-lg font-semibold border border-accent-one text-accent-one hover:bg-accent-one/10 transition-all">
+          Browse All Guides
+        </a>
+      </div>
+    </section>
+  </div>
 </PageLayout>
+
+<style>
+  .line-clamp-3 {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+</style>

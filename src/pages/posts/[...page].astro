@@ -2,7 +2,7 @@
 import type { CollectionEntry } from "astro:content";
 import Pagination from "@/components/Paginator.astro";
 import PostPreview from "@/components/blog/PostPreview.astro";
-import { getAllPosts, getUniqueTags, groupPostsByYear } from "@/data/post";
+import { getAllPosts, getUniqueTags } from "@/data/post";
 import PageLayout from "@/layouts/Base.astro";
 import { collectionDateSort } from "@/utils/date";
 import type { GetStaticPaths, Page } from "astro";
@@ -10,8 +10,8 @@ import { Icon } from "astro-icon/components";
 import Badge from "@/components/Badge.astro";
 
 export const getStaticPaths = (async ({ paginate }) => {
-	const MAX_POSTS_PER_PAGE = 5;
-	const MAX_TAGS = 20;
+	const MAX_POSTS_PER_PAGE = 8; // 增加每页文章数
+	const MAX_TAGS = 25; // 显示更多标签
 	const allPosts = await getAllPosts();
 	const uniqueTags = getUniqueTags(allPosts).slice(0, MAX_TAGS);
 	return paginate(allPosts.sort(collectionDateSort), {
@@ -27,97 +27,267 @@ interface Props {
 
 const { page, uniqueTags } = Astro.props;
 
+// 动态SEO优化
+const pageNumber = page.currentPage || 1;
+const isFirstPage = pageNumber === 1;
+const totalPages = page.lastPage || 1;
+
 const meta = {
-	description: "Read my collection of posts and the things that interest me",
-	title: "Posts",
+	title: isFirstPage 
+		? "PDF Security Features & Complete Guides - MaiPDF Platform" 
+		: `PDF Security Guides - Page ${pageNumber} of ${totalPages} | MaiPDF`,
+	description: isFirstPage
+		? "Comprehensive PDF security guides: learn how to protect PDFs, create secure sharing links, prevent forwarding, implement DRM protection, and control document access. Expert tutorials and best practices."
+		: `Browse our extensive collection of PDF security tutorials and guides (Page ${pageNumber}). Learn document protection, secure sharing methods, access controls, and advanced security features.`,
 };
 
 const paginationProps = {
 	...(page.url.prev && {
 		prevUrl: {
-			text: "← Previous Page",
+			text: "← Previous Posts",
 			url: page.url.prev,
 		},
 	}),
 	...(page.url.next && {
 		nextUrl: {
-			text: "Next Page →",
+			text: "Next Posts →",
 			url: page.url.next,
 		},
 	}),
 };
 
-const groupedByYear = groupPostsByYear(page.data);
-const descYearKeys = Object.keys(groupedByYear).sort((a, b) => +b - +a);
+// 获取所有文章进行分类
+const allPosts = await getAllPosts();
+
+// 计算标签统计
+const tagStats: Record<string, number> = {};
+allPosts.forEach(post => {
+	post.data.tags?.forEach(tag => {
+		tagStats[tag] = (tagStats[tag] || 0) + 1;
+	});
+});
+
+// 热门标签（按文章数量排序）
+const popularTags = Object.entries(tagStats)
+	.sort(([,a], [,b]) => b - a)
+	.slice(0, 12);
+
+// 分类推荐文章
+const featuredCategories = {
+	"PDF Security": allPosts.filter(post => 
+		post.data.tags?.some(tag => ['security', 'protection', 'drm'].includes(tag))
+	).slice(0, 3),
+	"Sharing Methods": allPosts.filter(post => 
+		post.data.tags?.some(tag => ['sharing', 'links', 'qr-code'].includes(tag))
+	).slice(0, 3),
+	"Platform Guides": allPosts.filter(post => 
+		post.data.tags?.some(tag => ['online', 'offline', 'hosting'].includes(tag))
+	).slice(0, 3),
+};
 ---
 
 <PageLayout meta={meta}>
-	<h1 class="title mb-6 flex items-center gap-2">
-		Posts
-		<a class="text-accent-two" href="/rss.xml" target="_blank">
-			<span class="sr-only">RSS feed</span>
-			<Icon aria-hidden="true" class="h-6 w-6" focusable="false" name="mdi:rss" />
-		</a>
-	</h1>
-	<div class="grid gap-y-8 sm:grid-cols-[1fr_auto] sm:gap-x-8">
-		<section aria-label="Blog post list" class="grow">
-			{
-				descYearKeys.map((yearKey) => (
-					<>
-						<h4 class="title">{yearKey}</h4>
-						<ul class="mb-8 mt-4 space-y-8 text-start">
-							{groupedByYear[yearKey]?.map((p) => (
-								<li class="grid gap-2 sm:grid-cols-[auto_1fr] sm:[&_q]:col-start-2">
-									<PostPreview post={p} withDesc={true} />
-								</li>
-							))}
-						</ul>
-					</>
-				))
-			}
-		</section>
-		{
-			!!uniqueTags.length && (
-				<aside class="md:min-w-[14rem] md:max-w-[14rem] md:basis-[14rem]">
-					<h4 class="title mb-4 flex gap-2">
-						Tags
-						{/*
-						<Icon aria-hidden="true" class="mb-1 h-6 w-6" focusable="false" name="hugeicons:tags" />
-						*/}
-					</h4>
-					<ul class="flex flex-wrap gap-2">
-						{uniqueTags.map((tag) => (
+	<!-- 页面头部 - SEO优化 -->
+	<header class="mb-12">
+		<div class="flex items-center justify-between mb-6">
+			<h1 class="text-4xl font-bold text-accent-two">
+				{isFirstPage ? "PDF Security Features & Guides" : `PDF Guides - Page ${pageNumber}`}
+			</h1>
+			<a class="text-accent-two hover:text-accent-one transition-colors" href="/rss.xml" target="_blank" title="Subscribe to RSS Feed">
+				<span class="sr-only">RSS feed</span>
+				<Icon aria-hidden="true" class="h-8 w-8" focusable="false" name="mdi:rss" />
+			</a>
+		</div>
+		
+		{isFirstPage && (
+			<div class="bg-gradient-to-r from-accent-one/10 to-accent-two/10 p-6 rounded-lg mb-8">
+				<p class="text-lg text-textColor/90 mb-4">
+					Master PDF security with our comprehensive guides. Learn how to protect documents, create secure sharing links, 
+					prevent unauthorized access, and implement advanced security features.
+				</p>
+				<div class="flex flex-wrap gap-3">
+					<a href="/posts/stop-pdf-forwarding-tips/" class="px-4 py-2 bg-accent-one/20 text-accent-one rounded-lg hover:bg-accent-one/30 transition-colors text-sm font-medium">
+						🛡️ Prevent PDF Forwarding
+					</a>
+					<a href="/posts/free-pdf-drm-online/" class="px-4 py-2 bg-accent-one/20 text-accent-one rounded-lg hover:bg-accent-one/30 transition-colors text-sm font-medium">
+						🔒 PDF DRM Protection
+					</a>
+					<a href="/posts/pdf-to-qr-simple-guide/" class="px-4 py-2 bg-accent-one/20 text-accent-one rounded-lg hover:bg-accent-one/30 transition-colors text-sm font-medium">
+						📱 PDF to QR Code
+					</a>
+					<a href="/posts/free-pdf-hosting-guide/" class="px-4 py-2 bg-accent-one/20 text-accent-one rounded-lg hover:bg-accent-one/30 transition-colors text-sm font-medium">
+						☁️ PDF Hosting
+					</a>
+				</div>
+			</div>
+		)}
+
+		<!-- 页面导航和统计 -->
+		<div class="flex flex-wrap items-center justify-between gap-4 text-sm text-textColor/70">
+			<div class="flex items-center gap-4">
+				<span>📚 {allPosts.length} total guides</span>
+				<span>🏷️ {uniqueTags.length} topics</span>
+				{!isFirstPage && <span>📄 Page {pageNumber} of {totalPages}</span>}
+			</div>
+			<div class="flex items-center gap-2">
+				<a href="/sitemap/" class="hover:text-accent-one transition-colors">Site Map</a>
+				<span>•</span>
+				<a href="/tags/" class="hover:text-accent-one transition-colors">All Topics</a>
+			</div>
+		</div>
+	</header>
+
+	<div class="grid gap-8 lg:grid-cols-[1fr_300px]">
+		<!-- 主要内容区域 -->
+		<main class="space-y-8">
+			<!-- 特色分类 (仅首页显示) -->
+			{isFirstPage && (
+				<section class="mb-12">
+					<h2 class="text-2xl font-semibold mb-6 text-accent-one">Featured Categories</h2>
+					<div class="grid md:grid-cols-3 gap-6">
+						{Object.entries(featuredCategories).map(([category, posts]) => (
+							<div class="bg-bgColor/60 p-6 rounded-lg border border-accent-one/20">
+								<h3 class="font-semibold text-lg mb-4 text-accent-one">{category}</h3>
+								<ul class="space-y-3">
+									{posts.map(post => (
+										<li>
+											<a href={`/posts/${post.id}/`} class="text-sm text-textColor hover:text-accent-one transition-colors line-clamp-2">
+												{post.data.title}
+											</a>
+										</li>
+									))}
+								</ul>
+								<a href={`/tags/${posts[0]?.data.tags?.[0] || 'pdf'}/`} class="inline-block mt-4 text-sm text-accent-one hover:underline">
+									View all {category.toLowerCase()} →
+								</a>
+							</div>
+						))}
+					</div>
+				</section>
+			)}
+
+			<!-- 文章列表 -->
+			<section aria-label="Blog post list">
+				<h2 class="text-xl font-semibold mb-6 text-accent-one">
+					{isFirstPage ? "Latest Guides" : `Guides - Page ${pageNumber}`}
+				</h2>
+				
+				<div class="grid gap-8 md:grid-cols-2">
+					{page.data.map((post) => (
+						<article class="bg-bgColor/60 p-6 rounded-lg border border-accent-one/20 hover:border-accent-one/40 transition-all hover:shadow-lg">
+							<PostPreview post={post} withDesc={true} />
+						</article>
+					))}
+				</div>
+			</section>
+
+			<!-- 分页导航 -->
+			<Pagination {...paginationProps} />
+		</main>
+
+		<!-- 侧边栏 -->
+		<aside class="space-y-8">
+			<!-- 热门标签 -->
+			{!!uniqueTags.length && (
+				<section class="bg-bgColor/40 p-6 rounded-lg border border-accent-one/20">
+					<h3 class="text-lg font-semibold mb-4 text-accent-one flex items-center gap-2">
+						🏷️ Popular Topics
+					</h3>
+					<div class="space-y-3">
+						{popularTags.slice(0, 8).map(([tag, count]) => (
+							<a href={`/tags/${tag}/`} class="flex items-center justify-between p-2 rounded hover:bg-accent-one/10 transition-colors group">
+								<span class="text-sm text-textColor group-hover:text-accent-one transition-colors">
+									{tag.charAt(0).toUpperCase() + tag.slice(1).replace(/-/g, ' ')}
+								</span>
+								<span class="text-xs bg-accent-one/20 text-accent-one px-2 py-1 rounded-full">
+									{count}
+								</span>
+							</a>
+						))}
+					</div>
+					<a href="/tags/" class="inline-block mt-4 text-sm text-accent-one hover:underline font-medium">
+						View all topics →
+					</a>
+				</section>
+			)}
+
+			<!-- 快速导航 -->
+			<section class="bg-bgColor/40 p-6 rounded-lg border border-accent-one/20">
+				<h3 class="text-lg font-semibold mb-4 text-accent-one">🚀 Quick Start</h3>
+				<ul class="space-y-3">
+					<li>
+						<a href="/notes/" class="text-sm text-textColor hover:text-accent-one transition-colors flex items-center gap-2">
+							📖 Quick Guides
+						</a>
+					</li>
+					<li>
+						<a href="/about/" class="text-sm text-textColor hover:text-accent-one transition-colors flex items-center gap-2">
+							ℹ️ About MaiPDF
+						</a>
+					</li>
+					<li>
+						<a href="https://maipdf.com" class="text-sm text-accent-one hover:text-accent-two transition-colors flex items-center gap-2 font-medium">
+							🔗 Try MaiPDF Free
+						</a>
+					</li>
+				</ul>
+			</section>
+
+			<!-- 最新文章 (非首页显示) -->
+			{!isFirstPage && (
+				<section class="bg-bgColor/40 p-6 rounded-lg border border-accent-one/20">
+					<h3 class="text-lg font-semibold mb-4 text-accent-one">📰 Latest Posts</h3>
+					<ul class="space-y-3">
+						{allPosts.slice(0, 5).map(post => (
 							<li>
-								<a aria-label={`View all posts with the tag: ${tag}`} href={`/tags/${tag}`}>
-									<Badge variant="muted" title={tag} />
+								<a href={`/posts/${post.id}/`} class="text-sm text-textColor hover:text-accent-one transition-colors line-clamp-2">
+									{post.data.title}
 								</a>
 							</li>
 						))}
-
-						<span class="text-base ms-auto inline-flex items-center h-6 sm:text-end">
-							<a
-								aria-label="View all blog categories"
-								class="font-medium text-accent sm:hover:text-accent-two"
-								href="/tags/"
-							>
-								View all →
-							</a>
-						</span>	
 					</ul>
-					{/*
-					<span class="mt-4 block sm:text-end">
-						<a
-							aria-label="View all blog categories"
-							class="font-medium text-accent sm:hover:text-accent-two"
-							href="/tags/"
-						>
-							View all →
-						</a>
-					</span>
-					*/}
-				</aside>
-			)
-		}
+				</section>
+			)}
+
+			<!-- RSS 订阅 -->
+			<section class="bg-gradient-to-br from-accent-one/10 to-accent-two/10 p-6 rounded-lg border border-accent-one/20">
+				<h3 class="text-lg font-semibold mb-3 text-accent-one">📡 Stay Updated</h3>
+				<p class="text-sm text-textColor/80 mb-4">
+					Get the latest PDF security guides and tips delivered to your feed reader.
+				</p>
+				<a href="/rss.xml" class="inline-flex items-center gap-2 px-4 py-2 bg-accent-one text-white rounded-lg hover:bg-accent-two transition-colors text-sm font-medium">
+					<Icon name="mdi:rss" class="w-4 h-4" />
+					Subscribe to RSS
+				</a>
+			</section>
+		</aside>
 	</div>
-	<Pagination {...paginationProps} />
+
+	<!-- 底部CTA (仅首页) -->
+	{isFirstPage && (
+		<section class="mt-16 text-center bg-gradient-to-r from-accent-one/10 to-accent-two/10 p-8 rounded-lg">
+			<h2 class="text-2xl font-semibold mb-4 text-accent-one">Ready to Secure Your PDFs?</h2>
+			<p class="text-lg mb-6 text-textColor/80 max-w-2xl mx-auto">
+				Put these security guides into practice with MaiPDF's advanced document protection platform. 
+				Create secure links, control access, and track document usage.
+			</p>
+			<div class="flex flex-col sm:flex-row justify-center gap-4">
+				<a href="https://maipdf.com" class="inline-flex items-center justify-center px-6 py-3 rounded-lg font-semibold text-white bg-gradient-to-r from-accent-one to-accent-two hover:brightness-110 transition-all">
+					Try MaiPDF Free
+				</a>
+				<a href="/about/" class="inline-flex items-center justify-center px-6 py-3 rounded-lg font-semibold border border-accent-one text-accent-one hover:bg-accent-one/10 transition-all">
+					Learn More
+				</a>
+			</div>
+		</section>
+	)}
 </PageLayout>
+
+<style>
+	.line-clamp-2 {
+		display: -webkit-box;
+		-webkit-line-clamp: 2;
+		-webkit-box-orient: vertical;
+		overflow: hidden;
+	}
+</style>

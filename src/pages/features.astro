@@ -1,0 +1,328 @@
+---
+import { getAllPosts } from "@/data/post";
+import PageLayout from "@/layouts/Base.astro";
+
+// 获取相关文章
+const allPosts = await getAllPosts();
+
+const featureCategories = {
+  "PDF Security & Protection": {
+    description: "Advanced security features to protect your PDF documents from unauthorized access and sharing.",
+    icon: "🛡️",
+    posts: allPosts.filter(post => 
+      post.data.tags?.some(tag => ['security', 'protection', 'drm', 'edit-protection'].includes(tag))
+    ).slice(0, 4),
+    features: [
+      "Password protection and access controls",
+      "Copy and print prevention",
+      "Dynamic watermarking",
+      "Digital rights management (DRM)",
+      "Edit protection and document integrity"
+    ]
+  },
+  "Sharing & Distribution": {
+    description: "Modern methods to share PDF documents securely across platforms and devices.",
+    icon: "🔗",
+    posts: allPosts.filter(post => 
+      post.data.tags?.some(tag => ['sharing', 'links', 'qr-code', 'mobile'].includes(tag))
+    ).slice(0, 4),
+    features: [
+      "Convert PDF to secure links",
+      "Generate QR codes for easy sharing",
+      "Mobile-optimized viewing",
+      "Social media integration",
+      "Cross-platform compatibility"
+    ]
+  },
+  "Access Control & Monitoring": {
+    description: "Comprehensive tools to control who accesses your documents and track usage patterns.",
+    icon: "📊",
+    posts: allPosts.filter(post => 
+      post.data.tags?.some(tag => ['access-control', 'tracking', 'analytics', 'monitoring'].includes(tag))
+    ).slice(0, 4),
+    features: [
+      "View count limitations",
+      "Time-based expiration",
+      "Geographic restrictions",
+      "Real-time access analytics",
+      "Detailed usage reports"
+    ]
+  },
+  "Platform Solutions": {
+    description: "Choose between online cloud solutions or offline software for your specific needs.",
+    icon: "⚙️",
+    posts: allPosts.filter(post => 
+      post.data.tags?.some(tag => ['online', 'offline', 'hosting', 'platform'].includes(tag))
+    ).slice(0, 4),
+    features: [
+      "Cloud-based PDF hosting",
+      "Offline software solutions",
+      "Enterprise integrations",
+      "API access and automation",
+      "Custom deployment options"
+    ]
+  }
+};
+---
+
+<PageLayout meta={{ 
+  title: "PDF Security Features - Complete Platform Overview | MaiPDF",
+  description: "Explore MaiPDF's comprehensive PDF security features: document protection, secure sharing, access controls, analytics, and platform solutions. Compare online vs offline options."
+}}>
+  <div class="max-w-6xl mx-auto">
+    <!-- Hero Section -->
+    <header class="text-center mb-16">
+      <h1 class="text-5xl font-bold mb-6 bg-gradient-to-r from-accent-two via-accent-one to-accent-two bg-clip-text text-transparent">
+        PDF Security Features
+      </h1>
+      <p class="text-xl text-textColor/80 max-w-3xl mx-auto mb-8">
+        Comprehensive PDF protection and sharing solutions for individuals, businesses, and enterprises. 
+        Secure your documents with advanced features and complete control.
+      </p>
+      
+      <!-- Quick Stats -->
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-2xl mx-auto">
+        <div class="text-center">
+          <div class="text-2xl font-bold text-accent-one">{allPosts.length}+</div>
+          <div class="text-sm text-textColor/70">Guides & Tutorials</div>
+        </div>
+        <div class="text-center">
+          <div class="text-2xl font-bold text-accent-one">50+</div>
+          <div class="text-sm text-textColor/70">Security Features</div>
+        </div>
+        <div class="text-center">
+          <div class="text-2xl font-bold text-accent-one">24/7</div>
+          <div class="text-sm text-textColor/70">Document Protection</div>
+        </div>
+        <div class="text-center">
+          <div class="text-2xl font-bold text-accent-one">∞</div>
+          <div class="text-sm text-textColor/70">Sharing Options</div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Feature Categories -->
+    <section class="space-y-16">
+      {Object.entries(featureCategories).map(([categoryName, category], index) => (
+        <div class={`${index % 2 === 1 ? 'lg:flex-row-reverse' : ''} lg:flex lg:items-center lg:gap-12`}>
+          <!-- Content -->
+          <div class="lg:flex-1 mb-8 lg:mb-0">
+            <div class="flex items-center gap-3 mb-4">
+              <span class="text-3xl">{category.icon}</span>
+              <h2 class="text-3xl font-bold text-accent-one">{categoryName}</h2>
+            </div>
+            
+            <p class="text-lg text-textColor/80 mb-6">
+              {category.description}
+            </p>
+
+            <!-- Feature List -->
+            <ul class="space-y-3 mb-8">
+              {category.features.map(feature => (
+                <li class="flex items-start gap-3">
+                  <span class="text-accent-one mt-1">✓</span>
+                  <span class="text-textColor/90">{feature}</span>
+                </li>
+              ))}
+            </ul>
+
+            <!-- CTA Buttons -->
+            <div class="flex flex-col sm:flex-row gap-4">
+              <a href="https://maipdf.com" class="inline-flex items-center justify-center px-6 py-3 rounded-lg font-semibold text-white bg-gradient-to-r from-accent-one to-accent-two hover:brightness-110 transition-all">
+                Try These Features
+              </a>
+              <a href="/posts/" class="inline-flex items-center justify-center px-6 py-3 rounded-lg font-semibold border border-accent-one text-accent-one hover:bg-accent-one/10 transition-all">
+                Read Guides
+              </a>
+            </div>
+          </div>
+
+          <!-- Related Articles -->
+          <div class="lg:flex-1">
+            <div class="bg-bgColor/60 p-6 rounded-xl border border-accent-one/20">
+              <h3 class="text-lg font-semibold mb-4 text-accent-one">Related Guides</h3>
+              <div class="space-y-4">
+                {category.posts.map(post => (
+                  <article class="group">
+                    <a href={`/posts/${post.id}/`} class="block">
+                      <h4 class="font-medium text-textColor group-hover:text-accent-one transition-colors mb-2 line-clamp-2">
+                        {post.data.title}
+                      </h4>
+                      <p class="text-sm text-textColor/70 line-clamp-2 mb-3">
+                        {post.data.description}
+                      </p>
+                      <div class="flex flex-wrap gap-2">
+                        {post.data.tags?.slice(0, 3).map(tag => (
+                          <span class="text-xs px-2 py-1 bg-accent-one/10 text-accent-one rounded">
+                            {tag}
+                          </span>
+                        ))}
+                      </div>
+                    </a>
+                  </article>
+                ))}
+              </div>
+              
+              {category.posts.length > 0 && (
+                <a href={`/tags/${category.posts[0].data.tags?.[0] || 'pdf'}/`} class="inline-block mt-4 text-sm text-accent-one hover:underline font-medium">
+                  View all {categoryName.toLowerCase()} guides →
+                </a>
+              )}
+            </div>
+          </div>
+        </div>
+      ))}
+    </section>
+
+    <!-- Comparison Section -->
+    <section class="mt-20 mb-16">
+      <h2 class="text-3xl font-bold text-center mb-12 text-accent-one">Choose Your Solution</h2>
+      
+      <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+        <!-- Online Solution -->
+        <div class="bg-gradient-to-br from-accent-one/10 to-accent-two/10 p-8 rounded-xl border border-accent-one/20">
+          <div class="text-center mb-6">
+            <div class="text-4xl mb-3">☁️</div>
+            <h3 class="text-2xl font-bold text-accent-one mb-2">Online Platform</h3>
+            <p class="text-textColor/80">Cloud-based solution with maximum flexibility</p>
+          </div>
+          
+          <ul class="space-y-3 mb-8">
+            <li class="flex items-start gap-3">
+              <span class="text-accent-one mt-1">✓</span>
+              <span>Real-time access control</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="text-accent-one mt-1">✓</span>
+              <span>Dynamic permission changes</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="text-accent-one mt-1">✓</span>
+              <span>Detailed analytics & tracking</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="text-accent-one mt-1">✓</span>
+              <span>Global CDN delivery</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="text-accent-one mt-1">✓</span>
+              <span>No software installation</span>
+            </li>
+          </ul>
+          
+          <div class="space-y-3">
+            <a href="/posts/pdf-edit-protection-online-chinese/" class="block text-sm text-accent-one hover:underline">
+              → Online Protection Guide (中文)
+            </a>
+            <a href="/posts/online-pdf-edit-protection-guide/" class="block text-sm text-accent-one hover:underline">
+              → Online Protection Guide (English)
+            </a>
+          </div>
+        </div>
+
+        <!-- Offline Solution -->
+        <div class="bg-bgColor/60 p-8 rounded-xl border border-accent-one/20">
+          <div class="text-center mb-6">
+            <div class="text-4xl mb-3">💻</div>
+            <h3 class="text-2xl font-bold text-accent-one mb-2">Offline Software</h3>
+            <p class="text-textColor/80">Desktop solutions for maximum security</p>
+          </div>
+          
+          <ul class="space-y-3 mb-8">
+            <li class="flex items-start gap-3">
+              <span class="text-accent-one mt-1">✓</span>
+              <span>Complete local control</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="text-accent-one mt-1">✓</span>
+              <span>No internet dependency</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="text-accent-one mt-1">✓</span>
+              <span>Enterprise-grade encryption</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="text-accent-one mt-1">✓</span>
+              <span>Batch processing capabilities</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="text-accent-one mt-1">✓</span>
+              <span>Compliance-ready solutions</span>
+            </li>
+          </ul>
+          
+          <div class="space-y-3">
+            <a href="/posts/pdf-edit-protection-offline-chinese/" class="block text-sm text-accent-one hover:underline">
+              → Offline Protection Guide (中文)
+            </a>
+            <a href="/posts/prevent-pdf-editing-offline-guide/" class="block text-sm text-accent-one hover:underline">
+              → Offline Protection Guide (English)
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="text-center bg-gradient-to-r from-accent-one/10 to-accent-two/10 p-12 rounded-xl">
+      <h2 class="text-3xl font-bold mb-6 text-accent-one">Start Protecting Your PDFs Today</h2>
+      <p class="text-xl text-textColor/80 max-w-2xl mx-auto mb-8">
+        Choose the solution that fits your needs. Start with our free platform or explore our comprehensive guides 
+        to implement the perfect PDF security strategy for your organization.
+      </p>
+      
+      <div class="flex flex-col sm:flex-row justify-center gap-6">
+        <a href="https://maipdf.com" class="inline-flex items-center justify-center px-8 py-4 rounded-lg font-semibold text-white bg-gradient-to-r from-accent-one to-accent-two hover:brightness-110 transition-all text-lg">
+          Try MaiPDF Platform
+        </a>
+        <a href="/posts/" class="inline-flex items-center justify-center px-8 py-4 rounded-lg font-semibold border-2 border-accent-one text-accent-one hover:bg-accent-one/10 transition-all text-lg">
+          Browse All Guides
+        </a>
+        <a href="/about/" class="inline-flex items-center justify-center px-8 py-4 rounded-lg font-semibold text-textColor hover:text-accent-one transition-all text-lg">
+          Learn More
+        </a>
+      </div>
+    </section>
+
+    <!-- Bottom Navigation -->
+    <nav class="mt-16 pt-8 border-t border-accent-one/20">
+      <div class="grid md:grid-cols-3 gap-8 text-center">
+        <div>
+          <h3 class="font-semibold text-accent-one mb-3">Quick Start</h3>
+          <ul class="space-y-2 text-sm">
+            <li><a href="/notes/" class="text-textColor hover:text-accent-one transition-colors">Quick Guides</a></li>
+            <li><a href="/posts/pdf-to-qr-simple-guide/" class="text-textColor hover:text-accent-one transition-colors">PDF to QR Code</a></li>
+            <li><a href="/posts/stop-pdf-forwarding-tips/" class="text-textColor hover:text-accent-one transition-colors">Prevent Forwarding</a></li>
+          </ul>
+        </div>
+        
+        <div>
+          <h3 class="font-semibold text-accent-one mb-3">Popular Topics</h3>
+          <ul class="space-y-2 text-sm">
+            <li><a href="/tags/security/" class="text-textColor hover:text-accent-one transition-colors">PDF Security</a></li>
+            <li><a href="/tags/sharing/" class="text-textColor hover:text-accent-one transition-colors">Document Sharing</a></li>
+            <li><a href="/tags/protection/" class="text-textColor hover:text-accent-one transition-colors">Access Protection</a></li>
+          </ul>
+        </div>
+        
+        <div>
+          <h3 class="font-semibold text-accent-one mb-3">Resources</h3>
+          <ul class="space-y-2 text-sm">
+            <li><a href="/sitemap/" class="text-textColor hover:text-accent-one transition-colors">Site Map</a></li>
+            <li><a href="/rss.xml" class="text-textColor hover:text-accent-one transition-colors">RSS Feed</a></li>
+            <li><a href="/tags/" class="text-textColor hover:text-accent-one transition-colors">All Topics</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </div>
+</PageLayout>
+
+<style>
+  .line-clamp-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+</style>

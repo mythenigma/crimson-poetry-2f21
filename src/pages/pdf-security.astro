@@ -1,0 +1,409 @@
+---
+import { getAllPosts } from "@/data/post";
+import PageLayout from "@/layouts/Base.astro";
+
+const allPosts = await getAllPosts();
+
+// 获取安全相关文章
+const securityPosts = allPosts.filter(post => 
+  post.data.tags?.some(tag => ['security', 'protection', 'drm', 'edit-protection', 'password-protection'].includes(tag))
+);
+
+const featuredSecurity = securityPosts.slice(0, 6);
+const latestSecurity = securityPosts.slice(6, 12);
+
+// 安全功能分类
+const securityFeatures = {
+  "Document Protection": {
+    icon: "🛡️",
+    description: "Prevent unauthorized access, copying, and editing of your PDF documents",
+    features: [
+      "Password protection with strong encryption",
+      "Copy and print prevention controls", 
+      "Edit protection and document integrity",
+      "Digital rights management (DRM)",
+      "Watermarking and forensic tracking"
+    ],
+    posts: securityPosts.filter(post => 
+      post.data.tags?.some(tag => ['protection', 'drm', 'edit-protection'].includes(tag))
+    ).slice(0, 3)
+  },
+  "Access Control": {
+    icon: "🔐",
+    description: "Control who can access your documents and under what conditions",
+    features: [
+      "Time-based access expiration",
+      "View count limitations",
+      "Geographic access restrictions",
+      "Device-specific permissions",
+      "User authentication requirements"
+    ],
+    posts: securityPosts.filter(post => 
+      post.data.tags?.some(tag => ['access-control', 'password-protection'].includes(tag))
+    ).slice(0, 3)
+  },
+  "Monitoring & Analytics": {
+    icon: "📊",
+    description: "Track document usage and detect unauthorized access attempts",
+    features: [
+      "Real-time access monitoring",
+      "Detailed usage analytics",
+      "Suspicious activity alerts",
+      "Audit trail generation",
+      "Compliance reporting"
+    ],
+    posts: securityPosts.filter(post => 
+      post.data.tags?.some(tag => ['analytics', 'tracking', 'monitoring'].includes(tag))
+    ).slice(0, 3)
+  }
+};
+
+// 安全威胁和解决方案
+const securityThreats = [
+  {
+    threat: "Unauthorized Forwarding",
+    impact: "Documents shared beyond intended recipients",
+    solution: "Link-based sharing with access controls",
+    guide: "/posts/stop-pdf-forwarding-tips/"
+  },
+  {
+    threat: "Content Theft",
+    impact: "Copying and redistribution of proprietary content",
+    solution: "DRM protection and copy prevention",
+    guide: "/posts/free-pdf-drm-online/"
+  },
+  {
+    threat: "Document Tampering",
+    impact: "Unauthorized modifications to important documents",
+    solution: "Edit protection and digital signatures",
+    guide: "/posts/prevent-pdf-editing-offline-guide/"
+  },
+  {
+    threat: "Data Breaches",
+    impact: "Sensitive information exposure",
+    solution: "Encrypted sharing and access logging",
+    guide: "/posts/pdf-qr-security-guide/"
+  }
+];
+---
+
+<PageLayout meta={{ 
+  title: "PDF Security Solutions - Complete Document Protection Guide | MaiPDF",
+  description: "Comprehensive PDF security solutions: prevent forwarding, control access, monitor usage, and protect sensitive documents. Expert guides on PDF DRM, encryption, and access controls."
+}}>
+  <div class="max-w-7xl mx-auto">
+    <!-- Hero Section -->
+    <header class="text-center mb-20">
+      <h1 class="text-6xl font-bold mb-8 bg-gradient-to-r from-red-500 via-accent-one to-accent-two bg-clip-text text-transparent">
+        PDF Security Solutions
+      </h1>
+      <p class="text-2xl text-textColor/80 max-w-4xl mx-auto mb-8">
+        Protect your PDF documents from unauthorized access, copying, forwarding, and tampering. 
+        Complete security solutions for businesses, professionals, and individuals.
+      </p>
+      
+      <!-- Security Stats -->
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-3xl mx-auto mb-12">
+        <div class="bg-red-500/10 p-4 rounded-lg border border-red-500/20">
+          <div class="text-2xl font-bold text-red-500">85%</div>
+          <div class="text-sm text-textColor/70">Documents shared unsecurely</div>
+        </div>
+        <div class="bg-accent-one/10 p-4 rounded-lg border border-accent-one/20">
+          <div class="text-2xl font-bold text-accent-one">100%</div>
+          <div class="text-sm text-textColor/70">Protection with MaiPDF</div>
+        </div>
+        <div class="bg-orange-500/10 p-4 rounded-lg border border-orange-500/20">
+          <div class="text-2xl font-bold text-orange-500">60%</div>
+          <div class="text-sm text-textColor/70">Data breaches via documents</div>
+        </div>
+        <div class="bg-green-500/10 p-4 rounded-lg border border-green-500/20">
+          <div class="text-2xl font-bold text-green-500">24/7</div>
+          <div class="text-sm text-textColor/70">Real-time monitoring</div>
+        </div>
+      </div>
+
+      <!-- Quick Action Buttons -->
+      <div class="flex flex-col sm:flex-row justify-center gap-4">
+        <a href="https://maipdf.com" class="inline-flex items-center justify-center px-8 py-4 rounded-lg font-semibold text-white bg-gradient-to-r from-red-500 to-accent-one hover:brightness-110 transition-all text-lg shadow-lg">
+          🛡️ Secure Your PDFs Now
+        </a>
+        <a href="/posts/stop-pdf-forwarding-tips/" class="inline-flex items-center justify-center px-8 py-4 rounded-lg font-semibold border-2 border-accent-one text-accent-one hover:bg-accent-one/10 transition-all text-lg">
+          📚 Security Guides
+        </a>
+      </div>
+    </header>
+
+    <!-- Security Threats & Solutions -->
+    <section class="mb-20">
+      <h2 class="text-4xl font-bold text-center mb-12 text-accent-one">Common Security Threats & Solutions</h2>
+      
+      <div class="grid md:grid-cols-2 gap-8">
+        {securityThreats.map(item => (
+          <div class="bg-bgColor/60 p-8 rounded-xl border border-red-500/20 hover:border-red-500/40 transition-all">
+            <div class="flex items-start gap-4 mb-6">
+              <div class="w-12 h-12 bg-red-500/20 rounded-lg flex items-center justify-center text-red-500 text-xl font-bold">
+                ⚠️
+              </div>
+              <div class="flex-1">
+                <h3 class="text-xl font-bold text-red-500 mb-2">{item.threat}</h3>
+                <p class="text-textColor/80 mb-4">{item.impact}</p>
+              </div>
+            </div>
+            
+            <div class="bg-green-500/10 p-4 rounded-lg border border-green-500/20 mb-4">
+              <h4 class="font-semibold text-green-600 mb-2">✅ Solution:</h4>
+              <p class="text-textColor/90">{item.solution}</p>
+            </div>
+            
+            <a href={item.guide} class="inline-flex items-center gap-2 text-accent-one hover:text-accent-two transition-colors font-medium">
+              Read Complete Guide →
+            </a>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- Security Features -->
+    <section class="mb-20">
+      <h2 class="text-4xl font-bold text-center mb-12 text-accent-one">Complete Security Features</h2>
+      
+      <div class="space-y-16">
+        {Object.entries(securityFeatures).map(([categoryName, category], index) => (
+          <div class={`${index % 2 === 1 ? 'lg:flex-row-reverse' : ''} lg:flex lg:items-center lg:gap-16`}>
+            <!-- Feature Description -->
+            <div class="lg:flex-1 mb-8 lg:mb-0">
+              <div class="flex items-center gap-4 mb-6">
+                <div class="text-5xl">{category.icon}</div>
+                <div>
+                  <h3 class="text-3xl font-bold text-accent-one">{categoryName}</h3>
+                  <p class="text-lg text-textColor/80 mt-2">{category.description}</p>
+                </div>
+              </div>
+
+              <ul class="space-y-4 mb-8">
+                {category.features.map(feature => (
+                  <li class="flex items-start gap-3">
+                    <span class="text-green-500 mt-1 text-lg">✓</span>
+                    <span class="text-textColor/90 text-lg">{feature}</span>
+                  </li>
+                ))}
+              </ul>
+
+              <div class="flex flex-col sm:flex-row gap-4">
+                <a href="https://maipdf.com" class="inline-flex items-center justify-center px-6 py-3 rounded-lg font-semibold text-white bg-gradient-to-r from-accent-one to-accent-two hover:brightness-110 transition-all">
+                  Try These Features
+                </a>
+                <a href="/features/" class="inline-flex items-center justify-center px-6 py-3 rounded-lg font-semibold border border-accent-one text-accent-one hover:bg-accent-one/10 transition-all">
+                  View All Features
+                </a>
+              </div>
+            </div>
+
+            <!-- Related Guides -->
+            <div class="lg:flex-1">
+              <div class="bg-bgColor/60 p-8 rounded-xl border border-accent-one/20">
+                <h4 class="text-xl font-semibold mb-6 text-accent-one">📖 Implementation Guides</h4>
+                
+                <div class="space-y-6">
+                  {category.posts.map(post => (
+                    <article class="group border-b border-accent-one/10 pb-4 last:border-b-0 last:pb-0">
+                      <a href={`/posts/${post.id}/`} class="block">
+                        <h5 class="font-semibold text-textColor group-hover:text-accent-one transition-colors mb-2">
+                          {post.data.title}
+                        </h5>
+                        <p class="text-sm text-textColor/70 mb-3 line-clamp-2">
+                          {post.data.description}
+                        </p>
+                        <div class="flex flex-wrap gap-2">
+                          {post.data.tags?.slice(0, 3).map(tag => (
+                            <span class="text-xs px-2 py-1 bg-accent-one/10 text-accent-one rounded">
+                              {tag}
+                            </span>
+                          ))}
+                        </div>
+                      </a>
+                    </article>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- Featured Security Guides -->
+    <section class="mb-20">
+      <h2 class="text-4xl font-bold text-center mb-12 text-accent-one">Essential Security Guides</h2>
+      
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {featuredSecurity.map(post => (
+          <article class="bg-bgColor/60 p-6 rounded-xl border border-accent-one/20 hover:border-accent-one/40 transition-all hover:shadow-lg group">
+            <div class="flex items-start gap-3 mb-4">
+              <span class="text-2xl">🔒</span>
+              <h3 class="font-bold text-lg group-hover:text-accent-one transition-colors">
+                <a href={`/posts/${post.id}/`}>{post.data.title}</a>
+              </h3>
+            </div>
+            
+            <p class="text-textColor/80 mb-4 line-clamp-3">
+              {post.data.description}
+            </p>
+            
+            <div class="flex flex-wrap gap-2 mb-4">
+              {post.data.tags?.slice(0, 4).map(tag => (
+                <span class="text-xs px-2 py-1 bg-accent-one/10 text-accent-one rounded">
+                  {tag}
+                </span>
+              ))}
+            </div>
+            
+            <a href={`/posts/${post.id}/`} class="text-accent-one hover:text-accent-two transition-colors font-medium">
+              Read Security Guide →
+            </a>
+          </article>
+        ))}
+      </div>
+      
+      <div class="text-center mt-12">
+        <a href="/posts/" class="inline-flex items-center justify-center px-8 py-4 rounded-lg font-semibold border-2 border-accent-one text-accent-one hover:bg-accent-one/10 transition-all text-lg">
+          View All Security Guides
+        </a>
+      </div>
+    </section>
+
+    <!-- Security Comparison -->
+    <section class="mb-20">
+      <h2 class="text-4xl font-bold text-center mb-12 text-accent-one">Security Methods Comparison</h2>
+      
+      <div class="overflow-x-auto">
+        <table class="w-full bg-bgColor/60 rounded-xl border border-accent-one/20">
+          <thead>
+            <tr class="border-b border-accent-one/20">
+              <th class="p-4 text-left text-accent-one font-semibold">Security Method</th>
+              <th class="p-4 text-center text-accent-one font-semibold">Protection Level</th>
+              <th class="p-4 text-center text-accent-one font-semibold">Ease of Use</th>
+              <th class="p-4 text-center text-accent-one font-semibold">Real-time Control</th>
+              <th class="p-4 text-center text-accent-one font-semibold">Analytics</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="border-b border-accent-one/10">
+              <td class="p-4 font-medium">Email Attachments</td>
+              <td class="p-4 text-center text-red-500">❌ None</td>
+              <td class="p-4 text-center text-green-500">✅ Easy</td>
+              <td class="p-4 text-center text-red-500">❌ No</td>
+              <td class="p-4 text-center text-red-500">❌ No</td>
+            </tr>
+            <tr class="border-b border-accent-one/10">
+              <td class="p-4 font-medium">Cloud Storage Links</td>
+              <td class="p-4 text-center text-yellow-500">⚠️ Basic</td>
+              <td class="p-4 text-center text-green-500">✅ Easy</td>
+              <td class="p-4 text-center text-yellow-500">⚠️ Limited</td>
+              <td class="p-4 text-center text-yellow-500">⚠️ Basic</td>
+            </tr>
+            <tr class="border-b border-accent-one/10">
+              <td class="p-4 font-medium">Password Protected PDFs</td>
+              <td class="p-4 text-center text-yellow-500">⚠️ Medium</td>
+              <td class="p-4 text-center text-yellow-500">⚠️ Medium</td>
+              <td class="p-4 text-center text-red-500">❌ No</td>
+              <td class="p-4 text-center text-red-500">❌ No</td>
+            </tr>
+            <tr class="bg-accent-one/5">
+              <td class="p-4 font-medium text-accent-one">MaiPDF Security Platform</td>
+              <td class="p-4 text-center text-green-500">✅ Maximum</td>
+              <td class="p-4 text-center text-green-500">✅ Easy</td>
+              <td class="p-4 text-center text-green-500">✅ Full</td>
+              <td class="p-4 text-center text-green-500">✅ Advanced</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Industry Use Cases -->
+    <section class="mb-20">
+      <h2 class="text-4xl font-bold text-center mb-12 text-accent-one">Industry-Specific Security Solutions</h2>
+      
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div class="bg-blue-500/10 p-6 rounded-xl border border-blue-500/20 text-center">
+          <div class="text-3xl mb-4">🏢</div>
+          <h3 class="text-xl font-semibold mb-3 text-blue-600">Enterprise</h3>
+          <ul class="text-sm text-textColor/80 space-y-2">
+            <li>• Confidential reports</li>
+            <li>• Strategic documents</li>
+            <li>• Internal communications</li>
+            <li>• Compliance materials</li>
+          </ul>
+        </div>
+
+        <div class="bg-green-500/10 p-6 rounded-xl border border-green-500/20 text-center">
+          <div class="text-3xl mb-4">⚖️</div>
+          <h3 class="text-xl font-semibold mb-3 text-green-600">Legal</h3>
+          <ul class="text-sm text-textColor/80 space-y-2">
+            <li>• Legal contracts</li>
+            <li>• Case documents</li>
+            <li>• Client communications</li>
+            <li>• Evidence materials</li>
+          </ul>
+        </div>
+
+        <div class="bg-purple-500/10 p-6 rounded-xl border border-purple-500/20 text-center">
+          <div class="text-3xl mb-4">🏥</div>
+          <h3 class="text-xl font-semibold mb-3 text-purple-600">Healthcare</h3>
+          <ul class="text-sm text-textColor/80 space-y-2">
+            <li>• Patient records</li>
+            <li>• Medical reports</li>
+            <li>• Research data</li>
+            <li>• HIPAA compliance</li>
+          </ul>
+        </div>
+
+        <div class="bg-orange-500/10 p-6 rounded-xl border border-orange-500/20 text-center">
+          <div class="text-3xl mb-4">🎓</div>
+          <h3 class="text-xl font-semibold mb-3 text-orange-600">Education</h3>
+          <ul class="text-sm text-textColor/80 space-y-2">
+            <li>• Research papers</li>
+            <li>• Student records</li>
+            <li>• Course materials</li>
+            <li>• Academic resources</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section class="text-center bg-gradient-to-r from-red-500/10 via-accent-one/10 to-accent-two/10 p-12 rounded-xl">
+      <h2 class="text-4xl font-bold mb-6 text-accent-one">Don't Let Your Documents Be Vulnerable</h2>
+      <p class="text-xl text-textColor/80 max-w-3xl mx-auto mb-8">
+        Every unsecured PDF is a potential security risk. Protect your sensitive documents with enterprise-grade 
+        security features that give you complete control over who accesses your content and how they use it.
+      </p>
+      
+      <div class="flex flex-col sm:flex-row justify-center gap-6">
+        <a href="https://maipdf.com" class="inline-flex items-center justify-center px-10 py-5 rounded-lg font-bold text-white bg-gradient-to-r from-red-500 to-accent-one hover:brightness-110 transition-all text-xl shadow-lg">
+          🛡️ Secure Your PDFs Now
+        </a>
+        <a href="/posts/stop-pdf-forwarding-tips/" class="inline-flex items-center justify-center px-10 py-5 rounded-lg font-bold border-2 border-accent-one text-accent-one hover:bg-accent-one/10 transition-all text-xl">
+          📚 Free Security Guide
+        </a>
+      </div>
+    </section>
+  </div>
+</PageLayout>
+
+<style>
+  .line-clamp-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  
+  .line-clamp-3 {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+</style>

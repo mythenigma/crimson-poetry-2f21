@@ -3,14 +3,14 @@ title: "如何防止PDF被编辑：离线软件完全指南"
 description: "详细介绍使用Adobe Acrobat、WPS等离线软件为PDF文件添加编辑保护的方法，包括密码设置、权限控制等实用技巧。"
 publishDate: "28 November 2025"
 tags: ["pdf", "编辑保护", "离线软件", "安全", "密码保护"]
-ogImage: "/2025MayMaiPDF/security_setting.png"
+ogImage: "/maipdf-images/security_setting.png"
 ---
 
 ## 如何防止PDF被编辑：离线软件完全指南
 
 你是否担心辛苦制作的PDF文档被别人随意修改？或者需要保护重要合同、报告不被篡改？使用离线软件为PDF添加编辑保护是最可靠的方法之一。今天我来详细介绍几种实用的离线保护方案。
 
-![PDF安全设置](/2025MayMaiPDF/security_setting.png)
+![PDF安全设置](https://article.maipdf.com/wp-content/uploads/2024/05/security-setting-maipdf.png)
 
 ## 为什么需要防止PDF被编辑
 
@@ -275,3 +275,4 @@ assembly - 允许页面组装
 记住，技术保护只是第一步，合理的文档管理和访问控制同样重要。
 
 需要更高级的在线保护方案？可以考虑结合云端DRM服务，实现动态权限控制和实时监控。
+

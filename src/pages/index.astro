@@ -20,7 +20,11 @@ const allNotes = await getCollection("note");
 const latestNotes = allNotes.sort(collectionDateSort).slice(0, MAX_NOTES);
 ---
 
-<PageLayout meta={{ title: "Home" }}>
+<PageLayout meta={{ 
+	title: "MaiPDF - Secure PDF Sharing Platform | Convert PDF to Links & QR Codes",
+	description: "Convert PDF files into secure shareable links or QR codes with access restrictions, copy protection, and tracking. Free PDF hosting with advanced security features.",
+	structuredDataType: "website"
+}}>
 	<!-- Background blur -->
 	<div class="relative overflow-hidden">
 		<div class="absolute inset-0 -z-10">
@@ -60,17 +64,66 @@ const latestNotes = allNotes.sort(collectionDateSort).slice(0, MAX_NOTES);
 				</p>
 				
 				<!-- Description -->
-				<p class="text-lg mb-12 max-w-3xl mx-auto text-textColor/80 leading-relaxed">
-					Convert PDF files into shareable links or QR codes with access restrictions, copy protection, and tracking features.
+				<p class="text-lg mb-8 max-w-3xl mx-auto text-textColor/80 leading-relaxed">
+					Convert PDF files into shareable links or QR codes with access restrictions, copy protection, and tracking features. 
+					<a href="/posts/pdf-to-qr-simple-guide/" class="text-accent-one hover:underline">Learn how to create PDF QR codes</a> or 
+					<a href="/posts/stop-pdf-forwarding-tips/" class="text-accent-one hover:underline">prevent PDF forwarding</a> with our secure platform.
 				</p>
+				
+				<!-- Comprehensive Solution Links -->
+				<div class="mb-12 max-w-6xl mx-auto">
+					<p class="text-base text-textColor/70 mb-6 text-center">🚀 Complete PDF Solutions & Resources:</p>
+					
+					<!-- Main Solutions -->
+					<div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+						<a href="/pdf-security/" class="px-4 py-4 bg-red-500/10 text-red-600 rounded-lg hover:bg-red-500/20 transition-colors text-center font-medium border border-red-500/20 hover:border-red-500/40">
+							🛡️ PDF Security<br><span class="text-xs opacity-70">Protection & DRM</span>
+						</a>
+						<a href="/pdf-sharing/" class="px-4 py-4 bg-blue-500/10 text-blue-600 rounded-lg hover:bg-blue-500/20 transition-colors text-center font-medium border border-blue-500/20 hover:border-blue-500/40">
+							🔗 PDF Sharing<br><span class="text-xs opacity-70">Links & Mobile</span>
+						</a>
+						<a href="/pdf-qr-code/" class="px-4 py-4 bg-purple-500/10 text-purple-600 rounded-lg hover:bg-purple-500/20 transition-colors text-center font-medium border border-purple-500/20 hover:border-purple-500/40">
+							📱 QR Codes<br><span class="text-xs opacity-70">Mobile Access</span>
+						</a>
+						<a href="/tools/" class="px-4 py-4 bg-green-500/10 text-green-600 rounded-lg hover:bg-green-500/20 transition-colors text-center font-medium border border-green-500/20 hover:border-green-500/40">
+							🛠️ All Tools<br><span class="text-xs opacity-70">Complete Suite</span>
+						</a>
+					</div>
+					
+					<!-- Resource Center -->
+					<div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
+						<a href="/pdf-comparison/" class="px-4 py-3 bg-yellow-500/10 text-yellow-600 rounded-lg hover:bg-yellow-500/20 transition-colors text-center font-medium border border-yellow-500/20">
+							⚖️ Solution Comparison
+						</a>
+						<a href="/pdf-problems/" class="px-4 py-3 bg-orange-500/10 text-orange-600 rounded-lg hover:bg-orange-500/20 transition-colors text-center font-medium border border-orange-500/20">
+							🚨 Problem Solver
+						</a>
+						<a href="/pdf-tutorials/" class="px-4 py-3 bg-indigo-500/10 text-indigo-600 rounded-lg hover:bg-indigo-500/20 transition-colors text-center font-medium border border-indigo-500/20">
+							📚 Learning Center
+						</a>
+					</div>
+					
+					<!-- Quick Access Tags -->
+					<div class="flex flex-wrap justify-center gap-3 text-sm">
+						<a href="/posts/free-pdf-drm-online/" class="px-3 py-1 bg-accent-one/10 text-accent-one rounded-full hover:bg-accent-one/20 transition-colors">PDF DRM Protection</a>
+						<a href="/posts/stop-pdf-forwarding-tips/" class="px-3 py-1 bg-accent-one/10 text-accent-one rounded-full hover:bg-accent-one/20 transition-colors">Stop Forwarding</a>
+						<a href="/posts/pdf-to-qr-simple-guide/" class="px-3 py-1 bg-accent-one/10 text-accent-one rounded-full hover:bg-accent-one/20 transition-colors">PDF to QR</a>
+						<a href="/posts/pdf-to-link-generator/" class="px-3 py-1 bg-accent-one/10 text-accent-one rounded-full hover:bg-accent-one/20 transition-colors">PDF to Link</a>
+						<a href="/posts/prevent-pdf-editing-offline-guide/" class="px-3 py-1 bg-accent-one/10 text-accent-one rounded-full hover:bg-accent-one/20 transition-colors">Edit Protection</a>
+						<a href="/posts/pdf-mobile-sharing-links/" class="px-3 py-1 bg-accent-one/10 text-accent-one rounded-full hover:bg-accent-one/20 transition-colors">Mobile Sharing</a>
+					</div>
+				</div>
 				
 				<!-- CTA Buttons -->
 				<div class="flex flex-col sm:flex-row justify-center items-center space-y-4 sm:space-y-0 sm:space-x-6 mb-16">
 					<a href="https://maipdf.com" class="inline-flex items-center justify-center px-8 py-4 rounded-lg font-semibold text-white bg-gradient-to-r from-accent-one to-accent-two hover:brightness-110 transition-all shadow-lg text-lg">
 						Try MaiPDF Free
 					</a>
-					<a href="/posts/" class="inline-flex items-center justify-center px-8 py-4 rounded-lg font-semibold border border-accent-one/30 text-accent-one hover:bg-accent-one/10 transition-all text-lg">
-						Learn More
+					<a href="/features/" class="inline-flex items-center justify-center px-8 py-4 rounded-lg font-semibold border border-accent-one/30 text-accent-one hover:bg-accent-one/10 transition-all text-lg">
+						View Features
+					</a>
+					<a href="/tools/" class="inline-flex items-center justify-center px-8 py-4 rounded-lg font-semibold text-textColor hover:text-accent-one transition-all text-lg">
+						PDF Tools
 					</a>
 				</div>
 				

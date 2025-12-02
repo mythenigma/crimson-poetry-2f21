@@ -38,12 +38,19 @@ export default defineConfig({
       nesting: true,
     }),
     sitemap({
-      filter: (page) => !page.includes('/404') && !page.includes('/og-image/'),
+      // 激进的sitemap配置 - 确保所有页面都被包含
+      entryLimit: 50000,
+      filter: (page) => {
+        // 更宽松的过滤策略 - 只排除真正不需要的页面
+        const excludePatterns = ['/404', '/og-image/', '/_astro/', '/api/', '/admin/'];
+        return !excludePatterns.some(pattern => page.includes(pattern));
+      },
       customPages: [
         'https://pdfhost.online/',
         'https://pdfhost.online/about/',
         'https://pdfhost.online/posts/',
         'https://pdfhost.online/notes/',
+        'https://pdfhost.online/tags/',
         // PDF功能核心页面
         'https://pdfhost.online/posts/pdf-to-qr-simple-guide/',
         'https://pdfhost.online/posts/pdf-qr-beginners-guide/',
@@ -72,7 +79,38 @@ export default defineConfig({
         'https://pdfhost.online/posts/host-pdf-online-free-vs-paid/',
         // Google Drive替代方案
         'https://pdfhost.online/posts/maipdf-google-drive-alternative/',
-        // Newly added articles
+        
+        // 新增的PDF编辑保护文章 - 高价值内容
+        'https://pdfhost.online/posts/pdf-edit-protection-offline-chinese/',
+        'https://pdfhost.online/posts/pdf-edit-protection-online-chinese/',
+        'https://pdfhost.online/posts/prevent-pdf-editing-offline-guide/',
+        'https://pdfhost.online/posts/online-pdf-edit-protection-guide/',\n        'https://pdfhost.online/posts/prevent-pdf-editing-offline-complete/',\n        'https://pdfhost.online/posts/prevent-pdf-editing-online-complete/',\n        'https://pdfhost.online/posts/prevent-pdf-editing-offline-english/',\n        'https://pdfhost.online/posts/prevent-pdf-editing-online-english/',
+        
+        // 重要的功能页面和着陆页
+        'https://pdfhost.online/sitemap/',
+        'https://pdfhost.online/features/',
+        'https://pdfhost.online/tools/',
+        'https://pdfhost.online/pdf-security/',
+        'https://pdfhost.online/pdf-sharing/',
+        'https://pdfhost.online/pdf-qr-code/',
+        
+        // 主要标签页面 - 分类索引
+        'https://pdfhost.online/tags/pdf/',
+        'https://pdfhost.online/tags/security/',
+        'https://pdfhost.online/tags/sharing/',
+        'https://pdfhost.online/tags/protection/',
+        'https://pdfhost.online/tags/qr-code/',
+        'https://pdfhost.online/tags/links/',
+        'https://pdfhost.online/tags/drm/',
+        'https://pdfhost.online/tags/hosting/',
+        'https://pdfhost.online/tags/mobile/',
+        'https://pdfhost.online/tags/online/',
+        'https://pdfhost.online/tags/offline/',
+        'https://pdfhost.online/tags/edit-protection/',
+        'https://pdfhost.online/tags/password-protection/',
+        'https://pdfhost.online/tags/access-control/',
+        
+        // 其他现有文章
         'https://pdfhost.online/posts/share-pdfs-as-links/',
         'https://pdfhost.online/posts/set-pdf-open-limits/',
         'https://pdfhost.online/posts/make-pdf-links-expire/',

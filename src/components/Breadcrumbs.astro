@@ -1,0 +1,84 @@
+---
+interface BreadcrumbItem {
+  name: string;
+  href: string;
+}
+
+const { pathname } = Astro.url;
+const pathSegments = pathname.split('/').filter(segment => segment);
+
+const breadcrumbs: BreadcrumbItem[] = [
+  { name: 'Home', href: '/' }
+];
+
+let currentPath = '';
+pathSegments.forEach((segment, index) => {
+  currentPath += '/' + segment;
+  
+  // Create human-readable names for segments
+  let name = segment;
+  if (segment === 'posts') {
+    name = 'Features & Guides';
+  } else if (segment === 'notes') {
+    name = 'Quick Guides';
+  } else if (segment === 'tags') {
+    name = 'Tags';
+  } else if (segment === 'about') {
+    name = 'About';
+  } else {
+    // Convert kebab-case to title case
+    name = segment
+      .split('-')
+      .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+      .join(' ');
+  }
+  
+  // Don't add link for the current page (last segment)
+  const href = index === pathSegments.length - 1 ? '' : currentPath;
+  breadcrumbs.push({ name, href });
+});
+---
+
+{breadcrumbs.length > 1 && (
+  <nav aria-label="Breadcrumb" class="mb-6">
+    <ol class="flex items-center space-x-2 text-sm text-textColor/70">
+      {breadcrumbs.map((item, index) => (
+        <li class="flex items-center">
+          {index > 0 && (
+            <svg 
+              class="w-4 h-4 mx-2 text-textColor/40" 
+              fill="currentColor" 
+              viewBox="0 0 20 20"
+            >
+              <path 
+                fill-rule="evenodd" 
+                d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" 
+                clip-rule="evenodd"
+              />
+            </svg>
+          )}
+          {item.href ? (
+            <a 
+              href={item.href} 
+              class="hover:text-accent-one transition-colors duration-200"
+            >
+              {item.name}
+            </a>
+          ) : (
+            <span class="text-textColor font-medium">{item.name}</span>
+          )}
+        </li>
+      ))}
+    </ol>
+  </nav>
+)}
+
+<style>
+  nav {
+    font-size: 0.875rem;
+  }
+  
+  a:hover {
+    text-decoration: underline;
+  }
+</style>

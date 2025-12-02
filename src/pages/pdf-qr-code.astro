@@ -1,0 +1,478 @@
+---
+import { getAllPosts } from "@/data/post";
+import PageLayout from "@/layouts/Base.astro";
+
+const allPosts = await getAllPosts();
+
+// 获取QR码相关文章
+const qrPosts = allPosts.filter(post => 
+  post.data.tags?.some(tag => ['qr-code', 'mobile', 'sharing'].includes(tag))
+);
+
+// QR码使用场景
+const qrUseCases = {
+  "Business & Marketing": {
+    icon: "💼",
+    scenarios: [
+      {
+        title: "Business Cards",
+        description: "Add QR codes to business cards for instant portfolio access",
+        benefit: "Professional networking made easy"
+      },
+      {
+        title: "Marketing Materials", 
+        description: "Include QR codes in brochures and flyers for detailed product info",
+        benefit: "Bridge offline to online marketing"
+      },
+      {
+        title: "Product Catalogs",
+        description: "Generate QR codes for detailed product specifications",
+        benefit: "Enhanced customer experience"
+      }
+    ]
+  },
+  "Events & Conferences": {
+    icon: "🎪",
+    scenarios: [
+      {
+        title: "Event Programs",
+        description: "Share detailed schedules and speaker information via QR codes",
+        benefit: "Contactless information sharing"
+      },
+      {
+        title: "Presentation Slides",
+        description: "Allow audience to access slides instantly during presentations",
+        benefit: "Improved audience engagement"
+      },
+      {
+        title: "Conference Materials",
+        description: "Distribute conference papers and resources efficiently",
+        benefit: "Paperless event management"
+      }
+    ]
+  },
+  "Education & Training": {
+    icon: "🎓",
+    scenarios: [
+      {
+        title: "Course Materials",
+        description: "Provide instant access to syllabi, assignments, and resources",
+        benefit: "Streamlined learning experience"
+      },
+      {
+        title: "Research Papers",
+        description: "Share academic papers and research findings easily",
+        benefit: "Enhanced academic collaboration"
+      },
+      {
+        title: "Training Manuals",
+        description: "Distribute training materials for workshops and courses",
+        benefit: "Efficient knowledge transfer"
+      }
+    ]
+  },
+  "Hospitality & Retail": {
+    icon: "🏪",
+    scenarios: [
+      {
+        title: "Restaurant Menus",
+        description: "Contactless menu access for dining establishments",
+        benefit: "Safe and hygienic dining"
+      },
+      {
+        title: "Hotel Information",
+        description: "Provide guests with local guides and hotel services info",
+        benefit: "Enhanced guest experience"
+      },
+      {
+        title: "Product Instructions",
+        description: "Link physical products to digital manuals and guides",
+        benefit: "Reduced support costs"
+      }
+    ]
+  }
+};
+
+// QR码优势对比
+const qrAdvantages = [
+  {
+    traditional: "Email large PDF files",
+    qr: "Scan QR code for instant access",
+    benefit: "No file size limits or email bounces"
+  },
+  {
+    traditional: "Type long URLs manually",
+    qr: "Quick scan with any smartphone",
+    benefit: "Eliminates typing errors and friction"
+  },
+  {
+    traditional: "Share files via USB or cloud",
+    qr: "Contactless sharing via QR code",
+    benefit: "Hygienic and convenient sharing"
+  },
+  {
+    traditional: "Print full documents",
+    qr: "Print small QR code only",
+    benefit: "Saves paper and printing costs"
+  }
+];
+---
+
+<PageLayout meta={{ 
+  title: "PDF QR Code Generator - Instant Mobile Access | MaiPDF",
+  description: "Generate QR codes for PDF documents. Enable instant mobile access, contactless sharing, and professional presentation. Perfect for events, business cards, and marketing materials."
+}}>
+  <div class="max-w-7xl mx-auto">
+    <!-- Hero Section -->
+    <header class="text-center mb-20">
+      <h1 class="text-6xl font-bold mb-8 bg-gradient-to-r from-purple-500 via-accent-one to-pink-500 bg-clip-text text-transparent">
+        PDF QR Code Generator
+      </h1>
+      <p class="text-2xl text-textColor/80 max-w-4xl mx-auto mb-8">
+        Transform any PDF into a scannable QR code. Enable instant mobile access, contactless sharing, 
+        and professional presentation. Perfect for business cards, events, and marketing materials.
+      </p>
+      
+      <!-- QR Demo Section -->
+      <div class="bg-gradient-to-r from-purple-500/10 to-pink-500/10 p-8 rounded-xl mb-12">
+        <h2 class="text-2xl font-bold mb-6 text-accent-one">See QR Codes in Action</h2>
+        <div class="grid md:grid-cols-3 gap-8">
+          <!-- Demo QR Code -->
+          <div class="text-center">
+            <div class="w-32 h-32 bg-white border-4 border-accent-one/20 rounded-lg mx-auto mb-4 flex items-center justify-center">
+              <div class="text-xs text-gray-600 text-center leading-tight">
+                QR CODE<br/>DEMO<br/>SCAN ME
+              </div>
+            </div>
+            <p class="text-sm text-textColor/70">Sample QR code for PDF access</p>
+          </div>
+          
+          <!-- Benefits -->
+          <div class="md:col-span-2 text-left">
+            <h3 class="text-xl font-semibold mb-4 text-accent-one">Why QR Codes Work Better</h3>
+            <ul class="space-y-3">
+              <li class="flex items-start gap-3">
+                <span class="text-green-500 mt-1">📱</span>
+                <span><strong>Instant Access:</strong> No typing URLs or downloading apps</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="text-green-500 mt-1">🔒</span>
+                <span><strong>Secure Sharing:</strong> Control access and track usage</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="text-green-500 mt-1">🌍</span>
+                <span><strong>Universal:</strong> Works on any smartphone worldwide</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="text-green-500 mt-1">📊</span>
+                <span><strong>Analytics:</strong> See who scanned and when</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Quick Stats -->
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto mb-12">
+        <div class="bg-purple-500/10 p-4 rounded-lg border border-purple-500/20">
+          <div class="text-2xl font-bold text-purple-500">3 sec</div>
+          <div class="text-sm text-textColor/70">Average scan time</div>
+        </div>
+        <div class="bg-pink-500/10 p-4 rounded-lg border border-pink-500/20">
+          <div class="text-2xl font-bold text-pink-500">95%</div>
+          <div class="text-sm text-textColor/70">Smartphone compatibility</div>
+        </div>
+        <div class="bg-accent-one/10 p-4 rounded-lg border border-accent-one/20">
+          <div class="text-2xl font-bold text-accent-one">∞</div>
+          <div class="text-sm text-textColor/70">Scan limit options</div>
+        </div>
+        <div class="bg-green-500/10 p-4 rounded-lg border border-green-500/20">
+          <div class="text-2xl font-bold text-green-500">0</div>
+          <div class="text-sm text-textColor/70">App downloads needed</div>
+        </div>
+      </div>
+
+      <!-- CTA Buttons -->
+      <div class="flex flex-col sm:flex-row justify-center gap-4">
+        <a href="https://maipdf.com" class="inline-flex items-center justify-center px-8 py-4 rounded-lg font-semibold text-white bg-gradient-to-r from-purple-500 to-pink-500 hover:brightness-110 transition-all text-lg shadow-lg">
+          📱 Generate QR Code
+        </a>
+        <a href="/posts/pdf-to-qr-simple-guide/" class="inline-flex items-center justify-center px-8 py-4 rounded-lg font-semibold border-2 border-accent-one text-accent-one hover:bg-accent-one/10 transition-all text-lg">
+          📖 Step-by-Step Guide
+        </a>
+      </div>
+    </header>
+
+    <!-- How It Works -->
+    <section class="mb-20">
+      <h2 class="text-4xl font-bold text-center mb-12 text-accent-one">How PDF QR Codes Work</h2>
+      
+      <div class="grid md:grid-cols-4 gap-8">
+        <div class="text-center">
+          <div class="w-20 h-20 bg-purple-500/20 rounded-full flex items-center justify-center mx-auto mb-4 text-3xl">
+            📄
+          </div>
+          <h3 class="text-xl font-semibold mb-3 text-accent-one">1. Upload PDF</h3>
+          <p class="text-textColor/80">
+            Upload your PDF document to our secure platform. Any file size, any content type.
+          </p>
+        </div>
+        
+        <div class="text-center">
+          <div class="w-20 h-20 bg-accent-one/20 rounded-full flex items-center justify-center mx-auto mb-4 text-3xl">
+            ⚙️
+          </div>
+          <h3 class="text-xl font-semibold mb-3 text-accent-one">2. Configure Settings</h3>
+          <p class="text-textColor/80">
+            Set access controls, expiration dates, and tracking preferences for your document.
+          </p>
+        </div>
+        
+        <div class="text-center">
+          <div class="w-20 h-20 bg-pink-500/20 rounded-full flex items-center justify-center mx-auto mb-4 text-3xl">
+            📱
+          </div>
+          <h3 class="text-xl font-semibold mb-3 text-accent-one">3. Generate QR Code</h3>
+          <p class="text-textColor/80">
+            Get a high-quality QR code that links directly to your secure PDF viewer.
+          </p>
+        </div>
+        
+        <div class="text-center">
+          <div class="w-20 h-20 bg-green-500/20 rounded-full flex items-center justify-center mx-auto mb-4 text-3xl">
+            🚀
+          </div>
+          <h3 class="text-xl font-semibold mb-3 text-accent-one">4. Share & Track</h3>
+          <p class="text-textColor/80">
+            Print, display, or share your QR code. Monitor scans and access in real-time.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Use Cases -->
+    <section class="mb-20">
+      <h2 class="text-4xl font-bold text-center mb-12 text-accent-one">Perfect for Every Industry</h2>
+      
+      <div class="space-y-16">
+        {Object.entries(qrUseCases).map(([industry, data], index) => (
+          <div class={`${index % 2 === 1 ? 'lg:flex-row-reverse' : ''} lg:flex lg:items-start lg:gap-16`}>
+            <!-- Industry Info -->
+            <div class="lg:flex-1 mb-8 lg:mb-0">
+              <div class="flex items-center gap-4 mb-6">
+                <div class="text-5xl">{data.icon}</div>
+                <h3 class="text-3xl font-bold text-accent-one">{industry}</h3>
+              </div>
+              
+              <p class="text-lg text-textColor/80 mb-8">
+                Discover how QR codes revolutionize document sharing in {industry.toLowerCase()} settings.
+              </p>
+              
+              <div class="flex flex-col sm:flex-row gap-4">
+                <a href="https://maipdf.com" class="inline-flex items-center justify-center px-6 py-3 rounded-lg font-semibold text-white bg-gradient-to-r from-accent-one to-accent-two hover:brightness-110 transition-all">
+                  Create QR Codes
+                </a>
+                <a href="/posts/" class="inline-flex items-center justify-center px-6 py-3 rounded-lg font-semibold border border-accent-one text-accent-one hover:bg-accent-one/10 transition-all">
+                  View Examples
+                </a>
+              </div>
+            </div>
+
+            <!-- Scenarios -->
+            <div class="lg:flex-1">
+              <div class="space-y-6">
+                {data.scenarios.map(scenario => (
+                  <div class="bg-bgColor/60 p-6 rounded-xl border border-accent-one/20 hover:border-accent-one/40 transition-all">
+                    <h4 class="text-xl font-semibold mb-3 text-accent-one">{scenario.title}</h4>
+                    <p class="text-textColor/80 mb-3">{scenario.description}</p>
+                    <div class="bg-green-500/10 p-3 rounded-lg border border-green-500/20">
+                      <span class="text-green-600 font-medium">✓ Benefit: </span>
+                      <span class="text-textColor/90">{scenario.benefit}</span>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- QR vs Traditional Comparison -->
+    <section class="mb-20">
+      <h2 class="text-4xl font-bold text-center mb-12 text-accent-one">QR Codes vs Traditional Methods</h2>
+      
+      <div class="space-y-8">
+        {qrAdvantages.map((comparison, index) => (
+          <div class="bg-bgColor/60 p-8 rounded-xl border border-accent-one/20">
+            <div class="grid md:grid-cols-3 gap-6 items-center">
+              <!-- Traditional Method -->
+              <div class="text-center">
+                <div class="w-16 h-16 bg-red-500/20 rounded-full flex items-center justify-center mx-auto mb-3 text-2xl">
+                  ❌
+                </div>
+                <h4 class="font-semibold text-red-600 mb-2">Traditional Way</h4>
+                <p class="text-sm text-textColor/70">{comparison.traditional}</p>
+              </div>
+              
+              <!-- Arrow -->
+              <div class="text-center">
+                <div class="text-3xl text-accent-one">→</div>
+                <p class="text-sm font-medium text-accent-one mt-2">Upgrade to</p>
+              </div>
+              
+              <!-- QR Method -->
+              <div class="text-center">
+                <div class="w-16 h-16 bg-green-500/20 rounded-full flex items-center justify-center mx-auto mb-3 text-2xl">
+                  ✅
+                </div>
+                <h4 class="font-semibold text-green-600 mb-2">QR Code Way</h4>
+                <p class="text-sm text-textColor/70">{comparison.qr}</p>
+              </div>
+            </div>
+            
+            <!-- Benefit -->
+            <div class="mt-6 text-center bg-accent-one/10 p-4 rounded-lg">
+              <span class="font-semibold text-accent-one">💡 Result: </span>
+              <span class="text-textColor/90">{comparison.benefit}</span>
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- QR Code Features -->
+    <section class="mb-20">
+      <h2 class="text-4xl font-bold text-center mb-12 text-accent-one">Advanced QR Code Features</h2>
+      
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div class="bg-bgColor/60 p-8 rounded-xl border border-accent-one/20 text-center">
+          <div class="text-4xl mb-4">🎨</div>
+          <h3 class="text-xl font-semibold mb-4 text-accent-one">Custom Branding</h3>
+          <ul class="text-sm text-textColor/80 space-y-2">
+            <li>• Add your logo to QR codes</li>
+            <li>• Custom colors and styles</li>
+            <li>• Brand-consistent design</li>
+            <li>• Professional appearance</li>
+          </ul>
+        </div>
+
+        <div class="bg-bgColor/60 p-8 rounded-xl border border-accent-one/20 text-center">
+          <div class="text-4xl mb-4">📊</div>
+          <h3 class="text-xl font-semibold mb-4 text-accent-one">Scan Analytics</h3>
+          <ul class="text-sm text-textColor/80 space-y-2">
+            <li>• Real-time scan tracking</li>
+            <li>• Geographic scan data</li>
+            <li>• Device and browser info</li>
+            <li>• Time-based analytics</li>
+          </ul>
+        </div>
+
+        <div class="bg-bgColor/60 p-8 rounded-xl border border-accent-one/20 text-center">
+          <div class="text-4xl mb-4">🔒</div>
+          <h3 class="text-xl font-semibold mb-4 text-accent-one">Access Control</h3>
+          <ul class="text-sm text-textColor/80 space-y-2">
+            <li>• Password protection</li>
+            <li>• Scan count limits</li>
+            <li>• Time-based expiration</li>
+            <li>• Geographic restrictions</li>
+          </ul>
+        </div>
+
+        <div class="bg-bgColor/60 p-8 rounded-xl border border-accent-one/20 text-center">
+          <div class="text-4xl mb-4">📱</div>
+          <h3 class="text-xl font-semibold mb-4 text-accent-one">Mobile Optimized</h3>
+          <ul class="text-sm text-textColor/80 space-y-2">
+            <li>• Perfect mobile viewing</li>
+            <li>• Fast loading times</li>
+            <li>• Touch-friendly interface</li>
+            <li>• Offline QR generation</li>
+          </ul>
+        </div>
+
+        <div class="bg-bgColor/60 p-8 rounded-xl border border-accent-one/20 text-center">
+          <div class="text-4xl mb-4">🔄</div>
+          <h3 class="text-xl font-semibold mb-4 text-accent-one">Dynamic Updates</h3>
+          <ul class="text-sm text-textColor/80 space-y-2">
+            <li>• Update content anytime</li>
+            <li>• Same QR code, new content</li>
+            <li>• No reprinting needed</li>
+            <li>• Version control</li>
+          </ul>
+        </div>
+
+        <div class="bg-bgColor/60 p-8 rounded-xl border border-accent-one/20 text-center">
+          <div class="text-4xl mb-4">📥</div>
+          <h3 class="text-xl font-semibold mb-4 text-accent-one">Multiple Formats</h3>
+          <ul class="text-sm text-textColor/80 space-y-2">
+            <li>• High-resolution PNG</li>
+            <li>• Vector SVG format</li>
+            <li>• Print-ready PDF</li>
+            <li>• Web-optimized formats</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Featured QR Guides -->
+    <section class="mb-20">
+      <h2 class="text-4xl font-bold text-center mb-12 text-accent-one">QR Code Implementation Guides</h2>
+      
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {qrPosts.slice(0, 6).map(post => (
+          <article class="bg-bgColor/60 p-6 rounded-xl border border-accent-one/20 hover:border-accent-one/40 transition-all hover:shadow-lg group">
+            <div class="flex items-start gap-3 mb-4">
+              <span class="text-2xl">📱</span>
+              <h3 class="font-bold text-lg group-hover:text-accent-one transition-colors">
+                <a href={`/posts/${post.id}/`}>{post.data.title}</a>
+              </h3>
+            </div>
+            
+            <p class="text-textColor/80 mb-4 line-clamp-3">
+              {post.data.description}
+            </p>
+            
+            <div class="flex flex-wrap gap-2 mb-4">
+              {post.data.tags?.slice(0, 4).map(tag => (
+                <span class="text-xs px-2 py-1 bg-accent-one/10 text-accent-one rounded">
+                  {tag}
+                </span>
+              ))}
+            </div>
+            
+            <a href={`/posts/${post.id}/`} class="text-accent-one hover:text-accent-two transition-colors font-medium">
+              Read QR Guide →
+            </a>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section class="text-center bg-gradient-to-r from-purple-500/10 via-accent-one/10 to-pink-500/10 p-12 rounded-xl">
+      <h2 class="text-4xl font-bold mb-6 text-accent-one">Ready to Go Mobile with QR Codes?</h2>
+      <p class="text-xl text-textColor/80 max-w-3xl mx-auto mb-8">
+        Join the mobile revolution. Create professional QR codes for your PDF documents and provide 
+        instant access to anyone with a smartphone. No apps, no typing, just scan and view.
+      </p>
+      
+      <div class="flex flex-col sm:flex-row justify-center gap-6">
+        <a href="https://maipdf.com" class="inline-flex items-center justify-center px-10 py-5 rounded-lg font-bold text-white bg-gradient-to-r from-purple-500 to-pink-500 hover:brightness-110 transition-all text-xl shadow-lg">
+          📱 Generate QR Code Now
+        </a>
+        <a href="/posts/pdf-to-qr-simple-guide/" class="inline-flex items-center justify-center px-10 py-5 rounded-lg font-bold border-2 border-accent-one text-accent-one hover:bg-accent-one/10 transition-all text-xl">
+          📖 Learn How It Works
+        </a>
+      </div>
+    </section>
+  </div>
+</PageLayout>
+
+<style>
+  .line-clamp-3 {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+</style>

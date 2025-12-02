@@ -2,11 +2,15 @@
 import { WEBMENTION_PINGBACK, WEBMENTION_URL } from "astro:env/client";
 import { siteConfig } from "@/site.config";
 import type { SiteMeta } from "@/types";
+import StructuredData from "./StructuredData.astro";
 import "@/styles/global.css";
 
-type Props = SiteMeta;
+type Props = SiteMeta & {
+  post?: any;
+  structuredDataType?: "website" | "article" | "organization";
+};
 
-const { articleDate, description, ogImage, title } = Astro.props;
+const { articleDate, description, ogImage, title, post, structuredDataType = "website" } = Astro.props;
 
 const titleSeparator = "•";
 const siteTitle = `${title} ${titleSeparator} ${siteConfig.title}`;
@@ -39,6 +43,12 @@ const socialImageURL = new URL(ogImage ? ogImage : "/social-card.png", Astro.url
 <meta content={siteTitle} name="title" />
 <meta content={description} name="description" />
 <meta content={siteConfig.author} name="author" />
+<meta content="PDF security, PDF sharing, document protection, PDF to link, PDF QR code, secure document sharing, PDF DRM, access control" name="keywords" />
+<meta content="index, follow" name="robots" />
+<meta content="1 days" name="revisit-after" />
+<meta content="MaiPDF Team" name="publisher" />
+<meta content="general" name="rating" />
+<meta content="global" name="distribution" />
 
 {/* Theme Colour */}
 <meta content="" name="theme-color" />
@@ -86,3 +96,8 @@ const socialImageURL = new URL(ogImage ? ogImage : "/social-card.png", Astro.url
 }
 
 <meta content={Astro.generator} name="generator" />
+
+<!-- Structured Data for SEO -->
+<StructuredData post={post} type={structuredDataType} />
+<StructuredData type="organization" />
+<StructuredData type="breadcrumblist" />
