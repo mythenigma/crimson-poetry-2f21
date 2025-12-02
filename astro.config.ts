@@ -93,6 +93,13 @@ export default defineConfig({
         'https://pdfhost.online/pdf-security/',
         'https://pdfhost.online/pdf-sharing/',
         'https://pdfhost.online/pdf-qr-code/',
+        'https://pdfhost.online/pdf-comparison/',
+        'https://pdfhost.online/pdf-problems/',
+        'https://pdfhost.online/pdf-tutorials/',
+        'https://pdfhost.online/faq/',
+        'https://pdfhost.online/resources/',
+        'https://pdfhost.online/use-cases/',
+        'https://pdfhost.online/best-practices/',
         
         // 主要标签页面 - 分类索引
         'https://pdfhost.online/tags/pdf/',

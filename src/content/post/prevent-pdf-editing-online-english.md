@@ -768,3 +768,4 @@ Your documents are too important to leave unprotected. Your organization is too 
 - [Enterprise PDF Security Implementation Guide](/posts/enterprise-pdf-security-implementation/)
 - [Compliance Requirements for Document Security](/posts/document-security-compliance-guide/)
 - [ROI Calculator for PDF Protection Solutions](/posts/pdf-protection-roi-calculator/)
+

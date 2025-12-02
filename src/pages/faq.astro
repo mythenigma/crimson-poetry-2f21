@@ -1,0 +1,302 @@
+---
+import { getAllPosts } from "@/data/post";
+import PageLayout from "@/layouts/Base.astro";
+
+const allPosts = await getAllPosts();
+
+// 分类FAQ
+const faqCategories = {
+  "PDF Security & Protection": {
+    icon: "🛡️",
+    questions: [
+      {
+        q: "How can I prevent someone from editing my PDF?",
+        a: "You can prevent PDF editing using offline software like Adobe Acrobat Pro to set permissions, or use online platforms like MaiPDF that provide dynamic access controls. Learn more in our guides: [Offline PDF Edit Protection](/posts/prevent-pdf-editing-offline-complete/) and [Online PDF Protection](/posts/prevent-pdf-editing-online-complete/)."
+      },
+      {
+        q: "What's the difference between password protection and DRM?",
+        a: "Password protection is a basic security measure that requires a password to open the file, but once opened, the file can be copied or shared. DRM (Digital Rights Management) provides comprehensive protection including copy prevention, print restrictions, access tracking, and dynamic watermarks. [Learn about PDF DRM here](/posts/free-pdf-drm-online/)."
+      },
+      {
+        q: "Can I revoke access to a PDF after sharing it?",
+        a: "Yes! With online PDF protection platforms like MaiPDF, you can revoke access instantly, even after the document has been shared. This is one of the key advantages over traditional PDF encryption. [See how it works](/posts/online-pdf-edit-protection-guide/)."
+      },
+      {
+        q: "How do I stop people from forwarding my PDF files?",
+        a: "The best way is to use protected links instead of sending PDF files directly. Services like MaiPDF allow you to create secure links with access controls, view limits, and expiration dates. [Complete guide to preventing forwarding](/posts/stop-pdf-forwarding-tips/)."
+      },
+      {
+        q: "Is online PDF protection more secure than offline encryption?",
+        a: "Online protection offers advantages like real-time access control, dynamic permissions, and comprehensive tracking that offline encryption cannot provide. However, both have their place depending on your needs. [Compare both methods](/posts/pdf-comparison/)."
+      }
+    ]
+  },
+  "PDF Sharing & Links": {
+    icon: "🔗",
+    questions: [
+      {
+        q: "How do I convert a PDF to a shareable link?",
+        a: "Upload your PDF to MaiPDF, configure security settings (optional), and generate a secure link. The link allows recipients to view the PDF online without downloading. [Step-by-step guide](/posts/pdf-to-link-generator/)."
+      },
+      {
+        q: "What's the difference between PDF links and cloud storage links?",
+        a: "PDF links from platforms like MaiPDF are optimized for viewing, offer better security controls, and don't require account creation. Cloud storage links are designed for file management. [Detailed comparison](/posts/pdf-link-vs-cloud-storage/)."
+      },
+      {
+        q: "Can I track who views my PDF link?",
+        a: "Yes! MaiPDF and similar platforms provide detailed analytics showing who accessed your document, when, for how long, and from where. [Learn about PDF tracking](/posts/pdf-qr-tracking-analytics/)."
+      },
+      {
+        q: "How do I share PDFs on mobile devices?",
+        a: "The best method is using QR codes or mobile-optimized links. QR codes are perfect for in-person sharing, while links work great for messaging apps. [Mobile PDF sharing guide](/posts/pdf-mobile-sharing-links/)."
+      },
+      {
+        q: "Can I share PDFs on social media?",
+        a: "Yes! Convert your PDF to a link and share it on any social platform. The link will open in a mobile-friendly viewer. [Social media PDF sharing tips](/posts/pdf-social-media-sharing/)."
+      }
+    ]
+  },
+  "QR Codes for PDFs": {
+    icon: "📱",
+    questions: [
+      {
+        q: "How do I create a QR code for my PDF?",
+        a: "Upload your PDF to MaiPDF, and the platform will automatically generate a QR code that links to your secure PDF viewer. [Simple QR code guide](/posts/pdf-to-qr-simple-guide/)."
+      },
+      {
+        q: "What are QR codes good for?",
+        a: "QR codes are perfect for business cards, presentations, printed materials, events, and any situation where you want instant mobile access without typing URLs. [QR code use cases](/posts/pdf-qr-code/)."
+      },
+      {
+        q: "Can I track QR code scans?",
+        a: "Yes! MaiPDF tracks every QR code scan, showing you when and where it was scanned, and who accessed the document. [QR code analytics guide](/posts/pdf-qr-tracking-analytics/)."
+      },
+      {
+        q: "Do QR codes work on all smartphones?",
+        a: "Yes, all modern smartphones have built-in QR code scanners in their camera apps. No additional apps needed. [QR code compatibility](/posts/pdf-qr-beginners-guide/)."
+      }
+    ]
+  },
+  "PDF Hosting & Storage": {
+    icon: "☁️",
+    questions: [
+      {
+        q: "What's the difference between PDF hosting and file sharing?",
+        a: "PDF hosting platforms like MaiPDF are optimized specifically for document viewing with security features, while file sharing services focus on storage and collaboration. [Complete comparison](/posts/pdf-hosting-vs-file-sharing/)."
+      },
+      {
+        q: "Is there a free PDF hosting service?",
+        a: "Yes! MaiPDF offers a free tier with basic features. For advanced security and unlimited storage, premium plans are available. [Free PDF hosting guide](/posts/free-pdf-hosting-guide/)."
+      },
+      {
+        q: "Can I use MaiPDF instead of Google Drive for PDFs?",
+        a: "Absolutely! MaiPDF is specifically designed for PDF sharing with better security, tracking, and viewing experience than Google Drive. [MaiPDF vs Google Drive](/posts/maipdf-google-drive-alternative/)."
+      },
+      {
+        q: "How long can I host a PDF online?",
+        a: "With MaiPDF, you can set custom expiration dates from hours to years, or keep documents active indefinitely. [PDF hosting options](/posts/host-pdf-online-free-guide/)."
+      }
+    ]
+  },
+  "Access Control & Permissions": {
+    icon: "🔐",
+    questions: [
+      {
+        q: "How do I limit how many times someone can view my PDF?",
+        a: "Set view count limits when creating your protected PDF link. You can allow 1-10,000 views per user or total. [Access control guide](/posts/set-pdf-open-limits/)."
+      },
+      {
+        q: "Can I make a PDF expire after a certain date?",
+        a: "Yes! Set expiration dates when creating your PDF link. The document will automatically become inaccessible after the specified date. [Expiration settings guide](/posts/make-pdf-links-expire/)."
+      },
+      {
+        q: "How do I restrict PDF access by location?",
+        a: "Advanced platforms like MaiPDF allow IP-based geofencing, restricting access to specific countries or regions. [Geographic restrictions](/posts/pdf-qr-security-guide/)."
+      },
+      {
+        q: "Can I require a password to view my PDF?",
+        a: "Yes, you can set password protection when creating your PDF link. You can also require email verification for additional security. [Password protection guide](/posts/pdf-qr-security-guide/)."
+      }
+    ]
+  },
+  "Business & Enterprise": {
+    icon: "💼",
+    questions: [
+      {
+        q: "Is MaiPDF suitable for enterprise use?",
+        a: "Yes! MaiPDF offers enterprise plans with advanced features, API access, custom branding, and dedicated support. [Enterprise features](/features/)."
+      },
+      {
+        q: "How do I ensure HIPAA compliance when sharing medical PDFs?",
+        a: "MaiPDF provides HIPAA-compliant features including access logging, encryption, and audit trails. [Healthcare compliance guide](/posts/pdf-security/)."
+      },
+      {
+        q: "Can I integrate PDF protection into my existing systems?",
+        a: "Yes, MaiPDF offers API access for integration with CRM systems, document management platforms, and custom workflows. [API documentation](/tools/)."
+      },
+      {
+        q: "What's the cost of PDF protection for a business?",
+        a: "MaiPDF offers plans starting from free for individuals to enterprise solutions. [Pricing comparison](/pdf-comparison/)."
+      }
+    ]
+  }
+};
+---
+
+<PageLayout meta={{ 
+  title: "PDF Security & Sharing FAQ - All Your Questions Answered | MaiPDF",
+  description: "Comprehensive FAQ covering PDF security, sharing, QR codes, hosting, access control, and business solutions. Get answers to all your PDF-related questions."
+}}>
+  <div class="max-w-6xl mx-auto">
+    <!-- Hero Section -->
+    <header class="text-center mb-16">
+      <h1 class="text-5xl font-bold mb-6 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 bg-clip-text text-transparent">
+        PDF Security & Sharing FAQ
+      </h1>
+      <p class="text-xl text-textColor/80 max-w-3xl mx-auto mb-8">
+        Get instant answers to all your questions about PDF security, sharing, protection, QR codes, and more. 
+        Find solutions to common problems and learn best practices.
+      </p>
+      
+      <!-- Quick Search -->
+      <div class="bg-gradient-to-r from-blue-500/10 to-purple-500/10 p-6 rounded-xl max-w-2xl mx-auto">
+        <h2 class="text-lg font-semibold mb-4 text-accent-one">🔍 Quick Search</h2>
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
+          <a href="#security" class="px-4 py-2 bg-bgColor/60 rounded-lg hover:bg-accent-one/10 transition-colors text-sm text-center">
+            Security
+          </a>
+          <a href="#sharing" class="px-4 py-2 bg-bgColor/60 rounded-lg hover:bg-accent-one/10 transition-colors text-sm text-center">
+            Sharing
+          </a>
+          <a href="#qr-codes" class="px-4 py-2 bg-bgColor/60 rounded-lg hover:bg-accent-one/10 transition-colors text-sm text-center">
+            QR Codes
+          </a>
+          <a href="#hosting" class="px-4 py-2 bg-bgColor/60 rounded-lg hover:bg-accent-one/10 transition-colors text-sm text-center">
+            Hosting
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <!-- FAQ Categories -->
+    <section class="space-y-16">
+      {Object.entries(faqCategories).map(([categoryName, category], index) => (
+        <div id={categoryName.toLowerCase().replace(/\s+/g, '-')} class="scroll-mt-20">
+          <div class="flex items-center gap-4 mb-8">
+            <div class="text-4xl">{category.icon}</div>
+            <h2 class="text-3xl font-bold text-accent-one">{categoryName}</h2>
+          </div>
+          
+          <div class="space-y-6">
+            {category.questions.map((faq, qIndex) => (
+              <details class="group bg-bgColor/60 p-6 rounded-xl border border-accent-one/20 hover:border-accent-one/40 transition-all">
+                <summary class="font-semibold text-lg text-textColor cursor-pointer group-hover:text-accent-one transition-colors flex items-center justify-between">
+                  <span>{faq.q}</span>
+                  <span class="text-accent-one group-open:rotate-180 transition-transform">▼</span>
+                </summary>
+                <div class="mt-4 pt-4 border-t border-accent-one/10">
+                  <div class="prose prose-sm max-w-none text-textColor/90" set:html={faq.a} />
+                </div>
+              </details>
+            ))}
+          </div>
+        </div>
+      ))}
+    </section>
+
+    <!-- Popular Topics -->
+    <section class="mt-20 mb-16">
+      <h2 class="text-3xl font-bold text-center mb-12 text-accent-one">📚 Popular Topics</h2>
+      
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <a href="/posts/stop-pdf-forwarding-tips/" class="p-6 bg-bgColor/60 rounded-xl border border-accent-one/20 hover:border-accent-one/40 transition-all group">
+          <h3 class="font-semibold text-lg mb-2 group-hover:text-accent-one transition-colors">
+            How to Stop PDF Forwarding
+          </h3>
+          <p class="text-sm text-textColor/70">
+            Complete guide to preventing unauthorized PDF sharing
+          </p>
+        </a>
+        
+        <a href="/posts/free-pdf-drm-online/" class="p-6 bg-bgColor/60 rounded-xl border border-accent-one/20 hover:border-accent-one/40 transition-all group">
+          <h3 class="font-semibold text-lg mb-2 group-hover:text-accent-one transition-colors">
+            Free PDF DRM Protection
+          </h3>
+          <p class="text-sm text-textColor/70">
+            Learn about digital rights management for PDFs
+          </p>
+        </a>
+        
+        <a href="/posts/pdf-to-qr-simple-guide/" class="p-6 bg-bgColor/60 rounded-xl border border-accent-one/20 hover:border-accent-one/40 transition-all group">
+          <h3 class="font-semibold text-lg mb-2 group-hover:text-accent-one transition-colors">
+            PDF to QR Code Guide
+          </h3>
+          <p class="text-sm text-textColor/70">
+            Create QR codes for instant mobile PDF access
+          </p>
+        </a>
+        
+        <a href="/posts/pdf-to-link-generator/" class="p-6 bg-bgColor/60 rounded-xl border border-accent-one/20 hover:border-accent-one/40 transition-all group">
+          <h3 class="font-semibold text-lg mb-2 group-hover:text-accent-one transition-colors">
+            PDF Link Generator
+          </h3>
+          <p class="text-sm text-textColor/70">
+            Convert PDFs to secure, shareable links
+          </p>
+        </a>
+        
+        <a href="/posts/prevent-pdf-editing-offline-complete/" class="p-6 bg-bgColor/60 rounded-xl border border-accent-one/20 hover:border-accent-one/40 transition-all group">
+          <h3 class="font-semibold text-lg mb-2 group-hover:text-accent-one transition-colors">
+            Prevent PDF Editing
+          </h3>
+          <p class="text-sm text-textColor/70">
+            Complete guide to protecting PDFs from editing
+          </p>
+        </a>
+        
+        <a href="/posts/pdf-mobile-sharing-links/" class="p-6 bg-bgColor/60 rounded-xl border border-accent-one/20 hover:border-accent-one/40 transition-all group">
+          <h3 class="font-semibold text-lg mb-2 group-hover:text-accent-one transition-colors">
+            Mobile PDF Sharing
+          </h3>
+          <p class="text-sm text-textColor/70">
+            Optimize PDF sharing for mobile devices
+          </p>
+        </a>
+      </div>
+    </section>
+
+    <!-- Still Have Questions -->
+    <section class="text-center bg-gradient-to-r from-blue-500/10 via-purple-500/10 to-pink-500/10 p-12 rounded-xl">
+      <h2 class="text-3xl font-bold mb-6 text-accent-one">Still Have Questions?</h2>
+      <p class="text-xl text-textColor/80 max-w-2xl mx-auto mb-8">
+        Can't find the answer you're looking for? Explore our comprehensive guides or contact our support team.
+      </p>
+      
+      <div class="flex flex-col sm:flex-row justify-center gap-6">
+        <a href="/posts/" class="inline-flex items-center justify-center px-8 py-4 rounded-lg font-semibold text-white bg-gradient-to-r from-blue-500 to-purple-500 hover:brightness-110 transition-all">
+          📚 Browse All Guides
+        </a>
+        <a href="https://maipdf.com" class="inline-flex items-center justify-center px-8 py-4 rounded-lg font-semibold border-2 border-accent-one text-accent-one hover:bg-accent-one/10 transition-all">
+          💬 Contact Support
+        </a>
+        <a href="/pdf-tutorials/" class="inline-flex items-center justify-center px-8 py-4 rounded-lg font-semibold border border-accent-one text-accent-one hover:bg-accent-one/10 transition-all">
+          🎓 Learning Center
+        </a>
+      </div>
+    </section>
+  </div>
+</PageLayout>
+
+<style>
+  details summary {
+    list-style: none;
+  }
+  
+  details summary::-webkit-details-marker {
+    display: none;
+  }
+  
+  details[open] summary {
+    margin-bottom: 1rem;
+  }
+</style>

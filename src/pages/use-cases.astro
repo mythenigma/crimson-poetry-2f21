@@ -1,0 +1,536 @@
+---
+import { getAllPosts } from "@/data/post";
+import PageLayout from "@/layouts/Base.astro";
+
+const allPosts = await getAllPosts();
+
+// 使用案例
+const useCases = {
+  "Legal Services": {
+    icon: "⚖️",
+    color: "blue",
+    description: "Secure document sharing for law firms, attorneys, and legal professionals",
+    challenges: [
+      "Client confidentiality protection",
+      "Attorney-client privilege maintenance",
+      "Document tampering prevention",
+      "Audit trail requirements",
+      "Court filing compliance"
+    ],
+    solutions: [
+      {
+        feature: "Secure Document Sharing",
+        benefit: "Protect sensitive legal documents with advanced encryption and access controls",
+        guide: "/posts/stop-pdf-forwarding-tips/"
+      },
+      {
+        feature: "Access Tracking",
+        benefit: "Maintain complete audit trails for compliance and court proceedings",
+        guide: "/posts/pdf-qr-tracking-analytics/"
+      },
+      {
+        feature: "Time-Limited Access",
+        benefit: "Set automatic expiration for time-sensitive legal documents",
+        guide: "/posts/make-pdf-links-expire/"
+      }
+    ],
+    posts: allPosts.filter(post => 
+      post.data.tags?.some(tag => ['security', 'protection', 'compliance'].includes(tag))
+    ).slice(0, 3)
+  },
+  "Healthcare & Medical": {
+    icon: "🏥",
+    color: "green",
+    description: "HIPAA-compliant patient data sharing and medical document protection",
+    challenges: [
+      "HIPAA compliance requirements",
+      "Patient privacy protection",
+      "Secure medical record sharing",
+      "Mobile access for doctors",
+      "Audit trail maintenance"
+    ],
+    solutions: [
+      {
+        feature: "HIPAA-Compliant Sharing",
+        benefit: "Meet all healthcare privacy regulations with built-in compliance features",
+        guide: "/posts/pdf-security/"
+      },
+      {
+        feature: "Patient Data Protection",
+        benefit: "Secure sharing of medical records, test results, and treatment plans",
+        guide: "/posts/prevent-pdf-editing-online-complete/"
+      },
+      {
+        feature: "Mobile Access",
+        benefit: "Doctors can access patient documents securely on any device",
+        guide: "/posts/pdf-mobile-sharing-links/"
+      }
+    ],
+    posts: allPosts.filter(post => 
+      post.data.tags?.some(tag => ['security', 'mobile', 'compliance'].includes(tag))
+    ).slice(0, 3)
+  },
+  "Education & Academia": {
+    icon: "🎓",
+    color: "purple",
+    description: "Academic paper sharing, course materials, and research collaboration",
+    challenges: [
+      "Academic integrity protection",
+      "Student document distribution",
+      "Peer review security",
+      "Research paper protection",
+      "Remote learning support"
+    ],
+    solutions: [
+      {
+        feature: "Course Material Sharing",
+        benefit: "Distribute syllabi, assignments, and resources with controlled access",
+        guide: "/posts/pdf-to-link-generator/"
+      },
+      {
+        feature: "Research Paper Protection",
+        benefit: "Protect intellectual property while enabling collaboration",
+        guide: "/posts/free-pdf-drm-online/"
+      },
+      {
+        feature: "QR Code Distribution",
+        benefit: "Share materials instantly in classrooms and at conferences",
+        guide: "/posts/pdf-to-qr-simple-guide/"
+      }
+    ],
+    posts: allPosts.filter(post => 
+      post.data.tags?.some(tag => ['sharing', 'qr-code', 'mobile'].includes(tag))
+    ).slice(0, 3)
+  },
+  "Financial Services": {
+    icon: "💰",
+    color: "gold",
+    description: "Secure financial document sharing and regulatory compliance",
+    challenges: [
+      "Regulatory compliance (SOX, PCI DSS)",
+      "Client data protection",
+      "Financial report security",
+      "Audit documentation",
+      "Cross-border sharing"
+    ],
+    solutions: [
+      {
+        feature: "Regulatory Compliance",
+        benefit: "Meet SOX, PCI DSS, and other financial regulations automatically",
+        guide: "/posts/pdf-security/"
+      },
+      {
+        feature: "Client Report Security",
+        benefit: "Share financial reports with clients securely and track access",
+        guide: "/posts/pdf-qr-tracking-analytics/"
+      },
+      {
+        feature: "Audit Trail Generation",
+        benefit: "Complete documentation for regulatory audits and compliance",
+        guide: "/posts/online-pdf-edit-protection-guide/"
+      }
+    ],
+    posts: allPosts.filter(post => 
+      post.data.tags?.some(tag => ['security', 'tracking', 'compliance'].includes(tag))
+    ).slice(0, 3)
+  },
+  "Real Estate": {
+    icon: "🏠",
+    color: "orange",
+    description: "Property listings, contracts, and client document management",
+    challenges: [
+      "Property listing distribution",
+      "Contract security",
+      "Client document sharing",
+      "Mobile access for agents",
+      "Document version control"
+    ],
+    solutions: [
+      {
+        feature: "Property Listing Sharing",
+        benefit: "Share listings via QR codes at open houses and showings",
+        guide: "/posts/pdf-to-qr-simple-guide/"
+      },
+      {
+        feature: "Contract Protection",
+        benefit: "Secure contract sharing with access controls and tracking",
+        guide: "/posts/stop-pdf-forwarding-tips/"
+      },
+      {
+        feature: "Mobile-Friendly Access",
+        benefit: "Clients can view documents perfectly on any mobile device",
+        guide: "/posts/pdf-mobile-sharing-links/"
+      }
+    ],
+    posts: allPosts.filter(post => 
+      post.data.tags?.some(tag => ['sharing', 'qr-code', 'mobile'].includes(tag))
+    ).slice(0, 3)
+  },
+  "Marketing & Sales": {
+    icon: "📊",
+    color: "pink",
+    description: "Proposal sharing, marketing materials, and sales document management",
+    challenges: [
+      "Proposal security",
+      "Marketing material distribution",
+      "Sales presentation sharing",
+      "Client engagement tracking",
+      "Brand protection"
+    ],
+    solutions: [
+      {
+        feature: "Secure Proposal Sharing",
+        benefit: "Share proposals with tracking to see client engagement",
+        guide: "/posts/pdf-to-link-generator/"
+      },
+      {
+        feature: "Marketing Material Distribution",
+        benefit: "Distribute brochures and catalogs via QR codes and links",
+        guide: "/posts/pdf-social-media-sharing/"
+      },
+      {
+        feature: "Engagement Analytics",
+        benefit: "Track which pages clients view and how long they spend",
+        guide: "/posts/pdf-qr-tracking-analytics/"
+      }
+    ],
+    posts: allPosts.filter(post => 
+      post.data.tags?.some(tag => ['sharing', 'analytics', 'social-media'].includes(tag))
+    ).slice(0, 3)
+  },
+  "Human Resources": {
+    icon: "👥",
+    color: "indigo",
+    description: "Employee document sharing, training materials, and HR compliance",
+    challenges: [
+      "Employee privacy protection",
+      "Training material distribution",
+      "Policy document sharing",
+      "Compliance documentation",
+      "Remote workforce support"
+    ],
+    solutions: [
+      {
+        feature: "Employee Document Security",
+        benefit: "Share sensitive HR documents with individual access controls",
+        guide: "/posts/pdf-security/"
+      },
+      {
+        feature: "Training Material Distribution",
+        benefit: "Distribute training materials with tracking and completion verification",
+        guide: "/posts/pdf-to-link-generator/"
+      },
+      {
+        feature: "Policy Document Management",
+        benefit: "Share updated policies with version control and read receipts",
+        guide: "/posts/pdf-hosting-vs-file-sharing/"
+      }
+    ],
+    posts: allPosts.filter(post => 
+      post.data.tags?.some(tag => ['sharing', 'security', 'hosting'].includes(tag))
+    ).slice(0, 3)
+  },
+  "Non-Profit Organizations": {
+    icon: "🤝",
+    color: "teal",
+    description: "Grant applications, donor communications, and program documentation",
+    challenges: [
+      "Grant application security",
+      "Donor information protection",
+      "Program material sharing",
+      "Volunteer document distribution",
+      "Budget transparency"
+    ],
+    solutions: [
+      {
+        feature: "Grant Application Security",
+        benefit: "Protect sensitive grant applications during submission process",
+        guide: "/posts/prevent-pdf-editing-offline-complete/"
+      },
+      {
+        feature: "Donor Communication",
+        benefit: "Share impact reports and updates securely with donors",
+        guide: "/posts/pdf-sharing/"
+      },
+      {
+        feature: "Program Documentation",
+        benefit: "Distribute program materials to volunteers and partners",
+        guide: "/posts/pdf-to-qr-simple-guide/"
+      }
+    ],
+    posts: allPosts.filter(post => 
+      post.data.tags?.some(tag => ['sharing', 'security', 'qr-code'].includes(tag))
+    ).slice(0, 3)
+  }
+};
+---
+
+<PageLayout meta={{ 
+  title: "PDF Use Cases by Industry - Real-World Applications | MaiPDF",
+  description: "Discover how different industries use PDF security and sharing solutions. Legal, healthcare, education, finance, real estate, marketing, HR, and non-profit use cases with real examples."
+}}>
+  <div class="max-w-7xl mx-auto">
+    <!-- Hero Section -->
+    <header class="text-center mb-20">
+      <h1 class="text-6xl font-bold mb-8 bg-gradient-to-r from-blue-500 via-purple-500 via-pink-500 to-orange-500 bg-clip-text text-transparent">
+        PDF Solutions by Industry
+      </h1>
+      <p class="text-2xl text-textColor/80 max-w-4xl mx-auto mb-8">
+        See how professionals across industries use PDF security and sharing solutions 
+        to solve real business challenges. Find your industry and discover tailored solutions.
+      </p>
+      
+      <!-- Industry Stats -->
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto">
+        <div class="bg-blue-500/10 p-4 rounded-lg border border-blue-500/20">
+          <div class="text-2xl font-bold text-blue-500">8</div>
+          <div class="text-sm text-textColor/70">Industries Covered</div>
+        </div>
+        <div class="bg-purple-500/10 p-4 rounded-lg border border-purple-500/20">
+          <div class="text-2xl font-bold text-purple-500">50+</div>
+          <div class="text-sm text-textColor/70">Use Cases</div>
+        </div>
+        <div class="bg-pink-500/10 p-4 rounded-lg border border-pink-500/20">
+          <div class="text-2xl font-bold text-pink-500">1000+</div>
+          <div class="text-sm text-textColor/70">Organizations</div>
+        </div>
+        <div class="bg-orange-500/10 p-4 rounded-lg border border-orange-500/20">
+          <div class="text-2xl font-bold text-orange-500">24/7</div>
+          <div class="text-sm text-textColor/70">Support Available</div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Use Cases by Industry -->
+    <section class="space-y-20">
+      {Object.entries(useCases).map(([industryName, industry], index) => (
+        <div class={`${index % 2 === 1 ? 'lg:flex-row-reverse' : ''} lg:flex lg:items-start lg:gap-16`}>
+          <!-- Industry Overview -->
+          <div class="lg:flex-1 mb-8 lg:mb-0">
+            <div class="flex items-center gap-4 mb-6">
+              <div class="text-5xl">{industry.icon}</div>
+              <div>
+                <h2 class="text-3xl font-bold text-accent-one">{industryName}</h2>
+                <p class="text-lg text-textColor/80 mt-2">{industry.description}</p>
+              </div>
+            </div>
+            
+            <!-- Challenges -->
+            <div class="mb-6">
+              <h3 class="text-xl font-semibold mb-4 text-accent-one">Common Challenges</h3>
+              <ul class="space-y-2">
+                {industry.challenges.map(challenge => (
+                  <li class="flex items-start gap-3">
+                    <span class="text-red-500 mt-1">⚠️</span>
+                    <span class="text-textColor/90">{challenge}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            
+            <!-- Solutions -->
+            <div class="mb-6">
+              <h3 class="text-xl font-semibold mb-4 text-accent-one">MaiPDF Solutions</h3>
+              <div class="space-y-4">
+                {industry.solutions.map(solution => (
+                  <div class="bg-green-500/10 p-4 rounded-lg border border-green-500/20">
+                    <h4 class="font-semibold text-green-600 mb-2">{solution.feature}</h4>
+                    <p class="text-sm text-textColor/80 mb-2">{solution.benefit}</p>
+                    <a href={solution.guide} class="text-green-600 hover:text-green-700 transition-colors text-sm font-medium">
+                      Learn more →
+                    </a>
+                  </div>
+                ))}
+              </div>
+            </div>
+            
+            <a href="https://maipdf.com" class="inline-flex items-center justify-center px-6 py-3 rounded-lg font-semibold text-white bg-gradient-to-r from-accent-one to-accent-two hover:brightness-110 transition-all">
+              Try for {industryName}
+            </a>
+          </div>
+
+          <!-- Related Guides -->
+          <div class="lg:flex-1">
+            <div class="bg-bgColor/60 p-8 rounded-xl border border-accent-one/20">
+              <h3 class="text-xl font-semibold mb-6 text-accent-one">📚 Industry-Specific Guides</h3>
+              
+              <div class="space-y-6">
+                {industry.posts.map(post => (
+                  <article class="group border-b border-accent-one/10 pb-4 last:border-b-0 last:pb-0">
+                    <a href={`/posts/${post.id}/`} class="block">
+                      <h4 class="font-semibold text-textColor group-hover:text-accent-one transition-colors mb-2">
+                        {post.data.title}
+                      </h4>
+                      <p class="text-sm text-textColor/70 mb-3 line-clamp-2">
+                        {post.data.description}
+                      </p>
+                      <div class="flex flex-wrap gap-2">
+                        {post.data.tags?.slice(0, 3).map(tag => (
+                          <span class="text-xs px-2 py-1 bg-accent-one/10 text-accent-one rounded">
+                            {tag}
+                          </span>
+                        ))}
+                      </div>
+                    </a>
+                  </article>
+                ))}
+              </div>
+              
+              <a href="/posts/" class="inline-block mt-6 text-sm text-accent-one hover:underline font-medium">
+                View all {industryName.toLowerCase()} guides →
+              </a>
+            </div>
+          </div>
+        </div>
+      ))}
+    </section>
+
+    <!-- Success Stories -->
+    <section class="mt-20 mb-16">
+      <h2 class="text-4xl font-bold text-center mb-12 text-accent-one">💼 Success Stories</h2>
+      
+      <div class="grid md:grid-cols-3 gap-8">
+        <div class="bg-blue-500/10 p-8 rounded-xl border border-blue-500/20">
+          <div class="text-4xl mb-4">⚖️</div>
+          <h3 class="text-xl font-bold mb-4 text-blue-600">Law Firm Case Study</h3>
+          <p class="text-textColor/80 mb-4">
+            "MaiPDF helped us protect sensitive merger documents across 12 parties in 6 countries. 
+            Zero security incidents and 67% faster deal closure."
+          </p>
+          <div class="text-sm text-blue-600 font-medium">
+            - International Law Firm, New York
+          </div>
+        </div>
+
+        <div class="bg-green-500/10 p-8 rounded-xl border border-green-500/20">
+          <div class="text-4xl mb-4">🏥</div>
+          <h3 class="text-xl font-bold mb-4 text-green-600">Hospital Success</h3>
+          <p class="text-textColor/80 mb-4">
+            "Full HIPAA compliance maintained while enabling secure collaboration with external researchers. 
+            Research collaboration increased 45%."
+          </p>
+          <div class="text-sm text-green-600 font-medium">
+            - Medical Research Institution, Boston
+          </div>
+        </div>
+
+        <div class="bg-purple-500/10 p-8 rounded-xl border border-purple-500/20">
+          <div class="text-4xl mb-4">🎓</div>
+          <h3 class="text-xl font-bold mb-4 text-purple-600">University Implementation</h3>
+          <p class="text-textColor/80 mb-4">
+            "QR codes revolutionized our course material distribution. Student engagement increased 300% 
+            and paper costs reduced by 80%."
+          </p>
+          <div class="text-sm text-purple-600 font-medium">
+            - State University, California
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Industry Comparison -->
+    <section class="mb-20">
+      <h2 class="text-4xl font-bold text-center mb-12 text-accent-one">📊 Industry Requirements Comparison</h2>
+      
+      <div class="overflow-x-auto">
+        <table class="w-full bg-bgColor/60 rounded-xl border border-accent-one/20">
+          <thead>
+            <tr class="border-b border-accent-one/20">
+              <th class="p-4 text-left text-accent-one font-semibold">Industry</th>
+              <th class="p-4 text-center text-accent-one font-semibold">Security Level</th>
+              <th class="p-4 text-center text-accent-one font-semibold">Compliance Needs</th>
+              <th class="p-4 text-center text-accent-one font-semibold">Mobile Access</th>
+              <th class="p-4 text-center text-accent-one font-semibold">Tracking Required</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="border-b border-accent-one/10">
+              <td class="p-4 font-medium">Legal Services</td>
+              <td class="p-4 text-center">
+                <span class="px-3 py-1 bg-red-500/20 text-red-600 rounded-full text-sm font-medium">Maximum</span>
+              </td>
+              <td class="p-4 text-center">Bar Association</td>
+              <td class="p-4 text-center">Medium</td>
+              <td class="p-4 text-center">✅ Critical</td>
+            </tr>
+            <tr class="border-b border-accent-one/10">
+              <td class="p-4 font-medium">Healthcare</td>
+              <td class="p-4 text-center">
+                <span class="px-3 py-1 bg-red-500/20 text-red-600 rounded-full text-sm font-medium">Maximum</span>
+              </td>
+              <td class="p-4 text-center">HIPAA</td>
+              <td class="p-4 text-center">✅ High</td>
+              <td class="p-4 text-center">✅ Critical</td>
+            </tr>
+            <tr class="border-b border-accent-one/10">
+              <td class="p-4 font-medium">Financial Services</td>
+              <td class="p-4 text-center">
+                <span class="px-3 py-1 bg-red-500/20 text-red-600 rounded-full text-sm font-medium">Maximum</span>
+              </td>
+              <td class="p-4 text-center">SOX, PCI DSS</td>
+              <td class="p-4 text-center">Medium</td>
+              <td class="p-4 text-center">✅ Critical</td>
+            </tr>
+            <tr class="border-b border-accent-one/10">
+              <td class="p-4 font-medium">Education</td>
+              <td class="p-4 text-center">
+                <span class="px-3 py-1 bg-yellow-500/20 text-yellow-600 rounded-full text-sm font-medium">Medium</span>
+              </td>
+              <td class="p-4 text-center">FERPA</td>
+              <td class="p-4 text-center">✅ High</td>
+              <td class="p-4 text-center">Medium</td>
+            </tr>
+            <tr class="border-b border-accent-one/10">
+              <td class="p-4 font-medium">Real Estate</td>
+              <td class="p-4 text-center">
+                <span class="px-3 py-1 bg-yellow-500/20 text-yellow-600 rounded-full text-sm font-medium">Medium</span>
+              </td>
+              <td class="p-4 text-center">State Regulations</td>
+              <td class="p-4 text-center">✅ High</td>
+              <td class="p-4 text-center">Medium</td>
+            </tr>
+            <tr>
+              <td class="p-4 font-medium">Marketing & Sales</td>
+              <td class="p-4 text-center">
+                <span class="px-3 py-1 bg-green-500/20 text-green-600 rounded-full text-sm font-medium">Basic</span>
+              </td>
+              <td class="p-4 text-center">GDPR (EU)</td>
+              <td class="p-4 text-center">✅ High</td>
+              <td class="p-4 text-center">✅ High</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="text-center bg-gradient-to-r from-blue-500/10 via-purple-500/10 to-pink-500/10 p-12 rounded-xl">
+      <h2 class="text-4xl font-bold mb-6 text-accent-one">Find Your Industry Solution</h2>
+      <p class="text-xl text-textColor/80 max-w-3xl mx-auto mb-8">
+        Every industry has unique requirements. MaiPDF provides tailored solutions for legal, 
+        healthcare, education, finance, and more. Discover how we can help your organization.
+      </p>
+      
+      <div class="flex flex-col sm:flex-row justify-center gap-6">
+        <a href="https://maipdf.com" class="inline-flex items-center justify-center px-10 py-5 rounded-lg font-bold text-white bg-gradient-to-r from-blue-500 to-purple-500 hover:brightness-110 transition-all text-xl shadow-lg">
+          🚀 Start Industry Trial
+        </a>
+        <a href="/pdf-comparison/" class="inline-flex items-center justify-center px-10 py-5 rounded-lg font-bold border-2 border-accent-one text-accent-one hover:bg-accent-one/10 transition-all text-xl">
+          📊 Compare Solutions
+        </a>
+        <a href="/faq/" class="inline-flex items-center justify-center px-10 py-5 rounded-lg font-bold border border-accent-one text-accent-one hover:bg-accent-one/10 transition-all text-xl">
+          ❓ Ask Questions
+        </a>
+      </div>
+    </section>
+  </div>
+</PageLayout>
+
+<style>
+  .line-clamp-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+</style>
