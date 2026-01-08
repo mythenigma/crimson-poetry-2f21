@@ -262,7 +262,58 @@ export default defineConfig({
       },
     }),
     mdx(),
-    robotsTxt(),
+    robotsTxt({
+      policy: [
+        {
+          userAgent: '*',
+          allow: '/',
+          disallow: ['/admin/', '/private/', '/api/', '/_astro/', '/node_modules/', '/.git/', '/*.json$', '/*?utm_*', '/*?ref=*', '/*?source=*'],
+          crawlDelay: 0,
+        },
+        {
+          userAgent: 'Googlebot',
+          allow: '/',
+          disallow: ['/admin/', '/private/', '/api/', '/_astro/', '/node_modules/', '/.git/'],
+          crawlDelay: 0,
+        },
+        {
+          userAgent: 'Bingbot',
+          allow: '/',
+          disallow: ['/admin/', '/private/', '/api/', '/_astro/', '/node_modules/', '/.git/'],
+          crawlDelay: 1,
+        },
+        {
+          userAgent: 'Slurp',
+          allow: '/',
+          disallow: ['/admin/', '/private/', '/api/', '/_astro/', '/node_modules/', '/.git/'],
+          crawlDelay: 1,
+        },
+        {
+          userAgent: 'DuckDuckBot',
+          allow: '/',
+          disallow: ['/admin/', '/private/', '/api/', '/_astro/', '/node_modules/', '/.git/'],
+          crawlDelay: 1,
+        },
+        {
+          userAgent: 'YandexBot',
+          allow: '/',
+          disallow: ['/admin/', '/private/', '/api/', '/_astro/', '/node_modules/', '/.git/'],
+          crawlDelay: 1,
+        },
+        {
+          userAgent: 'Baiduspider',
+          allow: '/',
+          disallow: ['/admin/', '/private/', '/api/', '/_astro/', '/node_modules/', '/.git/'],
+          crawlDelay: 2,
+        },
+      ],
+      sitemap: [
+        'https://pdfhost.online/sitemap-index.xml',
+        'https://pdfhost.online/sitemap-0.xml',
+        'https://pdfhost.online/rss.xml',
+      ],
+      host: 'pdfhost.online',
+    }),
     webmanifest({
       // See: https://github.com/alextim/astro-lib/blob/main/packages/astro-webmanifest/README.md
       /**
